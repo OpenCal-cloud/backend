@@ -1,0 +1,24 @@
+variables:
+  DOCKER_DRIVER: overlay2
+
+stages:
+  - test
+
+unit_tests:
+  stage: test
+  image: php:8.4-fpm-alpine
+  before_script:
+    - apk update && apk add --no-cache bash
+    - bash ci/install-php.sh > /dev/null
+  script:
+    - composer install --prefer-dist --no-interaction --no-progress
+    - composer run tests:unit:ci
+  artifacts:
+    when: always
+    reports:
+      junit: tests/reports/junit-unittests.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: tests/reports/cobertura.xml
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+
