@@ -1,7 +1,8 @@
 # OpenCal - Open Source Appointment Scheduling Platform
 
-![Checks](https://github.com/var-lab-it/opencal/actions/workflows/workflows.yml/badge.svg)
-[![codecov backend](https://codecov.io/gh/var-lab-it/opencal/graph/badge.svg?token=P6QF1EYWLJ)](https://codecov.io/gh/var-lab-it/opencal)
+[![pipeline status](https://git.var-lab.com/opencal/backend/badges/main/pipeline.svg)](https://git.var-lab.com/opencal/backend/-/commits/main)
+[![coverage report](https://git.var-lab.com/opencal/backend/badges/main/coverage.svg)](https://git.var-lab.com/opencal/backend/-/commits/main)
+[![Latest Release](https://git.var-lab.com/opencal/backend/-/badges/release.svg)](https://git.var-lab.com/opencal/backend/-/releases)
 
 This is the **OpenCal** backend API. OpenCal is a open-source web application that simplifies and streamlines the
 process of scheduling
