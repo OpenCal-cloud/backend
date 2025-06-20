@@ -155,7 +155,7 @@
       "XDEBUG_MODE=debug bin/console messenger:consume async -vv"
     ],
     "phpstan": "XDEBUG_MODE=off phpstan",
-    "rit": "XDEBUG_MODE=coverage,debug phpunit --testsuite=ApiTests --log-junit=tests/reports/junit-apitests.xml",
+    "rit": "XDEBUG_MODE=coverage,debug phpunit --testsuite=ApiTests --log-junit=tests/reports/junit-apitests.xml --coverage-text --colors=never --coverage-cobertura=tests/reports/cobertura-api.xml",
     "tests": [
       "@tests:unit",
       "@tests:api"

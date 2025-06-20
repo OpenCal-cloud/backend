@@ -2,14 +2,59 @@ variables:
   DOCKER_DRIVER: overlay2
 
 stages:
+  - checks
   - test
+  - build
 
-unit_tests:
-  stage: test
-  image: php:8.4-fpm-alpine
+security_checks:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
+  stage: checks
+  image: git.var-lab.com:5050/opencal/docker-ci-image:latest
   before_script:
     - apk update && apk add --no-cache bash
-    - bash ci/install-php.sh > /dev/null
+    - curl -sS https://get.symfony.com/cli/installer | bash
+    - mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
+  script:
+    - symfony check:security
+
+static_analysis:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
+  stage: checks
+  image: git.var-lab.com:5050/opencal/docker-ci-image:latest
+  before_script:
+    - echo 'memory_limit = -1' >> $PHP_INI_DIR/conf.d/memory_limit_php.ini
+  script:
+    - composer install --prefer-dist --no-interaction --no-progress
+    - composer run lint:php
+    - composer run phpstan
+    - composer run lint:composer
+
+openapi_diff:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
+  stage: checks
+  image: git.var-lab.com:5050/opencal/docker-ci-image:latest
+  script:
+    - composer install --prefer-dist --no-interaction --no-progress
+    - OPENCAL_VERSION=dev php bin/console api:openapi:export -y -o openapi-temp.yml
+    - php bin/console lint:yaml openapi.yml && php bin/console lint:yaml openapi-temp.yml
+    - diff openapi.yml openapi-temp.yml
+
+unit_tests:
+  needs:
+    - security_checks
+    - static_analysis
+    - openapi_diff
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
+  stage: test
+  image: git.var-lab.com:5050/opencal/docker-ci-image:latest
   script:
     - composer install --prefer-dist --no-interaction --no-progress
     - composer run tests:unit:ci
@@ -22,3 +67,58 @@ unit_tests:
         path: tests/reports/cobertura.xml
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
 
+api_tests:
+  needs:
+    - security_checks
+    - static_analysis
+    - openapi_diff
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
+  stage: test
+  image: git.var-lab.com:5050/opencal/docker-ci-image:latest
+  services:
+    - name: mysql:8.2
+      alias: database
+  variables:
+    MYSQL_HOST: database
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_USER: symfony
+    MYSQL_PASSWORD: symfony
+    MYSQL_DATABASE: symfony_test
+    XDEBUG_MODE: off
+    OPENCAL_VERSION: dev
+  before_script:
+    - apk update && apk add --no-cache bash mariadb-client
+#    - echo "SET GLOBAL sql_mode = '';" | mysql -h database -u root -p${MYSQL_ROOT_PASSWORD} --skip-ssl
+  script:
+    - composer install --prefer-dist --no-interaction --no-progress
+    - php bin/console lexik:jwt:generate-keypair --overwrite -n
+    - php bin/console doctrine:migrations:migrate -n
+    - php bin/console doctrine:fixtures:load -n
+    - composer run tests:api:ci
+  artifacts:
+    when: always
+    reports:
+      junit: tests/reports/junit-apitests.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: tests/reports/cobertura-api.xml
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+
+build_dev:
+  needs:
+    - api_tests
+    - unit_tests
+  only:
+    - main
+  stage: build
+  image: jdrouet/docker-with-buildx:stable
+  services:
+    - docker:dind
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker buildx create --use
+    - docker pull opencal/backend:dev-latest || true
+    - docker buildx build --platform linux/amd64,linux/arm64 --target build_prod --tag git.var-lab.com:5050/opencal/backend:dev-latest --cache-from git.var-lab.com:5050/opencal/backend:dev-latest --push .
+    - docker buildx build --platform linux/amd64,linux/arm64 --target nginx --tag git.var-lab.com:5050/opencal/backend:dev-nginx-latest --cache-from git.var-lab.com:5050/opencal/backend:dev-latest --push .
