@@ -15,7 +15,7 @@
          displayDetailsOnTestsThatTriggerErrors="true"
          displayDetailsOnTestsThatTriggerNotices="true"
          displayDetailsOnTestsThatTriggerWarnings="true"
-         failOnDeprecation="false"
+         failOnDeprecation="true"
          failOnPhpunitDeprecation="true"
          stopOnDeprecation="true"
 >
