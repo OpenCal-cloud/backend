@@ -22,6 +22,14 @@ you want.
 - [How to contribute](CONTRIBUTING.md)
 - [Admin documentation](docs/admin/index.md)
 
+### Run [hadolint](https://github.com/hadolint/hadolint)
+
+```bash
+docker run --rm -i hadolint/hadolint < Dockerfile
+# OR
+docker run --rm -i ghcr.io/hadolint/hadolint < Dockerfile
+```
+
 OpenCal is licensed under the [GNU AGPLv3 License](LICENSE).
 
 Created by [var-lab IT GmbH](https://var-lab.com) (from Nuremberg, Germany) and contributors.
