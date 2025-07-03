@@ -8,18 +8,16 @@ FROM php:8.4-fpm-alpine AS generic
 ARG OPENCAL_VERSION=
 ENV OPENCAL_VERSION=${OPENCAL_VERSION}
 
-RUN apk update && \
-  apk add --no-cache \
-  fcgi git
+RUN apk update && apk --no-cache add fcgi=~2.4.6 git=~2.49
 
-RUN apk add --no-cache icu-dev openssl acl
+RUN apk update && apk --no-cache add icu-dev=~76.1 openssl=~3.5 acl=~2.3
 RUN docker-php-ext-install mysqli pdo pdo_mysql posix pcntl intl
 
-RUN apk add --no-cache libzip-dev zip  \
+RUN apk update && apk --no-cache add libzip-dev=~1.11 zip=~3.0 \
     && docker-php-ext-install zip
 
 #RUN docker-php-ext-enable apcu
-COPY --from=composer:2.8.8 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2.8.9 /usr/bin/composer /usr/local/bin/composer
 
 VOLUME /var/run/php
 
@@ -33,7 +31,7 @@ RUN chmod +x /usr/local/bin/docker-healthcheck
 
 HEALTHCHECK --interval=10s --timeout=3s --retries=3 CMD ["docker-healthcheck"]
 
-RUN apk --update add supervisor
+RUN apk update && apk --no-cache add supervisor=~4.2
 
 COPY docker/supervisord.conf /etc/supervisor/supervisord.conf
 
@@ -63,9 +61,9 @@ COPY config config/
 COPY public public/
 COPY src src/
 COPY migrations migrations/
-RUN mkdir -p files
 
-RUN mkdir -p var/cache var/log
+RUN mkdir -p files && \
+    mkdir -p var/cache var/log
 
 VOLUME /srv/app/var
 
@@ -85,21 +83,18 @@ ENV APP_ENV=prod
 
 RUN composer dump-autoload --classmap-authoritative --no-dev && \
     chmod +x bin/console && \
-    sync
-
-RUN rm -rf src/DataFixtures
-
-RUN php bin/console assets:install
-
-RUN echo 'memory_limit = -1' >> $PHP_INI_DIR/conf.d/memory_limit_php.ini
-RUN echo 'upload_max_filesize = 200 M' >> $PHP_INI_DIR/conf.d/memory_limit_php.ini
+    sync && \
+    rm -rf src/DataFixtures && \
+    php bin/console assets:install && \
+    echo "memory_limit = -1" >> "$PHP_INI_DIR/conf.d/memory_limit_php.ini" && \
+    echo "upload_max_filesize = 200 M" >> "$PHP_INI_DIR/conf.d/memory_limit_php.ini"
 
 # ---------
 # dev build
 # ---------
 FROM base AS build_dev
 
-RUN apk add --no-cache bash
+RUN apk update && apk --no-cache add bash=~5.2
 
 COPY tests tests/
 COPY phpunit.dist.xml phpstan.neon ./
@@ -122,11 +117,11 @@ FROM base AS php
 
 WORKDIR /srv/app
 
-RUN ln -sf $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
+RUN ln -sf "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 # Modify memory limit
-RUN echo 'memory_limit = -1' >> $PHP_INI_DIR/conf.d/memory_limit_php.ini
-RUN echo 'upload_max_filesize = 200 M' >> $PHP_INI_DIR/conf.d/memory_limit_php.ini
+RUN echo 'memory_limit = -1' >> "$PHP_INI_DIR/conf.d/memory_limit_php.ini" && \
+    echo 'upload_max_filesize = 200 M' >> "$PHP_INI_DIR/conf.d/memory_limit_php.ini"
 
 COPY --from=build_prod /srv/app /srv/app
 RUN chown -R www-data var
@@ -138,29 +133,21 @@ FROM base AS php_dev
 
 WORKDIR /srv/app
 
-RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS linux-headers \
-    && cd /tmp && \
-    git clone https://github.com/xdebug/xdebug.git && \
-    cd xdebug && \
-    git checkout 3.4.2 && \
-    phpize && \
-    ./configure --enable-xdebug && \
-    make && \
-    make install && \
-    rm -rf /tmp/xdebug
-RUN docker-php-ext-enable xdebug
+RUN apk update && apk --no-cache add dpkg-dev=~1.22 dpkg=~1.22 file=~5.46 g++=~14.2 gcc=~14.2 make=~4.4 pkgconf=~2.4 re2c=~4.2 linux-headers=~6.14 autoconf=~2.72 \
+    && pecl install xdebug-3.4.2 \
+    && docker-php-ext-enable xdebug
 
 ARG COMPOSER_AUTH=
 
 COPY phpunit.dist.xml phpstan.neon ./
 COPY --from=build_dev /srv/app /srv/app
-RUN chown -R www-data var
 
-RUN ln -sf $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
+RUN chown -R www-data var && \
+    ln -sf "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 # Modify memory limit
-RUN echo 'memory_limit = -1' >> $PHP_INI_DIR/conf.d/memory_limit_php.ini
-RUN echo 'upload_max_filesize = 200 M' >> $PHP_INI_DIR/conf.d/memory_limit_php.ini
+RUN echo 'memory_limit = -1' >> "$PHP_INI_DIR/conf.d/memory_limit_php.ini" && \
+    echo 'upload_max_filesize = 200 M' >> "$PHP_INI_DIR/conf.d/memory_limit_php.ini"
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV COMPOSER_AUTH=${COMPOSER_AUTH}
