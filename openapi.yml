@@ -8,9 +8,9 @@ servers:
     url: /
     description: ''
 paths:
-  /availability/day:
+  /availability_check/day:
     get:
-      operationId: api_availabilityday_get_collection
+      operationId: api_availability_checkday_get_collection
       tags:
         - Availability
       responses:

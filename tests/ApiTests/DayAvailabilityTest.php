@@ -26,11 +26,11 @@ class DayAvailabilityTest extends ApiTestCase
     public static function availabilityFiltersDataProvider(): array
     {
         return [
-            ['/availability/day', Response::HTTP_UNPROCESSABLE_ENTITY],
-            ['/availability/day?email=test%40mail.com', Response::HTTP_UNPROCESSABLE_ENTITY],
-            ['/availability/day?date=2021-01-01', Response::HTTP_UNPROCESSABLE_ENTITY],
-            ['/availability/day?date=2021-01-01&event_type_id=1', Response::HTTP_UNPROCESSABLE_ENTITY],
-            ['/availability/day?date=2021-01-01&event_type_id=1&email=test%40mail.com', Response::HTTP_OK],
+            ['/availability_check/day', Response::HTTP_UNPROCESSABLE_ENTITY],
+            ['/availability_check/day?email=test%40mail.com', Response::HTTP_UNPROCESSABLE_ENTITY],
+            ['/availability_check/day?date=2021-01-01', Response::HTTP_UNPROCESSABLE_ENTITY],
+            ['/availability_check/day?date=2021-01-01&event_type_id=1', Response::HTTP_UNPROCESSABLE_ENTITY],
+            ['/availability_check/day?date=2021-01-01&event_type_id=1&email=test%40mail.com', Response::HTTP_OK],
         ];
     }
 
@@ -63,31 +63,31 @@ class DayAvailabilityTest extends ApiTestCase
     {
         return [
             [
-                '/availability/day?email=user%40example.tld&date=2025-05-05&event_type_id=1',
+                '/availability_check/day?email=user%40example.tld&date=2025-05-05&event_type_id=1',
                 Response::HTTP_OK,
             ],
             [
-                '/availability/day?email=user%40example.tld&date=2025-05-06&event_type_id=1',
+                '/availability_check/day?email=user%40example.tld&date=2025-05-06&event_type_id=1',
                 Response::HTTP_OK,
             ],
             [
-                '/availability/day?email=user%40example.tld&date=2025-05-07&event_type_id=1',
+                '/availability_check/day?email=user%40example.tld&date=2025-05-07&event_type_id=1',
                 Response::HTTP_OK,
             ],
             [
-                '/availability/day?email=user%40example.tld&date=2025-05-08&event_type_id=1',
+                '/availability_check/day?email=user%40example.tld&date=2025-05-08&event_type_id=1',
                 Response::HTTP_OK,
             ],
             [
-                '/availability/day?email=user%40example.tld&date=2025-05-09&event_type_id=1',
+                '/availability_check/day?email=user%40example.tld&date=2025-05-09&event_type_id=1',
                 Response::HTTP_OK,
             ],
             [
-                '/availability/day?email=user%40example.tld&date=2025-05-10&event_type_id=1',
+                '/availability_check/day?email=user%40example.tld&date=2025-05-10&event_type_id=1',
                 Response::HTTP_OK,
             ],
             [
-                '/availability/day?email=user%40example.tld&date=2025-05-11&event_type_id=1',
+                '/availability_check/day?email=user%40example.tld&date=2025-05-11&event_type_id=1',
                 Response::HTTP_OK,
             ],
         ];

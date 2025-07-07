@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 #[ApiResource(
     operations: [
         new GetCollection(
-            uriTemplate: '/availability/day',
+            uriTemplate: '/availability_check/day',
             provider: DayAvailabilityStateProvider::class,
             parameters: [
                 'event_type_id' => new QueryParameter(
