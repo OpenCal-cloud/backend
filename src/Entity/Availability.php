@@ -4,24 +4,47 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\AvailabilityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
+#[ApiFilter(SearchFilter::class, properties: ['dayOfWeek' => 'exact'])]
+#[ApiResource(
+    operations: [
+        new GetCollection(),
+        new Get(),
+    ],
+    normalizationContext: [
+        'groups' => [
+            'availabilities:read',
+        ],
+    ],
+    security: "is_granted('IS_AUTHENTICATED_FULLY')",
+)]
 #[ORM\Entity(repositoryClass: AvailabilityRepository::class)]
 class Availability
 {
+    #[Groups('availabilities:read')]
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
     private int $id;
 
+    #[Groups('availabilities:read')]
     #[ORM\Column(length: 255)]
     private string $dayOfWeek;
 
+    #[Groups('availabilities:read')]
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private \DateTime $startTime;
 
+    #[Groups('availabilities:read')]
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private \DateTime $endTime;
 
