@@ -88,6 +88,74 @@ paths:
           explode: true
           allowReserved: false
       deprecated: false
+    post:
+      operationId: api_availabilities_post
+      tags:
+        - Availability
+      responses:
+        '201':
+          description: 'Availability resource created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Availability-availabilities.read'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Availability.jsonld-availabilities.read'
+          links: {  }
+        '400':
+          description: 'Invalid input'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+        '422':
+          description: 'An error occurred'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation-json'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation-json'
+          links: {  }
+        '403':
+          description: Forbidden
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+      summary: 'Creates a Availability resource.'
+      description: 'Creates a Availability resource.'
+      parameters: []
+      requestBody:
+        description: 'The new Availability resource'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Availability-availabilities.write'
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Availability.jsonld-availabilities.write'
+        required: true
+      deprecated: false
   '/availabilities/{id}':
     get:
       operationId: api_availabilities_id_get
@@ -144,6 +212,145 @@ paths:
           style: simple
           explode: false
           allowReserved: false
+      deprecated: false
+    delete:
+      operationId: api_availabilities_id_delete
+      tags:
+        - Availability
+      responses:
+        '204':
+          description: 'Availability resource deleted'
+        '403':
+          description: Forbidden
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+        '404':
+          description: 'Not found'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+      summary: 'Removes the Availability resource.'
+      description: 'Removes the Availability resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'Availability identifier'
+          required: true
+          deprecated: false
+          allowEmptyValue: false
+          schema:
+            type: string
+          style: simple
+          explode: false
+          allowReserved: false
+      deprecated: false
+    patch:
+      operationId: api_availabilities_id_patch
+      tags:
+        - Availability
+      responses:
+        '200':
+          description: 'Availability resource updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Availability-availabilities.read'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Availability.jsonld-availabilities.read'
+          links: {  }
+        '400':
+          description: 'Invalid input'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+        '422':
+          description: 'An error occurred'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation-json'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation-json'
+          links: {  }
+        '403':
+          description: Forbidden
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+        '404':
+          description: 'Not found'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+      summary: 'Updates the Availability resource.'
+      description: 'Updates the Availability resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'Availability identifier'
+          required: true
+          deprecated: false
+          allowEmptyValue: false
+          schema:
+            type: string
+          style: simple
+          explode: false
+          allowReserved: false
+      requestBody:
+        description: 'The updated Availability resource'
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/Availability-availabilities.write'
+        required: true
       deprecated: false
   /availability_check/day:
     get:
@@ -1580,6 +1787,19 @@ components:
         endTime:
           type: string
           format: date-time
+    Availability-availabilities.write:
+      type: object
+      description: ''
+      deprecated: false
+      properties:
+        dayOfWeek:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
     Availability-availability.read:
       type: object
       description: ''
@@ -1615,6 +1835,19 @@ components:
         id:
           readOnly: true
           type: integer
+        dayOfWeek:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    Availability.jsonld-availabilities.write:
+      type: object
+      description: ''
+      deprecated: false
+      properties:
         dayOfWeek:
           type: string
         startTime:
