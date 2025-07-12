@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace App\Tests\ApiTests;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
+use App\Entity\Availability;
 use App\Tests\ApiTests\Traits\RetrieveTokenTrait;
+use Doctrine\ORM\EntityManager;
 use Spatie\Snapshots\MatchesSnapshots;
+use Symfony\Component\HttpFoundation\Response;
 
 class AvailabilitiesTest extends ApiTestCase
 {
@@ -119,5 +122,137 @@ class AvailabilitiesTest extends ApiTestCase
             401,
             $response->getStatusCode(),
         );
+    }
+
+    public function testPostAvailability(): void
+    {
+        $client = static::createClient();
+
+        $token = $this->retrieveToken();
+
+        $response = $client->request('POST', '/availabilities', [
+            'auth_bearer' => $token,
+            'headers'     => [
+                'accept' => 'application/json',
+            ],
+            'json'        => [
+                'dayOfWeek' => 'monday',
+                'startTime' => '10:00',
+                'endTime'   => '12:00',
+            ],
+        ]);
+
+        self::assertSame(
+            Response::HTTP_CREATED,
+            $response->getStatusCode(),
+        );
+
+        $json = $response->toArray();
+        $id   = $json['id'];
+        self::assertIsInt($json['id']);
+        unset($json['id']);
+        self::assertMatchesJsonSnapshot($json);
+
+        /** @var EntityManager $em */
+        $em   = self::getContainer()->get('doctrine.orm.entity_manager');
+        $repo = $em->getRepository(Availability::class);
+
+        /** @var Availability $fetchedFromDB */
+        $fetchedFromDB = $repo->find($id);
+        $user          = $fetchedFromDB->getUser();
+
+        self::assertSame(
+            'user@example.tld',
+            $user->getEmail(),
+        );
+    }
+
+    public function testDeleteAvailability(): void
+    {
+        $client = static::createClient();
+
+        $token = $this->retrieveToken();
+
+        $response = $client->request('POST', '/availabilities', [
+            'auth_bearer' => $token,
+            'headers'     => [
+                'accept' => 'application/json',
+            ],
+            'json'        => [
+                'dayOfWeek' => 'monday',
+                'startTime' => '10:00',
+                'endTime'   => '12:00',
+            ],
+        ]);
+
+        self::assertSame(
+            Response::HTTP_CREATED,
+            $response->getStatusCode(),
+        );
+
+        /** @var array{id: string} $json */
+        $json = $response->toArray();
+        $id   = $json['id'];
+
+        $response = $client->request('DELETE', "/availabilities/{$id}", [
+            'auth_bearer' => $token,
+            'headers'     => [
+                'accept' => 'application/json',
+            ],
+        ]);
+
+        self::assertSame(
+            204,
+            $response->getStatusCode(),
+        );
+    }
+
+    public function testPatchAvailability(): void
+    {
+        $client = static::createClient();
+
+        $token = $this->retrieveToken();
+
+        $response = $client->request('POST', '/availabilities', [
+            'auth_bearer' => $token,
+            'headers'     => [
+                'accept' => 'application/json',
+            ],
+            'json'        => [
+                'dayOfWeek' => 'monday',
+                'startTime' => '10:00',
+                'endTime'   => '12:00',
+            ],
+        ]);
+
+        self::assertSame(
+            Response::HTTP_CREATED,
+            $response->getStatusCode(),
+        );
+
+        /** @var array{id: string} $json */
+        $json = $response->toArray();
+        $id   = $json['id'];
+
+        $response = $client->request('PATCH', "/availabilities/{$id}", [
+            'auth_bearer' => $token,
+            'headers'     => [
+                'accept'       => 'application/json',
+                'content-type' => 'application/merge-patch+json',
+            ],
+            'json'        => [
+                'dayOfWeek' => 'friday',
+            ],
+        ]);
+
+        self::assertSame(
+            200,
+            $response->getStatusCode(),
+        );
+
+        $json = $response->toArray();
+        self::assertIsInt($json['id']);
+        unset($json['id']);
+        self::assertMatchesJsonSnapshot($json);
     }
 }

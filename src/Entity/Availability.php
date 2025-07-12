@@ -7,8 +7,12 @@ namespace App\Entity;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use App\Controller\CreateAvailabilityController;
 use App\Repository\AvailabilityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,10 +23,20 @@ use Symfony\Component\Serializer\Attribute\Groups;
     operations: [
         new GetCollection(),
         new Get(),
+        new Post(
+            controller: CreateAvailabilityController::class,
+        ),
+        new Delete(),
+        new Patch(),
     ],
     normalizationContext: [
         'groups' => [
             'availabilities:read',
+        ],
+    ],
+    denormalizationContext: [
+        'groups' => [
+            'availabilities:write',
         ],
     ],
     security: "is_granted('IS_AUTHENTICATED_FULLY')",
@@ -30,21 +44,21 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ORM\Entity(repositoryClass: AvailabilityRepository::class)]
 class Availability
 {
-    #[Groups('availabilities:read')]
+    #[Groups(['availabilities:read'])]
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
     private int $id;
 
-    #[Groups('availabilities:read')]
+    #[Groups(['availabilities:read', 'availabilities:write'])]
     #[ORM\Column(length: 255)]
     private string $dayOfWeek;
 
-    #[Groups('availabilities:read')]
+    #[Groups(['availabilities:read', 'availabilities:write'])]
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private \DateTime $startTime;
 
-    #[Groups('availabilities:read')]
+    #[Groups(['availabilities:read', 'availabilities:write'])]
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private \DateTime $endTime;
 
