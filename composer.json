@@ -54,6 +54,7 @@
     "dama/doctrine-test-bundle": "^8.3",
     "doctrine/doctrine-fixtures-bundle": "^4.1",
     "ergebnis/composer-normalize": "^2.47",
+    "infection/infection": "^0.30.3",
     "phpstan/extension-installer": "^1.4",
     "phpstan/phpstan": "^2.1",
     "phpstan/phpstan-deprecation-rules": "^2.0",
@@ -98,6 +99,7 @@
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true,
       "ergebnis/composer-normalize": true,
+      "infection/extension-installer": true,
       "php-http/discovery": true,
       "phpstan/extension-installer": true,
       "symfony/flex": true,
@@ -124,6 +126,7 @@
       "@db:schema:validate",
       "@lint:php",
       "@phpstan",
+      "@infection",
       "@tests"
     ],
     "auto-scripts": {
@@ -146,6 +149,7 @@
       "bin/console doctrine:schema:validate -n --env=dev",
       "bin/console doctrine:schema:validate -n --env=test"
     ],
+    "infection": "infection --threads=4",
     "lint:composer": "composer normalize --dry-run",
     "lint:php": "XDEBUG_MODE=off phpcs -p --parallel=$(nproc) --standard=var-lab src tests --ignore=tests/reports/* -s",
     "lint:php:fix": "XDEBUG_MODE=off php -d error_reporting=24575 vendor/bin/phpcbf -q --parallel=$(nproc) --standard=var-lab src tests --ignore=tests/reports/*",

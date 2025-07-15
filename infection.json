@@ -1,0 +1,39 @@
+{
+  "source": {
+    "directories": [
+      "src"
+    ],
+    "excludes": [
+      "Config",
+      "Folder/with/File.php",
+      "/\\.interface\\.php/",
+      "{Infrastructure/.*}"
+    ]
+  },
+  "timeout": 10,
+  "threads": "max",
+  "logs": {
+    "gitlab": "tests/reports/infection-gitlab-code-quality.json",
+  },
+  "tmpDir": "/tmp/infection",
+  "mutators": {
+    "global-ignore": [
+      "FooClass::__construct"
+    ],
+    "global-ignoreSourceCodeByRegex": [
+      "Assert::.*"
+    ],
+    "@default": true,
+    "@function_signature": false,
+    "TrueValue": {
+      "ignore": [
+        "NameSpace\\*\\Class::method"
+      ],
+      "ignoreSourceCodeByRegex": [
+        "\\$this->logger.*"
+      ]
+    }
+  },
+  "testFramework":"phpunit",
+  "testFrameworkOptions": "--filter=UnitTests"
+}
