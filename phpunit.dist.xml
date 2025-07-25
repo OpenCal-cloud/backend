@@ -18,6 +18,7 @@
          failOnDeprecation="true"
          failOnPhpunitDeprecation="true"
          stopOnDeprecation="true"
+         resolveDependencies="true"
 >
     <php>
         <ini name="error_reporting" value="-1"/>
