@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\CalDav;
 
 use App\Entity\CalDavAuth;
-use App\Entity\User;
 use Sabre\DAV\Client;
 use Sabre\VObject\Reader;
 use Safe\DateTime;
@@ -16,16 +15,9 @@ class CalDavService
     /** @var array<Client> */
     private array $clients = [];
 
-    /** @return list<list<array{day: mixed, startTime: mixed, endTime: mixed, etag: string}>> */
-    public function fetchEventsToday(User $user): array
-    {
-        $data = [];
-
-        foreach ($user->getCalDavAuths() as $auth) {
-            $data[] = $this->fetchEventsByAuth($auth);
-        }
-
-        return $data;
+    public function __construct(
+        private readonly ClientFactory $clientFactory,
+    ) {
     }
 
     /** @return list<array{day: mixed, startTime: mixed, endTime: mixed, etag: string}> */
@@ -44,6 +36,11 @@ class CalDavService
             'Depth'        => '1',
             'Content-Type' => 'application/xml',
         ]);
+
+        /** @phpstan-ignore-next-line */
+        if (null === $response) {
+            return [];
+        }
 
         $calendarEntries = $this->getCalendarEntries($response['body']);
 
@@ -94,14 +91,12 @@ class CalDavService
                 $calendarData = $response->xpath('./dav:propstat/dav:prop/cal:calendar-data');
                 $etag         = $response->xpath('./dav:propstat/dav:prop/dav:getetag');
 
-                $item = [
-                    'calendar-data' => isset($calendarData[0]) ? (string) $calendarData[0] : null,
-                    'etag'          => isset($etag[0]) ? \trim((string) $etag[0], '"') : null,
-                ];
+                $iCalString = isset($calendarData[0]) ? (string) $calendarData[0] : '';
 
-                if (null === $item['calendar-data'] || null === $item['etag']) {
-                    continue;
-                }
+                $item = [
+                    'calendar-data' => $iCalString,
+                    'etag'          => isset($etag[0]) ? \trim((string) $etag[0], '"') : '',
+                ];
 
                 $data[] = $item;
             }
@@ -110,9 +105,11 @@ class CalDavService
         return $data;
     }
 
-    private function buildRequestXML(): string
+    private function buildRequestXML(string $startDateString = 'today 00:00:00'): string
     {
-        $startDate = new DateTime('today 00:00:00', new \DateTimeZone('UTC'));
+        $startDate = new DateTime($startDateString, new \DateTimeZone('UTC'));
+        $endDate   = clone $startDate;
+        $endDate->modify('+ 3 months');
 
         return <<<XML
 <c:calendar-query xmlns:d="DAV:" xmlns:c="urn:ietf:params:xml:ns:caldav">
@@ -123,7 +120,7 @@ class CalDavService
     <c:filter>
         <c:comp-filter name="VCALENDAR">
           <c:comp-filter name="VEVENT">
-            <c:time-range start="{$startDate->format('Ymd\THis\Z')}"/>
+            <c:time-range start="{$startDate->format('Ymd\THis\Z')}" end="{$endDate->format('Ymd\THis\Z')}"/>
           </c:comp-filter>
         </c:comp-filter>
     </c:filter>
@@ -137,13 +134,7 @@ XML;
         string $password,
     ): Client {
         if (!isset($this->clients[$baseUri])) {
-            $settings = [
-                'baseUri'  => $baseUri,
-                'userName' => $username,
-                'password' => $password,
-            ];
-
-            $this->clients[$baseUri] = new Client($settings);
+            $this->clients[$baseUri] = $this->clientFactory->getClient($baseUri, $username, $password);
         }
 
         return $this->clients[$baseUri];

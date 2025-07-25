@@ -1,0 +1,25 @@
+{
+    "ApiPlatform\\Metadata\\ApiResource": {
+        "ApiPlatform\\Metadata\\GetCollection": {
+            "method": "s:3:\"GET\";",
+            "uriTemplate": "s:23:\"/availability_check/day\";",
+            "provider": "s:38:\"App\\State\\DayAvailabilityStateProvider\";",
+            "extraProperties": "a:0:{}",
+            "parameters": "O:31:\"ApiPlatform\\Metadata\\Parameters\":1:{s:43:\"\u0000ApiPlatform\\Metadata\\Parameters\u0000parameters\";a:3:{i:0;a:2:{i:0;s:13:\"event_type_id\";i:1;O:35:\"ApiPlatform\\Metadata\\QueryParameter\":18:{s:6:\"\u0000*\u0000key\";N;s:9:\"\u0000*\u0000schema\";N;s:10:\"\u0000*\u0000openApi\";N;s:11:\"\u0000*\u0000provider\";N;s:9:\"\u0000*\u0000filter\";N;s:11:\"\u0000*\u0000property\";N;s:14:\"\u0000*\u0000description\";N;s:13:\"\u0000*\u0000properties\";N;s:11:\"\u0000*\u0000required\";N;s:11:\"\u0000*\u0000priority\";N;s:8:\"\u0000*\u0000hydra\";N;s:14:\"\u0000*\u0000constraints\";a:3:{i:0;O:48:\"Symfony\\Component\\Validator\\Constraints\\NotBlank\":5:{s:7:\"payload\";N;s:6:\"groups\";a:1:{i:0;s:7:\"Default\";}s:7:\"message\";s:30:\"The event_type_id is required.\";s:9:\"allowNull\";b:0;s:10:\"normalizer\";N;}i:1;O:45:\"Symfony\\Component\\Validator\\Constraints\\Regex\":7:{s:7:\"payload\";N;s:6:\"groups\";a:1:{i:0;s:7:\"Default\";}s:7:\"message\";s:37:\"The event_type_id must be an integer.\";s:7:\"pattern\";s:7:\"/^\\d+$/\";s:11:\"htmlPattern\";N;s:5:\"match\";b:1;s:10:\"normalizer\";N;}i:2;O:51:\"Symfony\\Component\\Validator\\Constraints\\GreaterThan\":5:{s:7:\"payload\";N;s:6:\"groups\";a:1:{i:0;s:7:\"Default\";}s:7:\"message\";s:41:\"The event_type_id must be greater than 0.\";s:5:\"value\";i:0;s:12:\"propertyPath\";N;}}s:11:\"\u0000*\u0000security\";N;s:18:\"\u0000*\u0000securityMessage\";N;s:18:\"\u0000*\u0000extraProperties\";a:0:{}s:16:\"\u0000*\u0000filterContext\";N;s:13:\"\u0000*\u0000nativeType\";N;s:14:\"\u0000*\u0000castToArray\";N;}}i:1;a:2:{i:0;s:4:\"date\";i:1;O:35:\"ApiPlatform\\Metadata\\QueryParameter\":18:{s:6:\"\u0000*\u0000key\";N;s:9:\"\u0000*\u0000schema\";N;s:10:\"\u0000*\u0000openApi\";N;s:11:\"\u0000*\u0000provider\";N;s:9:\"\u0000*\u0000filter\";N;s:11:\"\u0000*\u0000property\";N;s:14:\"\u0000*\u0000description\";N;s:13:\"\u0000*\u0000properties\";N;s:11:\"\u0000*\u0000required\";N;s:11:\"\u0000*\u0000priority\";N;s:8:\"\u0000*\u0000hydra\";N;s:14:\"\u0000*\u0000constraints\";a:2:{i:0;O:48:\"Symfony\\Component\\Validator\\Constraints\\NotBlank\":5:{s:7:\"payload\";N;s:6:\"groups\";a:1:{i:0;s:7:\"Default\";}s:7:\"message\";s:21:\"The date is required.\";s:9:\"allowNull\";b:0;s:10:\"normalizer\";N;}i:1;O:45:\"Symfony\\Component\\Validator\\Constraints\\Regex\":7:{s:7:\"payload\";N;s:6:\"groups\";a:1:{i:0;s:7:\"Default\";}s:7:\"message\";s:42:\"The date must be in the format YYYY-MM-DD.\";s:7:\"pattern\";s:27:\"/^(\\d{4})-(\\d{2})-(\\d{2})$/\";s:11:\"htmlPattern\";N;s:5:\"match\";b:1;s:10:\"normalizer\";N;}}s:11:\"\u0000*\u0000security\";N;s:18:\"\u0000*\u0000securityMessage\";N;s:18:\"\u0000*\u0000extraProperties\";a:0:{}s:16:\"\u0000*\u0000filterContext\";N;s:13:\"\u0000*\u0000nativeType\";N;s:14:\"\u0000*\u0000castToArray\";N;}}i:2;a:2:{i:0;s:5:\"email\";i:1;O:35:\"ApiPlatform\\Metadata\\QueryParameter\":18:{s:6:\"\u0000*\u0000key\";N;s:9:\"\u0000*\u0000schema\";N;s:10:\"\u0000*\u0000openApi\";N;s:11:\"\u0000*\u0000provider\";N;s:9:\"\u0000*\u0000filter\";N;s:11:\"\u0000*\u0000property\";N;s:14:\"\u0000*\u0000description\";N;s:13:\"\u0000*\u0000properties\";N;s:11:\"\u0000*\u0000required\";N;s:11:\"\u0000*\u0000priority\";N;s:8:\"\u0000*\u0000hydra\";N;s:14:\"\u0000*\u0000constraints\";a:2:{i:0;O:48:\"Symfony\\Component\\Validator\\Constraints\\NotBlank\":5:{s:7:\"payload\";N;s:6:\"groups\";a:1:{i:0;s:7:\"Default\";}s:7:\"message\";s:22:\"The email is required.\";s:9:\"allowNull\";b:0;s:10:\"normalizer\";N;}i:1;O:45:\"Symfony\\Component\\Validator\\Constraints\\Regex\":7:{s:7:\"payload\";N;s:6:\"groups\";a:1:{i:0;s:7:\"Default\";}s:7:\"message\";s:42:\"The date must be in the format YYYY-MM-DD.\";s:7:\"pattern\";s:50:\"/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/\";s:11:\"htmlPattern\";N;s:5:\"match\";b:1;s:10:\"normalizer\";N;}}s:11:\"\u0000*\u0000security\";N;s:18:\"\u0000*\u0000securityMessage\";N;s:18:\"\u0000*\u0000extraProperties\";a:0:{}s:16:\"\u0000*\u0000filterContext\";N;s:13:\"\u0000*\u0000nativeType\";N;s:14:\"\u0000*\u0000castToArray\";N;}}}}"
+        },
+        "normalizationContext": [
+            {
+                "groups": [
+                    "availability:read"
+                ]
+            }
+        ],
+        "denormalizationContext": [
+            {
+                "groups": [
+                    "availability:write"
+                ]
+            }
+        ]
+    }
+}

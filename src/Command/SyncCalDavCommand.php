@@ -13,7 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 #[AsCommand(
-    name: 'sync:caldav',
+    name: 'opencal:sync:caldav',
     description: 'Syncs the caldav calendars with the database',
 )]
 class SyncCalDavCommand extends Command

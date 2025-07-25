@@ -1,0 +1,1682 @@
+<?xml version='1.0' encoding='utf-8'?>
+<multistatus xmlns="DAV:" xmlns:C="urn:ietf:params:xml:ns:caldav"><response><href>/dev/example/meeting-095@examplecorp.com.ics</href><propstat><prop><getetag>"82c285918c61034c68be81889a8df89487bc5eb5e48605c75a5cf39fcab626b8"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-095@examplecorp.com
+DTSTART:20250818T140000Z
+DTEND:20250818T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-022@examplecorp.com.ics</href><propstat><prop><getetag>"69c58f405b07ce85eaa5ba0ed15da13099c93db7d43034cb586d4e87b98bc0d7"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-022@examplecorp.com
+DTSTART:20250731T110000Z
+DTEND:20250731T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-047@examplecorp.com.ics</href><propstat><prop><getetag>"d4d37332b0752ed332ab07a72bdde1bd7d6551eabd55e79269a669d0307942df"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-047@examplecorp.com
+DTSTART:20250806T140000Z
+DTEND:20250806T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-025@examplecorp.com.ics</href><propstat><prop><getetag>"4d5b9f02bbe506d1c857d297ea2ccac0bf6ba99079645ebc1771d6dc5e1d17bc"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-025@examplecorp.com
+DTSTART:20250801T090000Z
+DTEND:20250801T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-033@examplecorp.com.ics</href><propstat><prop><getetag>"351e99820110f5d494d8df883e273c8ccd5554a7e26b7754471a9e62734c697b"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-033@examplecorp.com
+DTSTART:20250803T090000Z
+DTEND:20250803T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-018@examplecorp.com.ics</href><propstat><prop><getetag>"1622863d22462fb8d0fa2b441018cab3820ba6cd1e85b4c09c73ab71a3b5c661"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-018@examplecorp.com
+DTSTART:20250730T110000Z
+DTEND:20250730T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-053@examplecorp.com.ics</href><propstat><prop><getetag>"6375fbee59edcea714e05eeefe9cf3bdef38182437f739d6735053d4bb1c39f9"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-053@examplecorp.com
+DTSTART:20250808T090000Z
+DTEND:20250808T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-078@examplecorp.com.ics</href><propstat><prop><getetag>"501c810b8ce1eaab8d58118290334547cf6cb53d017ad79c2f391d6d85da7b27"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-078@examplecorp.com
+DTSTART:20250814T110000Z
+DTEND:20250814T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-030@examplecorp.com.ics</href><propstat><prop><getetag>"f913b2f5fcbf92fc97b632684c05472a3c683dd340d1c0f59260f9d9b3e8ceb0"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-030@examplecorp.com
+DTSTART:20250802T110000Z
+DTEND:20250802T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-051@examplecorp.com.ics</href><propstat><prop><getetag>"fb8014af4462cbe73cd86808d7ba11a4fe6a210dd7db615da64e0bd4d2b7aa72"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-051@examplecorp.com
+DTSTART:20250807T140000Z
+DTEND:20250807T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-008@examplecorp.com.ics</href><propstat><prop><getetag>"38ea1c8bb6ca06f8c7755fecc6f08094d19de09b1cedacdf586b170eb3c4eefd"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-008@examplecorp.com
+DTSTART:20250727T160000Z
+DTEND:20250727T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-067@examplecorp.com.ics</href><propstat><prop><getetag>"99c148641fc63e4247b10ebc2a5099105c5cc8cd2fa0ba8bc36721ed8ac3c1e7"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-067@examplecorp.com
+DTSTART:20250811T140000Z
+DTEND:20250811T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-019@examplecorp.com.ics</href><propstat><prop><getetag>"e28a1d534060bbaddb71d02b8ef4311aab32dde646f8fd212980a75020c59d9a"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-019@examplecorp.com
+DTSTART:20250730T140000Z
+DTEND:20250730T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-039@examplecorp.com.ics</href><propstat><prop><getetag>"35f3e34436df6bf91ba31f1f7e7b19ecf5c8e631e11c521021bbea62c960361c"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-039@examplecorp.com
+DTSTART:20250804T140000Z
+DTEND:20250804T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-037@examplecorp.com.ics</href><propstat><prop><getetag>"66743aafc0174a674d2e7ce1c959cc9e24877c9a059ff9f9b829394d7e3e64b5"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-037@examplecorp.com
+DTSTART:20250804T090000Z
+DTEND:20250804T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-064@examplecorp.com.ics</href><propstat><prop><getetag>"4bb2fefc4dd9567ab68d1cb73da09187a7f91ba31a195b7b4f2d91ff6482393d"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-064@examplecorp.com
+DTSTART:20250810T160000Z
+DTEND:20250810T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-015@examplecorp.com.ics</href><propstat><prop><getetag>"6e9ead00fa501f0f94b2fefa1751849c003c150cd8292e770fc3c9debd6ff017"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-015@examplecorp.com
+DTSTART:20250729T140000Z
+DTEND:20250729T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-116@examplecorp.com.ics</href><propstat><prop><getetag>"6f82beac70e5465f45b74290e4ae73f70e4e633e2134e78f92d458593c7c5af9"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-116@examplecorp.com
+DTSTART:20250823T160000Z
+DTEND:20250823T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-111@examplecorp.com.ics</href><propstat><prop><getetag>"f9d5dd4cde3679f8e354974744469bed4cfdb3165fc94057827145db6ee6ff74"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-111@examplecorp.com
+DTSTART:20250822T140000Z
+DTEND:20250822T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-020@examplecorp.com.ics</href><propstat><prop><getetag>"774d6b9a8789ef1ed49282ac47ad5fb0f9c85c9b7d15f363d43efdb22374d628"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-020@examplecorp.com
+DTSTART:20250730T160000Z
+DTEND:20250730T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-093@examplecorp.com.ics</href><propstat><prop><getetag>"7dfa6a52bf089060c8d6b0d36afea4cd2469c8b75c00635d2394dbb0341f5c80"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-093@examplecorp.com
+DTSTART:20250818T090000Z
+DTEND:20250818T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-043@examplecorp.com.ics</href><propstat><prop><getetag>"46916fdd518ee568bee92f58260c742d9f3d3bffdb432a37563c0eb60c211de1"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-043@examplecorp.com
+DTSTART:20250805T140000Z
+DTEND:20250805T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-076@examplecorp.com.ics</href><propstat><prop><getetag>"68c75fd1dc207d76c985d5e776a0f41cdd853540ebb1f3661427fdb509648e53"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-076@examplecorp.com
+DTSTART:20250813T160000Z
+DTEND:20250813T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-035@examplecorp.com.ics</href><propstat><prop><getetag>"39f9eeb01200c5a8fecfad47b104cfefd22c6f941a72bce38f2b912d351158e6"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-035@examplecorp.com
+DTSTART:20250803T140000Z
+DTEND:20250803T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-089@examplecorp.com.ics</href><propstat><prop><getetag>"7c7b3534a2ed86b5f52f6c31d9b5745177c4f23c7530f4e2f8e41bcc6c77b622"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-089@examplecorp.com
+DTSTART:20250817T090000Z
+DTEND:20250817T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-077@examplecorp.com.ics</href><propstat><prop><getetag>"e1a95ec845af383818c69d41b5d98ea43431b07533376eb9bade8cf14984be8c"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-077@examplecorp.com
+DTSTART:20250814T090000Z
+DTEND:20250814T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-069@examplecorp.com.ics</href><propstat><prop><getetag>"451edc44d72a9da14ca2845be7096b6c90bd88f876b53ff0fe80edaa77cb3689"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-069@examplecorp.com
+DTSTART:20250812T090000Z
+DTEND:20250812T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-016@examplecorp.com.ics</href><propstat><prop><getetag>"e644f1f9184d9368b326b1942658bb505bb5929b58a303b7e1bffb992bbeca83"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-016@examplecorp.com
+DTSTART:20250729T160000Z
+DTEND:20250729T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-026@examplecorp.com.ics</href><propstat><prop><getetag>"b722cb3b82485ecec7141e3fe46c362634d05d5bec13bb3985b1f78064579a3e"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-026@examplecorp.com
+DTSTART:20250801T110000Z
+DTEND:20250801T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-050@examplecorp.com.ics</href><propstat><prop><getetag>"f6886223ba438db3829f6fb8b8e521365ae8492849b0b228117aec2e59546acc"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-050@examplecorp.com
+DTSTART:20250807T110000Z
+DTEND:20250807T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-063@examplecorp.com.ics</href><propstat><prop><getetag>"41d5ece7637479ad7d9ad1a0d7532c3954f7c9c61a3feb3f9828a21ddcb09000"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-063@examplecorp.com
+DTSTART:20250810T140000Z
+DTEND:20250810T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-087@examplecorp.com.ics</href><propstat><prop><getetag>"5df0c16b4225a3e36b448b6e304e981c10cc983e8ffa056a718ba6398f459d97"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-087@examplecorp.com
+DTSTART:20250816T140000Z
+DTEND:20250816T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-072@examplecorp.com.ics</href><propstat><prop><getetag>"c9e0f24fbb1732a478348abc018b61abde254430795332cfd0085c27ae134011"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-072@examplecorp.com
+DTSTART:20250812T160000Z
+DTEND:20250812T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-073@examplecorp.com.ics</href><propstat><prop><getetag>"d746976192609e411838dd49ba7e8fcfe5681595e4961ddd7711016be405251c"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-073@examplecorp.com
+DTSTART:20250813T090000Z
+DTEND:20250813T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-101@examplecorp.com.ics</href><propstat><prop><getetag>"23acd69b8cef3e486e90c776fd70239f29f47d211edfe880e3a950220fa10872"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-101@examplecorp.com
+DTSTART:20250820T090000Z
+DTEND:20250820T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-006@examplecorp.com.ics</href><propstat><prop><getetag>"e6db4e46e51b4ff2a9585ccbc4d878118384421949ec57a9a474bd9bde426c3b"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-006@examplecorp.com
+DTSTART:20250727T110000Z
+DTEND:20250727T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-007@examplecorp.com.ics</href><propstat><prop><getetag>"b297bd5609ef4bd1886d5cb4fc0efb9ad61edfc9ade758600f4c57a91524e50c"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-007@examplecorp.com
+DTSTART:20250727T140000Z
+DTEND:20250727T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-117@examplecorp.com.ics</href><propstat><prop><getetag>"4410d32d022e234b8afeba5d97fb52b0922ea85a40cbe0f3d6373d1eca7fcacd"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-117@examplecorp.com
+DTSTART:20250824T090000Z
+DTEND:20250824T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-059@examplecorp.com.ics</href><propstat><prop><getetag>"7a7fc762bfa9e10c5d86fe10522f634e3c4496ea48802f17aef6dc2066c805a8"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-059@examplecorp.com
+DTSTART:20250809T140000Z
+DTEND:20250809T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-014@examplecorp.com.ics</href><propstat><prop><getetag>"ccd6bb437af82d6edbacc2b521a0d942233e718ac3623ee532a48e4277b11818"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-014@examplecorp.com
+DTSTART:20250729T110000Z
+DTEND:20250729T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-054@examplecorp.com.ics</href><propstat><prop><getetag>"f658d8f8f5bf09462abbf6f047a196b1d3e632c010adea9f79e031c4b369669f"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-054@examplecorp.com
+DTSTART:20250808T110000Z
+DTEND:20250808T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-112@examplecorp.com.ics</href><propstat><prop><getetag>"33b8d46c06ec5c240aa8bf99626b730db0f46759f85f937daa913b8874532d57"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-112@examplecorp.com
+DTSTART:20250822T160000Z
+DTEND:20250822T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-009@examplecorp.com.ics</href><propstat><prop><getetag>"10b9e7d415f7a38ebaec189cac41d2b1ec818ae1e9950fe8358326da3bcf435b"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-009@examplecorp.com
+DTSTART:20250728T090000Z
+DTEND:20250728T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-058@examplecorp.com.ics</href><propstat><prop><getetag>"e2becf8b7e4802730a30fe828622d830906fd5b2e62432f22906bf78997bc5f5"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-058@examplecorp.com
+DTSTART:20250809T110000Z
+DTEND:20250809T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-057@examplecorp.com.ics</href><propstat><prop><getetag>"0acbee3fd09eeca8f6f3c0e5fad28d35f8bffc8f1583472c9ffd5b97f57cd020"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-057@examplecorp.com
+DTSTART:20250809T090000Z
+DTEND:20250809T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-062@examplecorp.com.ics</href><propstat><prop><getetag>"e68b4456ec260c82d36ba0af58b7c09cad0901fce03318c5796091c6f5c4ce69"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-062@examplecorp.com
+DTSTART:20250810T110000Z
+DTEND:20250810T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-034@examplecorp.com.ics</href><propstat><prop><getetag>"384824eb3265403bfb3ff3a4a8ccc80d4f922fd31d1bbb0e56e5a8e20b976b34"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-034@examplecorp.com
+DTSTART:20250803T110000Z
+DTEND:20250803T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-002@examplecorp.com.ics</href><propstat><prop><getetag>"48eb211311f539f90672716a89864539c2092163c45c67eb7f6f535ab78ab1f9"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-002@examplecorp.com
+DTSTART:20250726T110000Z
+DTEND:20250726T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013120Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-042@examplecorp.com.ics</href><propstat><prop><getetag>"c8866e825ee9da6182f4f7c2afbcae15278d4a30588b18201a2415ffd46262e0"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-042@examplecorp.com
+DTSTART:20250805T110000Z
+DTEND:20250805T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-046@examplecorp.com.ics</href><propstat><prop><getetag>"1f12fb2d88897568cdef84bf64f39dc496de4acb6ecb5abe1c196e3b058c3149"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-046@examplecorp.com
+DTSTART:20250806T110000Z
+DTEND:20250806T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-010@examplecorp.com.ics</href><propstat><prop><getetag>"d4d56c02eac2e10deb9ddba356655975806bcea727cc14689bf002bff7e9cbad"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-010@examplecorp.com
+DTSTART:20250728T110000Z
+DTEND:20250728T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-017@examplecorp.com.ics</href><propstat><prop><getetag>"5c93f58298c218e5002557ecc312c459b9ec12cd02b4e82556a5094dcd75f669"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-017@examplecorp.com
+DTSTART:20250730T090000Z
+DTEND:20250730T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-074@examplecorp.com.ics</href><propstat><prop><getetag>"be1f4251d943a633fe9d03bbeb4f14a71b49a2be4c8c26b8b7d97e3f16376290"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-074@examplecorp.com
+DTSTART:20250813T110000Z
+DTEND:20250813T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-060@examplecorp.com.ics</href><propstat><prop><getetag>"f5de186131c9e929fcc339f9c3595571f4e9b4d987a4ec08bbaea021686d16be"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-060@examplecorp.com
+DTSTART:20250809T160000Z
+DTEND:20250809T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-090@examplecorp.com.ics</href><propstat><prop><getetag>"f3c6d65f78201d40e5e697aa7ea2f407319130d9752ea0d9958843aa44682e3f"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-090@examplecorp.com
+DTSTART:20250817T110000Z
+DTEND:20250817T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-031@examplecorp.com.ics</href><propstat><prop><getetag>"f7c0670902720faa5b76cc580c79b7c1e124844856aa7c74dbc19f912644b3ea"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-031@examplecorp.com
+DTSTART:20250802T140000Z
+DTEND:20250802T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-071@examplecorp.com.ics</href><propstat><prop><getetag>"21be053dd39fff06acef58f639c0169e3a63296cef88129da7d3d80a4abd950c"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-071@examplecorp.com
+DTSTART:20250812T140000Z
+DTEND:20250812T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-094@examplecorp.com.ics</href><propstat><prop><getetag>"5aca4666d5c1af96997990dab4989bbc1cdaa2a72222900a277d8443042b4c68"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-094@examplecorp.com
+DTSTART:20250818T110000Z
+DTEND:20250818T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-080@examplecorp.com.ics</href><propstat><prop><getetag>"43fcb38ef9576746152e8532253bbb71a5836165c862a671e9318704510496db"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-080@examplecorp.com
+DTSTART:20250814T160000Z
+DTEND:20250814T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-024@examplecorp.com.ics</href><propstat><prop><getetag>"13d330ca2f43d72488fefbc1702c9531ea8698ae9e20286d6e5bc5bcf5a11a0a"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-024@examplecorp.com
+DTSTART:20250731T160000Z
+DTEND:20250731T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-055@examplecorp.com.ics</href><propstat><prop><getetag>"4f30d3eff3e748cb90f8a5bd6aee7c5b1f6f7aa1996f497f367685cf221c8433"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-055@examplecorp.com
+DTSTART:20250808T140000Z
+DTEND:20250808T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-003@examplecorp.com.ics</href><propstat><prop><getetag>"f727bc137f2cbb4217495707a501636da97af9641b660d2665d4a7f442e2372b"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-003@examplecorp.com
+DTSTART:20250726T140000Z
+DTEND:20250726T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013120Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-104@examplecorp.com.ics</href><propstat><prop><getetag>"1176020af14a5292f439d7fd9ac836a879f2045a59ce7927a80d5e85f8f6edb1"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-104@examplecorp.com
+DTSTART:20250820T160000Z
+DTEND:20250820T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-103@examplecorp.com.ics</href><propstat><prop><getetag>"5938c6ed5259b1df598fa8fedcef5d8cc0b63a76946cc5261db1b3d3aaa4bc5f"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-103@examplecorp.com
+DTSTART:20250820T140000Z
+DTEND:20250820T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-070@examplecorp.com.ics</href><propstat><prop><getetag>"2ee4eece58a16e38699a07eb409697ab9e117765756ced88cd7961d7ca3c19d5"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-070@examplecorp.com
+DTSTART:20250812T110000Z
+DTEND:20250812T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-088@examplecorp.com.ics</href><propstat><prop><getetag>"f3184877d104e0479302d1d481222c067dde82f1227310a78d3047719983ccd1"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-088@examplecorp.com
+DTSTART:20250816T160000Z
+DTEND:20250816T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-032@examplecorp.com.ics</href><propstat><prop><getetag>"f5c58690bb5a8fb8531c25a2d0a738e6b7733d65384a3fd628ef390a44f564e6"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-032@examplecorp.com
+DTSTART:20250802T160000Z
+DTEND:20250802T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-091@examplecorp.com.ics</href><propstat><prop><getetag>"5586ab856200a6f9e1991dea3756bbee3e07ec3fd62eae8f1f5797a9a5a408be"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-091@examplecorp.com
+DTSTART:20250817T140000Z
+DTEND:20250817T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-096@examplecorp.com.ics</href><propstat><prop><getetag>"bfe72010023fd76d03bf3e4b7f65a2cbd1a3a0ede14e882d955bada88e291509"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-096@examplecorp.com
+DTSTART:20250818T160000Z
+DTEND:20250818T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-021@examplecorp.com.ics</href><propstat><prop><getetag>"b33e2b0dc4f81867d272bff1e3d1b26312564fff490af832a31c6143b81950da"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-021@examplecorp.com
+DTSTART:20250731T090000Z
+DTEND:20250731T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-113@examplecorp.com.ics</href><propstat><prop><getetag>"f4239a4b7f301e51e810bd00b9e756f20f38f93ab52bfa3b2e48af4310bbd662"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-113@examplecorp.com
+DTSTART:20250823T090000Z
+DTEND:20250823T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-099@examplecorp.com.ics</href><propstat><prop><getetag>"3ff75e97a45a7a42f978c79b95a4d21c08713dec896d8d69ebeceabb02083a13"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-099@examplecorp.com
+DTSTART:20250819T140000Z
+DTEND:20250819T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-082@examplecorp.com.ics</href><propstat><prop><getetag>"a00a1a45b7f0af311096ef7e448b219a216606b29a663c8f714b5ec1f6d838f8"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-082@examplecorp.com
+DTSTART:20250815T110000Z
+DTEND:20250815T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-004@examplecorp.com.ics</href><propstat><prop><getetag>"09a22770f43ead7639ad8ced02678f0027f0758574f6255e2af3b10247fb75dc"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-004@examplecorp.com
+DTSTART:20250726T160000Z
+DTEND:20250726T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013120Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-098@examplecorp.com.ics</href><propstat><prop><getetag>"f705743569791e56ff1eae07f05908e807094a283ed2e7fc474d10aee093feb8"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-098@examplecorp.com
+DTSTART:20250819T110000Z
+DTEND:20250819T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-038@examplecorp.com.ics</href><propstat><prop><getetag>"76ac98a344bffe63e80ecf54ea36d2dee39378ecf24e5382d508f0751c6f8d06"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-038@examplecorp.com
+DTSTART:20250804T110000Z
+DTEND:20250804T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-119@examplecorp.com.ics</href><propstat><prop><getetag>"31d67df8fcd92292a204ef213dcbeb017adfebe6c86ef645a1fd9a7bcb6387c7"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-119@examplecorp.com
+DTSTART:20250824T140000Z
+DTEND:20250824T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-005@examplecorp.com.ics</href><propstat><prop><getetag>"cd64c214e204d42afb736132953cd884b14cb4607bb38612254ebc81d604c409"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-005@examplecorp.com
+DTSTART:20250727T090000Z
+DTEND:20250727T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-110@examplecorp.com.ics</href><propstat><prop><getetag>"9fd03ec1e68b52c1e6622325785f797e68b132d5785b44851385e76f163673c7"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-110@examplecorp.com
+DTSTART:20250822T110000Z
+DTEND:20250822T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-013@examplecorp.com.ics</href><propstat><prop><getetag>"6b14f57434efd977d132a4720c188f2640d6873eb61ca16274e015abb32e8bef"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-013@examplecorp.com
+DTSTART:20250729T090000Z
+DTEND:20250729T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-108@examplecorp.com.ics</href><propstat><prop><getetag>"ae6e0652b66729a2f6adb5f2ee59496b6420136ff9e94b80af48d9dc22ed8fe3"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-108@examplecorp.com
+DTSTART:20250821T160000Z
+DTEND:20250821T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-056@examplecorp.com.ics</href><propstat><prop><getetag>"ebc1e03fa764df1d2b60f31a8dad9b7e3775f48c74198247d62494b08f7bf422"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-056@examplecorp.com
+DTSTART:20250808T160000Z
+DTEND:20250808T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-106@examplecorp.com.ics</href><propstat><prop><getetag>"d6935e814fb21d3c2004b8f68219958a385f229983580e98e7cab4790560dce7"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-106@examplecorp.com
+DTSTART:20250821T110000Z
+DTEND:20250821T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-102@examplecorp.com.ics</href><propstat><prop><getetag>"ee6effb80b3e0fdad3efb4b5d6aaaa9d8093e375bb6e67c4615729aee18abea4"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-102@examplecorp.com
+DTSTART:20250820T110000Z
+DTEND:20250820T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-079@examplecorp.com.ics</href><propstat><prop><getetag>"a2d754327546630927229328d50168e1bcd5e7915880de9458ccb493dacc565c"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-079@examplecorp.com
+DTSTART:20250814T140000Z
+DTEND:20250814T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-027@examplecorp.com.ics</href><propstat><prop><getetag>"fc52fd7135c435405868012815fa771fe1d4bb52cb870310e745b68d660c49ff"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-027@examplecorp.com
+DTSTART:20250801T140000Z
+DTEND:20250801T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-120@examplecorp.com.ics</href><propstat><prop><getetag>"c52046f441103e8056135ecaf5b5fbf4fd728543cb60b635fb405edaf7649004"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-120@examplecorp.com
+DTSTART:20250824T160000Z
+DTEND:20250824T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-028@examplecorp.com.ics</href><propstat><prop><getetag>"f7f8ebc3b46e467ee873abe6e394283fceb4095ad34a25543bd7a3dcfeb38ab6"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-028@examplecorp.com
+DTSTART:20250801T160000Z
+DTEND:20250801T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-084@examplecorp.com.ics</href><propstat><prop><getetag>"624d501d9c3899152eeb2c41e062b3451761b5f1373fbbc8b190472369c0a478"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-084@examplecorp.com
+DTSTART:20250815T160000Z
+DTEND:20250815T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-092@examplecorp.com.ics</href><propstat><prop><getetag>"be51f1858b1714cd1921bbcd5566e975e95b0334e0c47551e0ca59c3bee950bc"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-092@examplecorp.com
+DTSTART:20250817T160000Z
+DTEND:20250817T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-065@examplecorp.com.ics</href><propstat><prop><getetag>"3f2683f9e16734d5702446950aff707aab4893cd6310a658809bd00c0b6abada"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-065@examplecorp.com
+DTSTART:20250811T090000Z
+DTEND:20250811T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-107@examplecorp.com.ics</href><propstat><prop><getetag>"5f6e253996ed5f4ca6b27c21e8d7dfcc84160fe516afe3d881223dbebbe87ef0"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-107@examplecorp.com
+DTSTART:20250821T140000Z
+DTEND:20250821T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-086@examplecorp.com.ics</href><propstat><prop><getetag>"85c3973ec1c589dde83da97cd94c1e2301d457bd41b0a13e33081a3cef20f452"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-086@examplecorp.com
+DTSTART:20250816T110000Z
+DTEND:20250816T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-029@examplecorp.com.ics</href><propstat><prop><getetag>"3b9e44441cabdb466d483697028f47bfeb61d8f63e840ecfde467687a696743b"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-029@examplecorp.com
+DTSTART:20250802T090000Z
+DTEND:20250802T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-075@examplecorp.com.ics</href><propstat><prop><getetag>"3cc9f4b24dae6e5b4f34d519454b7d525410864e20a80fd9606991846c0b9ef1"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-075@examplecorp.com
+DTSTART:20250813T140000Z
+DTEND:20250813T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-061@examplecorp.com.ics</href><propstat><prop><getetag>"e9829b183f31382af16690e180d5c322ccb214ee3c3985e6f45fa1b452a69518"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-061@examplecorp.com
+DTSTART:20250810T090000Z
+DTEND:20250810T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-115@examplecorp.com.ics</href><propstat><prop><getetag>"b7e5dc6847b2dd81bf897666e53464deb1fdd7cb571a5f2a638f22c3cd489e4d"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-115@examplecorp.com
+DTSTART:20250823T140000Z
+DTEND:20250823T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-049@examplecorp.com.ics</href><propstat><prop><getetag>"2e6a9483780e4bd8bd0d18ae03a0a776e25f88b13c51395c89bbd49ef9795e08"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-049@examplecorp.com
+DTSTART:20250807T090000Z
+DTEND:20250807T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-044@examplecorp.com.ics</href><propstat><prop><getetag>"a6e138dcf0508875e8f768a4022c5a8c2e245dc89b75841066b25938c32cf86c"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-044@examplecorp.com
+DTSTART:20250805T160000Z
+DTEND:20250805T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-041@examplecorp.com.ics</href><propstat><prop><getetag>"4e5a423012867627b7313890b70665c03c955b0b32ad00acb7fc8771df0385da"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-041@examplecorp.com
+DTSTART:20250805T090000Z
+DTEND:20250805T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-085@examplecorp.com.ics</href><propstat><prop><getetag>"b424a2941a5ff0e6b68febd6de7c20cb7018dc02610b65b7494e3aa5ec9dfdbd"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-085@examplecorp.com
+DTSTART:20250816T090000Z
+DTEND:20250816T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-081@examplecorp.com.ics</href><propstat><prop><getetag>"3977f486ee09542524b61f2734b91710d7c72e8cfe67391ba727834c8cd238fe"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-081@examplecorp.com
+DTSTART:20250815T090000Z
+DTEND:20250815T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-100@examplecorp.com.ics</href><propstat><prop><getetag>"9a89147fd9d70ffc3f0c7766f931594b051a7845595878d3353f786524d9eb30"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-100@examplecorp.com
+DTSTART:20250819T160000Z
+DTEND:20250819T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-118@examplecorp.com.ics</href><propstat><prop><getetag>"0ecd3d21c6b7ac328cf15394326dcff730880a21001615dcfe15a21d745ee246"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-118@examplecorp.com
+DTSTART:20250824T110000Z
+DTEND:20250824T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-105@examplecorp.com.ics</href><propstat><prop><getetag>"60046ccc2c748ac48e7c4fa4690e9719c4aeaf75d476e0cde5ba8c47b7e2c21e"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-105@examplecorp.com
+DTSTART:20250821T090000Z
+DTEND:20250821T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-011@examplecorp.com.ics</href><propstat><prop><getetag>"94c359b34d2058168a49c88d11983e420557968152eff594e54cc4f5fdb663a2"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-011@examplecorp.com
+DTSTART:20250728T140000Z
+DTEND:20250728T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-012@examplecorp.com.ics</href><propstat><prop><getetag>"f1fa726b8ebf70dc95883c35ac101d35d47bbdb03e1bd3d0a96042253afe0176"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-012@examplecorp.com
+DTSTART:20250728T160000Z
+DTEND:20250728T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-066@examplecorp.com.ics</href><propstat><prop><getetag>"49c04db2b479e9f7e71f8bb3279c560587d5a005f8d64feded7a56fa309f6f6e"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-066@examplecorp.com
+DTSTART:20250811T110000Z
+DTEND:20250811T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-052@examplecorp.com.ics</href><propstat><prop><getetag>"f38c24688a35477a251e02d6ab78f9772baf697d7be9c488cbbbf774ce09b171"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-052@examplecorp.com
+DTSTART:20250807T160000Z
+DTEND:20250807T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-023@examplecorp.com.ics</href><propstat><prop><getetag>"a3d2da62c9c3943d871f60c7279f6852167466e40fab82bcb965275111c642c7"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-023@examplecorp.com
+DTSTART:20250731T140000Z
+DTEND:20250731T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-114@examplecorp.com.ics</href><propstat><prop><getetag>"7b6983b713b36ed94267bd2e098cdf93e77b86fe81bf364b0da7440291de8c31"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-114@examplecorp.com
+DTSTART:20250823T110000Z
+DTEND:20250823T113000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-001@examplecorp.com.ics</href><propstat><prop><getetag>"70463a45161b5d9b1454e16dc259880cdb1fcc3c033783b69d866bf015263a76"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-001@examplecorp.com
+DTSTART:20250726T090000Z
+DTEND:20250726T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013120Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-097@examplecorp.com.ics</href><propstat><prop><getetag>"102f60e3af9a1ad341552cd3e45a073278ebb4aec31eb7db8224226b5a3e84d6"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-097@examplecorp.com
+DTSTART:20250819T090000Z
+DTEND:20250819T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-036@examplecorp.com.ics</href><propstat><prop><getetag>"56344054a019199437652207bf643533964802eb9272c104022b8e3bf39f0c84"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-036@examplecorp.com
+DTSTART:20250803T160000Z
+DTEND:20250803T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-068@examplecorp.com.ics</href><propstat><prop><getetag>"0b19d1a26956daacda96f8947a6e9350096e1ede7d7196ae8dab995009d3dd62"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-068@examplecorp.com
+DTSTART:20250811T160000Z
+DTEND:20250811T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-109@examplecorp.com.ics</href><propstat><prop><getetag>"a608b73c8dde460a06ec6dd69fef5cf8d3ce65aa995213bf7003c4ff6b22458d"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-109@examplecorp.com
+DTSTART:20250822T090000Z
+DTEND:20250822T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-045@examplecorp.com.ics</href><propstat><prop><getetag>"88fdb27e52538d791b4c757e2b9849c89b7f3d46996dacbfb854f93878f0f21e"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-045@examplecorp.com
+DTSTART:20250806T090000Z
+DTEND:20250806T093000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-083@examplecorp.com.ics</href><propstat><prop><getetag>"0d609b55f6010a2bb1a6941db3beea99435465ed9dff3469f512b4cc3e41d628"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-083@examplecorp.com
+DTSTART:20250815T140000Z
+DTEND:20250815T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-040@examplecorp.com.ics</href><propstat><prop><getetag>"50951f521e435b9a3c9ca1abf738003e9b3534371cb7358ee9d6798a8489a799"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-040@examplecorp.com
+DTSTART:20250804T160000Z
+DTEND:20250804T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/dev/example/meeting-048@examplecorp.com.ics</href><propstat><prop><getetag>"fc2652239183bcc81b9ab4089bcd859ad1169a018120f4e7971622b35081edf8"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-048@examplecorp.com
+DTSTART:20250806T160000Z
+DTEND:20250806T163000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+ m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response></multistatus>
