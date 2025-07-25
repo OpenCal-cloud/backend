@@ -126,8 +126,8 @@
       "@db:schema:validate",
       "@lint:php",
       "@phpstan",
-      "@infection",
-      "@tests"
+      "@tests",
+      "@infection"
     ],
     "auto-scripts": {
       "cache:clear": "symfony-cmd",
