@@ -257,5 +257,3 @@ release:
     description: "$(cat release_notes.md)"
     tag_name: '$CI_COMMIT_TAG'
     ref: '$CI_COMMIT_SHA'
-
-# test changelog
