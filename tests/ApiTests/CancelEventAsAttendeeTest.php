@@ -20,7 +20,6 @@ class CancelEventAsAttendeeTest extends ApiTestCase
         $client    = static::createClient();
         $container = $client->getContainer();
 
-        /** @phpstan-ignore-next-line */
         $em    = $container->get('doctrine')->getManager();
         $repo  = $em->getRepository(Event::class);
         $event = $repo->find(1);
