@@ -16,31 +16,21 @@ commit_message_check:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  before_script:
+    - apk add --no-cache git grep bash
   script:
-    - apk add --no-cache git grep
+    - bash ./ci/check_commit_message.sh
+
+shellcheck:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
+  stage: checks
+  image: registry.gitlab.com/pipeline-components/shellcheck:latest
+  script:
     - |
-      echo "Checking commit messages..."
-
-      VALID_TYPES="feat|fix|docs|chore"
-      INVALID_MESSAGES=0
-
-      for COMMIT in $(git rev-list origin/main..HEAD); do
-        MESSAGE=$(git log --format=%B -n 1 "$COMMIT")
-        echo "Checking commit: $COMMIT"
-        echo "$MESSAGE" | grep -qE "Changelog: ($VALID_TYPES)$"
-        if [ $? -ne 0 ]; then
-          echo "❌ Invalid commit message in $COMMIT:"
-          echo "$MESSAGE"
-          INVALID_MESSAGES=1
-        fi
-      done
-
-      if [ "$INVALID_MESSAGES" -ne 0 ]; then
-        echo "❌ the commit message must contain the changelog type (Changelog: <type>). Valid types are: feat, fix, docs, chore. Please edit the commit message."
-        exit 1
-      else
-        echo "✅ Commit message validated."
-      fi
+      find . -name .git -type d -prune -o -type f  -regex '.*/[^.]*$'   -print0 |
+      xargs -0 -P $(nproc) -r -n1 sh -c 'FILE="$0"; if head -n1 "$FILE" |grep -q "^#\\! \?/.\+\(ba|d|k\)\?sh" ; then shellcheck "$FILE" ; else /bin/true ; fi '
 
 security_checks:
   stage: checks
@@ -134,6 +124,7 @@ unit_tests:
     - lint_dockerfile
     - openapi_diff
     - static_analysis
+    - shellcheck
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
     - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
@@ -160,6 +151,7 @@ infection:
     - lint_dockerfile
     - openapi_diff
     - static_analysis
+    - shellcheck
   stage: tests
   image: git.var-lab.com:5050/opencal/docker-ci-image:latest
   script:
@@ -214,6 +206,7 @@ build_dev:
   needs:
     - api_tests
     - unit_tests
+    - infection
   only:
     - main
   stage: build_dev
@@ -255,41 +248,7 @@ release:
     - apk add --no-cache git curl bash docker
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
   script:
-    - |
-      HIGHEST_TAG=$(git tag | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | sed 's/^v//' | sort -V | tail -n1)
-      CURRENT_TAG=$(echo "$CI_COMMIT_TAG" | sed 's/^v//')
-
-      echo "Current tag: $CURRENT_TAG"
-      echo "Highest tag: $HIGHEST_TAG"
-
-      TAG_PHP="git.var-lab.com:5050/opencal/backend:$CI_COMMIT_TAG"
-      TAG_NGINX="git.var-lab.com:5050/opencal/backend:nginx-$CI_COMMIT_TAG"
-
-      if [ "$CURRENT_TAG" = "$HIGHEST_TAG" ]; then
-        echo "Tag is highest → also tagging as 'latest'"
-        docker build \
-          --target php \
-          --tag "$TAG_PHP" \
-          --tag git.var-lab.com:5050/opencal/backend:latest \
-          --push .
-
-        docker build \
-          --target nginx \
-          --tag "$TAG_NGINX" \
-          --tag git.var-lab.com:5050/opencal/backend:nginx-latest \
-          --push .
-      else
-        docker build \
-          --target php \
-          --tag "$TAG_PHP" \
-          --push .
-
-        docker build \
-          --target nginx \
-          --tag "$TAG_NGINX" \
-          --push .
-      fi
-
+    - bash ./ci/release.sh
   release:
     name: 'Release $CI_COMMIT_TAG'
     description: "$(cat release_notes.md)"
