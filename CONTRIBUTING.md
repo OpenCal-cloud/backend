@@ -75,6 +75,23 @@ composer run lint:php
 composer run lint:php:fix
 ```
 
+## Code commits
+
+Please create merge requests to add your changes to the project.
+
+Your commit message must include the type of change for the changelog. Use the following format:
+
+```bash
+git commit -m "<brief description>" -m "Changelog: <type>"
+```
+
+Valid types are:
+
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation
+- `chore`: Maintenance
+
 ## License
 
 By contributing, you agree that your contributions will be licensed under the [GNU AGPLv3 License](./LICENSE).
