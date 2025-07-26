@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Radicale Dev//EN
+BEGIN:VEVENT
+UID:meeting-095@examplecorp.com
+DTSTART:20250818T140000Z
+DTEND:20250818T143000Z
+ATTENDEE;CN=Jamie Smith;PARTSTAT=ACCEPTED:mailto:jamie.smith@examplecorp.co
+m
+DTSTAMP:20250726T013121Z
+ORGANIZER;CN=Alex Johnson:mailto:alex.johnson@examplecorp.com
+SUMMARY:1:1 with Jamie Smith
+END:VEVENT
+END:VCALENDAR

@@ -71,4 +71,16 @@ class ICalExportServiceTest extends TestCase
 
         unlink($result);
     }
+
+    public function testExportEventIsSynced(): void
+    {
+        $event = new Event();
+        $event->setSyncHash('hash');
+
+        self::expectException(\RuntimeException::class);
+        self::expectExceptionMessage('A synced event cannot be exported as .ics-file.');
+
+        $service = new ExportEventService();
+        $service->exportEvent($event);
+    }
 }

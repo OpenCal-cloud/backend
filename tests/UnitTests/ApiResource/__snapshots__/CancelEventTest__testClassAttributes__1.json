@@ -1,0 +1,11 @@
+{
+    "ApiPlatform\\Metadata\\ApiResource": {
+        "ApiPlatform\\Metadata\\Post": {
+            "method": "s:4:\"POST\";",
+            "uriTemplate": "s:19:\"/events/{id}/cancel\";",
+            "controller": "s:36:\"App\\Controller\\CancelEventController\";",
+            "openapi": "O:35:\"ApiPlatform\\OpenApi\\Model\\Operation\":13:{s:48:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000operationId\";N;s:41:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000tags\";N;s:46:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000responses\";N;s:44:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000summary\";N;s:48:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000description\";s:90:\"Cancels a specific event. Requires a valid cancellationHash to authorize the cancellation.\";s:49:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000externalDocs\";N;s:47:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000parameters\";N;s:48:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000requestBody\";O:37:\"ApiPlatform\\OpenApi\\Model\\RequestBody\":4:{s:50:\"\u0000ApiPlatform\\OpenApi\\Model\\RequestBody\u0000description\";s:21:\"The cancellation hash\";s:46:\"\u0000ApiPlatform\\OpenApi\\Model\\RequestBody\u0000content\";N;s:47:\"\u0000ApiPlatform\\OpenApi\\Model\\RequestBody\u0000required\";b:0;s:58:\"\u0000ApiPlatform\\OpenApi\\Model\\RequestBody\u0000extensionProperties\";a:0:{}}s:46:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000callbacks\";N;s:47:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000deprecated\";N;s:45:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000security\";N;s:44:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000servers\";N;s:56:\"\u0000ApiPlatform\\OpenApi\\Model\\Operation\u0000extensionProperties\";a:0:{}}",
+            "extraProperties": "a:0:{}"
+        }
+    }
+}
