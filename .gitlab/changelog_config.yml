@@ -1,23 +1,27 @@
 categories:
-  - title: "✨ Features"
+  features:
+    title: "✨ Features"
     labels:
       - "feature"
     commit_types:
       - feat
 
-  - title: "🐛 Bugfixes"
+  bugfixes:
+    title: "🐛 Bugfixes"
     labels:
       - "bug"
     commit_types:
       - fix
 
-  - title: "📚 Documentation"
+  documentation:
+    title: "📚 Documentation"
     labels:
       - "documentation"
     commit_types:
       - docs
 
-  - title: "🧹 Maintenance"
+  maintenance:
+    title: "🧹 Maintenance"
     labels:
       - "chore"
     commit_types:
