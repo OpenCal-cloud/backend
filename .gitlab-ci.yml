@@ -3,8 +3,11 @@ variables:
 
 stages:
   - checks
-  - test
-  - build
+  - tests
+  - functional_tests
+  - build_dev
+  - prepare_release
+  - release
 
 security_checks:
   rules:
@@ -49,23 +52,6 @@ lint_dockerfile:
       codequality:
         - "hadolint-code-climate.json"
 
-infection:
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
-  stage: checks
-  image: git.var-lab.com:5050/opencal/docker-ci-image:latest
-  script:
-    - composer install --prefer-dist --no-interaction --no-progress
-    - composer run infection
-  artifacts:
-    name: "$CI_JOB_NAME infection artifacts from $CI_PROJECT_NAME on $CI_COMMIT_REF_SLUG"
-    expire_in: 1 day
-    when: always
-    reports:
-      codequality:
-        - "tests/reports/infection-gitlab-code-quality.json"
-
 openapi_diff:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
@@ -81,12 +67,13 @@ openapi_diff:
 unit_tests:
   needs:
     - security_checks
-    - static_analysis
+    - lint_dockerfile
     - openapi_diff
+    - static_analysis
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
     - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
-  stage: test
+  stage: tests
   image: git.var-lab.com:5050/opencal/docker-ci-image:latest
   script:
     - composer install --prefer-dist --no-interaction --no-progress
@@ -100,17 +87,35 @@ unit_tests:
         path: tests/reports/cobertura.xml
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
 
-api_tests:
-  needs:
-    - security_checks
-    - static_analysis
-    - openapi_diff
-    - lint_dockerfile
-    - infection
+infection:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
     - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
-  stage: test
+  needs:
+    - security_checks
+    - lint_dockerfile
+    - openapi_diff
+    - static_analysis
+  stage: tests
+  image: git.var-lab.com:5050/opencal/docker-ci-image:latest
+  script:
+    - composer install --prefer-dist --no-interaction --no-progress
+    - composer run infection
+  artifacts:
+    name: "$CI_JOB_NAME infection artifacts from $CI_PROJECT_NAME on $CI_COMMIT_REF_SLUG"
+    expire_in: 1 day
+    when: always
+    reports:
+      codequality:
+        - "tests/reports/infection-gitlab-code-quality.json"
+
+api_tests:
+  needs:
+    - unit_tests
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
+  stage: functional_tests
   image: git.var-lab.com:5050/opencal/docker-ci-image:latest
   services:
     - name: mysql:8.2
@@ -147,7 +152,7 @@ build_dev:
     - unit_tests
   only:
     - main
-  stage: build
+  stage: build_dev
   image: jdrouet/docker-with-buildx:stable
   services:
     - docker:dind
@@ -155,5 +160,67 @@ build_dev:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker buildx create --use
     - docker pull opencal/backend:dev-latest || true
-    - docker buildx build --platform linux/amd64,linux/arm64 --target build_prod --tag git.var-lab.com:5050/opencal/backend:dev-latest --cache-from git.var-lab.com:5050/opencal/backend:dev-latest --push .
+    - docker buildx build --platform linux/amd64,linux/arm64 --target php --tag git.var-lab.com:5050/opencal/backend:dev-latest --cache-from git.var-lab.com:5050/opencal/backend:dev-latest --push .
     - docker buildx build --platform linux/amd64,linux/arm64 --target nginx --tag git.var-lab.com:5050/opencal/backend:dev-nginx-latest --cache-from git.var-lab.com:5050/opencal/backend:dev-latest --push .
+
+
+prepare_release:
+  stage: prepare_release
+  image: alpine:latest
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v?\d+\.\d+\.\d+$/'
+  script:
+    - apk add curl jq
+    - 'curl -H "PRIVATE-TOKEN: $CI_API_TOKEN" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/repository/changelog?version=$CI_COMMIT_TAG" | jq -r .notes > release_notes.md'
+  artifacts:
+    paths:
+      - release_notes.md
+
+release:
+  stage: release
+  image: jdrouet/docker-with-buildx:stable
+  needs:
+    - job: prepare_release
+      artifacts: true
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v?\d+\.\d+\.\d+$/'
+  services:
+    - docker:dind
+  variables:
+    OPENCAL_VERSION: "$CI_COMMIT_TAG"
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker buildx create --use
+    - |
+      HIGHEST_TAG=$(git tag | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | \
+        sed 's/^v//' | sort -V | tail -n1)
+      CURRENT_TAG=$(echo "$CI_COMMIT_TAG" | sed 's/^v//')
+
+      if [ "$CURRENT_TAG" = "$HIGHEST_TAG" ]; then
+        docker buildx build --platform linux/amd64,linux/arm64 \
+          --target php \
+          --tag git.var-lab.com:5050/opencal/backend:$CI_COMMIT_TAG \
+          --tag git.var-lab.com:5050/opencal/backend:latest \
+          --push .
+
+        docker buildx build --platform linux/amd64,linux/arm64 \
+          --target nginx \
+          --tag git.var-lab.com:5050/opencal/backend:nginx-$CI_COMMIT_TAG \
+          --tag git.var-lab.com:5050/opencal/backend:nginx-latest \
+          --push .
+      else
+        docker buildx build --platform linux/amd64,linux/arm64 \
+          --target php \
+          --tag git.var-lab.com:5050/opencal/backend:$CI_COMMIT_TAG \
+          --push .
+
+        docker buildx build --platform linux/amd64,linux/arm64 \
+          --target nginx \
+          --tag git.var-lab.com:5050/opencal/backend:nginx-$CI_COMMIT_TAG \
+          --push .
+      fi
+  release:
+    name: 'Release $CI_COMMIT_TAG'
+    description: "$(cat release_notes.md)"
+    tag_name: '$CI_COMMIT_TAG'
+    ref: '$CI_COMMIT_SHA'
