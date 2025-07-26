@@ -201,7 +201,7 @@ prepare_release:
 
 release:
   stage: release
-  image: jdrouet/docker-with-buildx:stable
+  image: ghcr.io/profclems/glab:latest
   needs:
     - job: prepare_release
       artifacts: true
@@ -210,42 +210,52 @@ release:
   services:
     - docker:dind
   variables:
+    DOCKER_TLS_CERTDIR: ""
     OPENCAL_VERSION: "$CI_COMMIT_TAG"
   before_script:
-    - apk add git
-  script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - apk add --no-cache git curl bash
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
     - docker buildx create --use
+  script:
     - |
-      HIGHEST_TAG=$(git tag | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | \
-        sed 's/^v//' | sort -V | tail -n1)
+      HIGHEST_TAG=$(git tag | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | sed 's/^v//' | sort -V | tail -n1)
       CURRENT_TAG=$(echo "$CI_COMMIT_TAG" | sed 's/^v//')
 
+      echo "Current tag: $CURRENT_TAG"
+      echo "Highest tag: $HIGHEST_TAG"
+
+      TAG_PHP="git.var-lab.com:5050/opencal/backend:$CI_COMMIT_TAG"
+      TAG_NGINX="git.var-lab.com:5050/opencal/backend:nginx-$CI_COMMIT_TAG"
+
       if [ "$CURRENT_TAG" = "$HIGHEST_TAG" ]; then
+        echo "Tag is highest → also tagging as 'latest'"
         docker buildx build --platform linux/amd64,linux/arm64 \
           --target php \
-          --tag git.var-lab.com:5050/opencal/backend:$CI_COMMIT_TAG \
+          --tag "$TAG_PHP" \
           --tag git.var-lab.com:5050/opencal/backend:latest \
           --push .
 
         docker buildx build --platform linux/amd64,linux/arm64 \
           --target nginx \
-          --tag git.var-lab.com:5050/opencal/backend:nginx-$CI_COMMIT_TAG \
+          --tag "$TAG_NGINX" \
           --tag git.var-lab.com:5050/opencal/backend:nginx-latest \
           --push .
       else
         docker buildx build --platform linux/amd64,linux/arm64 \
           --target php \
-          --tag git.var-lab.com:5050/opencal/backend:$CI_COMMIT_TAG \
+          --tag "$TAG_PHP" \
           --push .
 
         docker buildx build --platform linux/amd64,linux/arm64 \
           --target nginx \
-          --tag git.var-lab.com:5050/opencal/backend:nginx-$CI_COMMIT_TAG \
+          --tag "$TAG_NGINX" \
           --push .
       fi
-  release:
-    name: 'Release $CI_COMMIT_TAG'
-    description: "$(cat release_notes.md)"
-    tag_name: '$CI_COMMIT_TAG'
-    ref: '$CI_COMMIT_SHA'
+
+    - export GITLAB_TOKEN="$GITLAB_API_TOKEN"
+    - glab config set -h git.var-lab.com token "$GITLAB_API_TOKEN"
+    - glab release create "$CI_COMMIT_TAG" \
+      --title "Release $CI_COMMIT_TAG" \
+      --notes-file release_notes.md \
+      --api-host git.var-lab.com
+
