@@ -201,7 +201,7 @@ prepare_release:
 
 release:
   stage: release
-  image: ghcr.io/profclems/glab:latest
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
   needs:
     - job: prepare_release
       artifacts: true
@@ -252,10 +252,8 @@ release:
           --push .
       fi
 
-    - export GITLAB_TOKEN="$GITLAB_API_TOKEN"
-    - glab config set -h git.var-lab.com token "$GITLAB_API_TOKEN"
-    - glab release create "$CI_COMMIT_TAG" \
-      --title "Release $CI_COMMIT_TAG" \
-      --notes-file release_notes.md \
-      --api-host git.var-lab.com
-
+  release:
+    name: 'Release $CI_COMMIT_TAG'
+    description: "$(cat release_notes.md)"
+    tag_name: '$CI_COMMIT_TAG'
+    ref: '$CI_COMMIT_SHA'
