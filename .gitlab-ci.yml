@@ -2,12 +2,45 @@ variables:
   DOCKER_DRIVER: overlay2
 
 stages:
+  - pre
   - checks
   - tests
   - functional_tests
   - build_dev
   - prepare_release
   - release
+
+commit_message_check:
+  stage: pre
+  image: alpine:latest
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  script:
+    - apk add --no-cache git grep
+    - |
+      echo "Checking commit messages..."
+
+      VALID_TYPES="feat|fix|docs|chore"
+      INVALID_MESSAGES=0
+
+      for COMMIT in $(git rev-list origin/main..HEAD); do
+        MESSAGE=$(git log --format=%B -n 1 "$COMMIT")
+        echo "Checking commit: $COMMIT"
+        echo "$MESSAGE" | grep -qE "Changelog: ($VALID_TYPES)$"
+        if [ $? -ne 0 ]; then
+          echo "❌ Invalid commit message in $COMMIT:"
+          echo "$MESSAGE"
+          INVALID_MESSAGES=1
+        fi
+      done
+
+      if [ "$INVALID_MESSAGES" -ne 0 ]; then
+        echo "❌ the commit message must contain the changelog type (Changelog: <type>). Valid types are: feat, fix, docs, chore. Please edit the commit message."
+        exit 1
+      else
+        echo "✅ Commit message validated."
+      fi
 
 security_checks:
   stage: checks
@@ -16,6 +49,8 @@ security_checks:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  needs:
+    - commit_message_check
   before_script:
     - apk update && apk add --no-cache bash curl jq
     - curl -sS https://get.symfony.com/cli/installer | bash
@@ -51,6 +86,8 @@ static_analysis:
     - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
   stage: checks
   image: git.var-lab.com:5050/opencal/docker-ci-image:latest
+  needs:
+    - commit_message_check
   before_script:
     - echo 'memory_limit = -1' >> $PHP_INI_DIR/conf.d/memory_limit_php.ini
   script:
@@ -65,6 +102,8 @@ lint_dockerfile:
     - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
   stage: checks
   image: hadolint/hadolint:latest-alpine
+  needs:
+    - commit_message_check
   script:
     - hadolint -f gitlab_codeclimate Dockerfile > hadolint-code-climate.json
   artifacts:
@@ -81,6 +120,8 @@ openapi_diff:
     - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
   stage: checks
   image: git.var-lab.com:5050/opencal/docker-ci-image:latest
+  needs:
+    - commit_message_check
   script:
     - composer install --prefer-dist --no-interaction --no-progress
     - OPENCAL_VERSION=dev php bin/console api:openapi:export -y -o openapi-temp.yml
