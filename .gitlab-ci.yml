@@ -10,17 +10,40 @@ stages:
   - release
 
 security_checks:
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
   stage: checks
   image: git.var-lab.com:5050/opencal/docker-ci-image:latest
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
   before_script:
-    - apk update && apk add --no-cache bash
+    - apk update && apk add --no-cache bash curl jq
     - curl -sS https://get.symfony.com/cli/installer | bash
     - mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
   script:
-    - symfony check:security
+    - symfony check:security | tee security_check_output.txt
+  after_script:
+    - |
+      if [ "$CI_JOB_STATUS" != "success" ]; then
+        echo "Security check failed – creating issue..."
+
+        # Read and escape output
+        ESCAPED_OUTPUT=$(jq -Rs < security_check_output.txt)
+
+        curl --request POST "$CI_API_V4_URL/projects/$CI_PROJECT_ID/issues" \
+          --header "PRIVATE-TOKEN: $GITLAB_API_TOKEN" \
+          --header "Content-Type: application/json" \
+          --data "{
+            \"title\": \"[Security Check] Job failed in pipeline #$CI_PIPELINE_ID\",
+            \"description\": \"### Job \`$CI_JOB_NAME\` failed on branch \`$CI_COMMIT_REF_NAME\`\\n\\nPipeline: $CI_PIPELINE_URL\\n\\n#### Symfony Security Checker Output:\\n\`\`\`\\n${ESCAPED_OUTPUT}\\n\`\`\`\",
+            \"labels\": \"ci,security\"
+          }"
+      fi
+  artifacts:
+    when: always
+    paths:
+      - security_check_output.txt
+    expire_in: 1 day
 
 static_analysis:
   rules:
