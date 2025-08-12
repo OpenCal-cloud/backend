@@ -58,4 +58,14 @@ class UserService
 
         return $user;
     }
+
+    public function findOneByEmail(string $email): ?User
+    {
+        return $this->userRepository->findOneByEmail($email);
+    }
+
+    public function enableUser(User $user): void
+    {
+        $user->setEnabled(true);
+    }
 }
