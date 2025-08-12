@@ -50,35 +50,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public const string ROLE_USER  = 'ROLE_USER';
     public const string ROLE_ADMIN = 'ROLE_ADMIN';
 
-    #[Groups(['me:read', 'me:write'])]
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
+    #[Groups(['me:read', 'me:write'])]
     private int $id;
 
+    #[ORM\Column(length: 180)]
+    #[Groups(['me:read', 'me:write'])]
     #[Assert\Email]
     #[Assert\NotBlank]
-    #[Groups(['me:read', 'me:write'])]
-    #[ORM\Column(length: 180)]
     private string $email;
 
     /** @var list<string> The user roles */
-    #[Groups(['me:read'])]
     #[ORM\Column]
+    #[Groups(['me:read'])]
     private array $roles = [];
 
     /** @var string The hashed password */
     #[ORM\Column]
     private string $password;
 
-    #[Assert\NotBlank]
-    #[Groups(['me:read', 'me:write', 'event_type:read'])]
     #[ORM\Column(length: 255)]
+    #[Groups(['me:read', 'me:write', 'event_type:read'])]
+    #[Assert\NotBlank]
     private string $givenName;
 
-    #[Assert\NotBlank]
-    #[Groups(['me:read', 'me:write', 'event_type:read'])]
     #[ORM\Column(length: 255)]
+    #[Groups(['me:read', 'me:write', 'event_type:read'])]
+    #[Assert\NotBlank]
     private string $familyName;
 
     /** @var Collection<int, EventType> */

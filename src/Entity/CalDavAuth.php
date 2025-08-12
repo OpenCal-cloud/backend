@@ -42,26 +42,26 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ORM\Entity(repositoryClass: CalDavAuthRepository::class)]
 class CalDavAuth
 {
-    #[Groups(['cal-dav-auth:read'])]
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
+    #[Groups(['cal-dav-auth:read'])]
     private int $id;
 
-    #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write'])]
     #[ORM\Column]
+    #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write'])]
     private bool $enabled;
 
-    #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write'])]
     #[ORM\Column(length: 255)]
+    #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write'])]
     private string $baseUri;
 
-    #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write'])]
     #[ORM\Column(length: 255)]
+    #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write'])]
     private string $username;
 
-    #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write'])]
     #[ORM\Column(length: 255)]
+    #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write'])]
     private string $password;
 
     #[ORM\JoinColumn(nullable: false)]

@@ -52,39 +52,39 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: EventTypeRepository::class)]
 class EventType
 {
-    #[Groups(['event_type:read', 'event:read'])]
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
+    #[Groups(['event_type:read', 'event:read'])]
     private int $id;
 
-    #[Assert\NotBlank]
-    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
     #[ORM\Column(length: 255)]
+    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
+    #[Assert\NotBlank]
     private string $name;
 
-    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
     private ?string $description = null;
 
+    #[ORM\Column]
+    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
     #[Assert\NotBlank]
     #[Assert\Range(min: 5)]
-    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
-    #[ORM\Column]
     private int $duration;
 
+    #[ORM\Column(length: 255)]
+    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
     #[Assert\NotBlank]
     #[Assert\Regex(
         pattern: '/^[a-z0-9-]+$/',
         message: 'The slug can only contain lowercase letters, numbers and dashes.',
     )]
-    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
-    #[ORM\Column(length: 255)]
     private string $slug;
 
-    #[Groups(['event_type:read'])]
     #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(inversedBy: 'eventTypes')]
+    #[Groups(['event_type:read'])]
     private User $host;
 
     /** @var Collection<int, Event> */
