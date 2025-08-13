@@ -75,6 +75,14 @@ composer run lint:php
 composer run lint:php:fix
 ```
 
+## Run [hadolint](https://github.com/hadolint/hadolint)
+
+```bash
+docker run --rm -i hadolint/hadolint < Dockerfile
+# OR
+docker run --rm -i ghcr.io/hadolint/hadolint < Dockerfile
+```
+
 ## Code commits
 
 Please create merge requests to add your changes to the project.
@@ -91,6 +99,8 @@ Valid types are:
 - `fix`: Bug fix
 - `docs`: Documentation
 - `chore`: Maintenance
+
+See [changelog_config.yml](.gitlab/changelog_config.yml) for details.
 
 ## License
 
