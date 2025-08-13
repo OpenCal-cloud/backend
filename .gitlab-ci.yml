@@ -200,7 +200,7 @@ api_tests:
       coverage_report:
         coverage_format: cobertura
         path: tests/reports/cobertura-api.xml
-  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+#  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
 
 build_dev:
   needs:

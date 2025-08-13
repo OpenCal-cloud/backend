@@ -68,4 +68,9 @@ class UserService
     {
         $user->setEnabled(true);
     }
+
+    public function disableUser(User $user): void
+    {
+        $user->setEnabled(false);
+    }
 }

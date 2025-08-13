@@ -110,6 +110,59 @@ class UserServiceTest extends TestCase
         $service->setPassword($userMock, 'password');
     }
 
+    public function testFindOneByEmail(): void
+    {
+        $userMock = $this->createMock(User::class);
+
+        $this->userRepositoryMock
+            ->method('findOneByEmail')
+            ->willReturn($userMock);
+
+        $service = $this->getService();
+        $result  = $service->findOneByEmail('test@email.com');
+
+        self::assertEquals(
+            $userMock,
+            $result,
+        );
+    }
+
+    public function testFindOneByEmailNothingFound(): void
+    {
+        $this->userRepositoryMock
+            ->method('findOneByEmail')
+            ->willReturn(null);
+
+        $service = $this->getService();
+        $result  = $service->findOneByEmail('test@email.com');
+
+        self::assertNull($result);
+    }
+
+    public function testEnableUser(): void
+    {
+        $userMock = $this->createMock(User::class);
+        $userMock
+            ->expects(self::once())
+            ->method('setEnabled')
+            ->with(true);
+
+        $service = $this->getService();
+        $service->enableUser($userMock);
+    }
+
+    public function testDisableUser(): void
+    {
+        $userMock = $this->createMock(User::class);
+        $userMock
+            ->expects(self::once())
+            ->method('setEnabled')
+            ->with(false);
+
+        $service = $this->getService();
+        $service->disableUser($userMock);
+    }
+
     private function getService(): UserService
     {
         return new UserService(

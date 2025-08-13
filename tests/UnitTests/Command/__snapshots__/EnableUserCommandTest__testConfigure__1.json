@@ -1,8 +1,0 @@
-[
-    {
-        "name": "email",
-        "is_required": true,
-        "default": null,
-        "description": "A email address of the user"
-    }
-]

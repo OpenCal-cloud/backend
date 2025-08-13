@@ -1,0 +1,14 @@
+[
+    {
+        "name": "action",
+        "is_required": true,
+        "default": null,
+        "description": "One of: enable|disable"
+    },
+    {
+        "name": "email",
+        "is_required": true,
+        "default": null,
+        "description": "The email address of the user"
+    }
+]
