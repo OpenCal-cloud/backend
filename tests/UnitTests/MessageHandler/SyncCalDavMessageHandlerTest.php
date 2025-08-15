@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Tests\UnitTests\MessageHandler;
 
 use App\CalDav\CalDavService;
+use App\CalDav\LogService;
 use App\Entity\CalDavAuth;
+use App\Entity\CalDavSyncLog;
 use App\Message\SyncCalDavMessage;
 use App\MessageHandler\SyncCalDavMessageHandler;
 use App\Repository\CalDavAuthRepository;
@@ -17,62 +19,66 @@ use Psr\Log\LoggerInterface;
 
 class SyncCalDavMessageHandlerTest extends TestCase
 {
-    private CalDavService&MockObject $calDavService;
-    private CalDavAuthRepository&MockObject $calDavAuthRepository;
-    private EventRepository&MockObject $eventRepository;
-    private EntityManagerInterface&MockObject $entityManager;
-    private LoggerInterface&MockObject $logger;
+    private CalDavService&MockObject $calDavServiceMock;
+    private CalDavAuthRepository&MockObject $calDavAuthRepositoryMock;
+    private EventRepository&MockObject $eventRepositoryMock;
+    private EntityManagerInterface&MockObject $entityManagerMock;
+    private LoggerInterface&MockObject $loggerMock;
+    private LogService&MockObject $logServiceMock;
 
     protected function setUp(): void
     {
-        $this->calDavService        = $this->createMock(CalDavService::class);
-        $this->calDavAuthRepository = $this->createMock(CalDavAuthRepository::class);
-        $this->eventRepository      = $this->createMock(EventRepository::class);
-        $this->entityManager        = $this->createMock(EntityManagerInterface::class);
-        $this->logger               = $this->createMock(LoggerInterface::class);
+        $this->calDavServiceMock        = $this->createMock(CalDavService::class);
+        $this->calDavAuthRepositoryMock = $this->createMock(CalDavAuthRepository::class);
+        $this->eventRepositoryMock      = $this->createMock(EventRepository::class);
+        $this->entityManagerMock        = $this->createMock(EntityManagerInterface::class);
+        $this->loggerMock               = $this->createMock(LoggerInterface::class);
+        $this->logServiceMock           = $this->createMock(LogService::class);
     }
 
     public function testInvokeWithoutAuths(): void
     {
-        $this->calDavAuthRepository
+        $this->logServiceMock
+            ->expects(self::never())
+            ->method('saveLogEntry');
+
+        $this->calDavAuthRepositoryMock
             ->method('findBy')
             ->willReturn([]);
 
-        $this->entityManager
+        $this->entityManagerMock
             ->expects($this->never())
             ->method('persist');
-        $this->entityManager
+        $this->entityManagerMock
             ->expects($this->never())
             ->method('flush');
 
-        $handler = new SyncCalDavMessageHandler(
-            $this->calDavService,
-            $this->calDavAuthRepository,
-            $this->eventRepository,
-            $this->entityManager,
-            $this->logger,
-        );
+        $handler = $this->getHandler();
 
         $handler->__invoke(new SyncCalDavMessage());
     }
 
     public function testInvokeWithAuthsAndEventData(): void
     {
-        $this->calDavAuthRepository
+        $this->logServiceMock
+            ->expects(self::atLeastOnce())
+            ->method('saveLogEntry');
+
+        $this->calDavAuthRepositoryMock
             ->method('findBy')
             ->willReturn([
                 $this->createMock(CalDavAuth::class),
                 $this->createMock(CalDavAuth::class),
             ]);
 
-        $this->entityManager
+        $this->entityManagerMock
             ->expects($this->exactly(4))
             ->method('persist');
-        $this->entityManager
+        $this->entityManagerMock
             ->expects($this->exactly(4))
             ->method('flush');
 
-        $this->calDavService
+        $this->calDavServiceMock
             ->method('fetchEventsByAuth')
             ->willReturn([
                 [
@@ -89,14 +95,50 @@ class SyncCalDavMessageHandlerTest extends TestCase
                 ],
             ]);
 
-        $handler = new SyncCalDavMessageHandler(
-            $this->calDavService,
-            $this->calDavAuthRepository,
-            $this->eventRepository,
-            $this->entityManager,
-            $this->logger,
-        );
+        $handler = $this->getHandler();
 
         $handler->__invoke(new SyncCalDavMessage());
+    }
+
+    public function testInvokeThrowsSyncException(): void
+    {
+        $logEntryMock = $this->createMock(CalDavSyncLog::class);
+        $logEntryMock
+            ->method('setFailed')
+            ->with(true);
+
+        $this->logServiceMock
+            ->method('createLogEntry')
+            ->willReturn($logEntryMock);
+
+        $this->logServiceMock
+            ->expects(self::atLeastOnce())
+            ->method('saveLogEntry');
+
+        $this->calDavServiceMock
+            ->method('fetchEventsByAuth')
+            ->willThrowException(new \Exception('test'));
+
+        $this->calDavAuthRepositoryMock
+            ->method('findBy')
+            ->willReturn([
+                $this->createMock(CalDavAuth::class),
+                $this->createMock(CalDavAuth::class),
+            ]);
+
+        $handler = $this->getHandler();
+        $handler->__invoke(new SyncCalDavMessage());
+    }
+
+    private function getHandler(): SyncCalDavMessageHandler
+    {
+        return new SyncCalDavMessageHandler(
+            $this->calDavServiceMock,
+            $this->calDavAuthRepositoryMock,
+            $this->eventRepositoryMock,
+            $this->entityManagerMock,
+            $this->loggerMock,
+            $this->logServiceMock,
+        );
     }
 }

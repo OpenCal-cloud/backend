@@ -72,9 +72,14 @@ class CalDavAuth
     #[ORM\OneToMany(targetEntity: Event::class, mappedBy: 'calDavAuth')]
     private Collection $events;
 
+    /** @var Collection<int, CalDavSyncLog> */
+    #[ORM\OneToMany(targetEntity: CalDavSyncLog::class, mappedBy: 'calDavAuth', orphanRemoval: true)]
+    private Collection $calDavSyncLogs;
+
     public function __construct()
     {
-        $this->events = new ArrayCollection();
+        $this->events         = new ArrayCollection();
+        $this->calDavSyncLogs = new ArrayCollection();
     }
 
     public function getId(): int
@@ -166,6 +171,34 @@ class CalDavAuth
             // set the owning side to null (unless already changed)
             if ($event->getCalDavAuth() === $this) {
                 $event->setCalDavAuth(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /** @return Collection<int, CalDavSyncLog> */
+    public function getCalDavSyncLogs(): Collection
+    {
+        return $this->calDavSyncLogs;
+    }
+
+    public function addCalDavSyncLog(CalDavSyncLog $calDavSyncLog): static
+    {
+        if (!$this->calDavSyncLogs->contains($calDavSyncLog)) {
+            $this->calDavSyncLogs->add($calDavSyncLog);
+            $calDavSyncLog->setCalDavAuth($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCalDavSyncLog(CalDavSyncLog $calDavSyncLog): static
+    {
+        if ($this->calDavSyncLogs->removeElement($calDavSyncLog)) {
+            // set the owning side to null (unless already changed)
+            if ($calDavSyncLog->getCalDavAuth() === $this) {
+                $calDavSyncLog->setCalDavAuth(null);
             }
         }
 

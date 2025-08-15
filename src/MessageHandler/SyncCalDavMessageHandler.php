@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\MessageHandler;
 
 use App\CalDav\CalDavService;
+use App\CalDav\LogService;
 use App\Entity\CalDavAuth;
 use App\Entity\Event;
 use App\Message\SyncCalDavMessage;
@@ -24,6 +25,7 @@ class SyncCalDavMessageHandler
         private readonly EventRepository $eventRepository,
         private readonly EntityManagerInterface $entityManager,
         private readonly LoggerInterface $logger,
+        private readonly LogService $logService,
     ) {
     }
 
@@ -41,12 +43,29 @@ class SyncCalDavMessageHandler
                 $calDavAuth->getId(),
             ));
 
-            $eventsData = $this->calDavService->fetchEventsByAuth($calDavAuth);
+            $logEntry = $this->logService->createLogEntry($calDavAuth);
 
-            $this->logger->info(\sprintf(
-                '[caldav sync]: Count fetched entries: %s',
-                \count($eventsData),
-            ));
+            $eventsData = [];
+
+            try {
+                $eventsData = $this->calDavService->fetchEventsByAuth($calDavAuth);
+
+                $this->logger->info(\sprintf(
+                    '[caldav sync]: Count fetched entries: %s',
+                    \count($eventsData),
+                ));
+
+                $logEntry
+                    ->setFailed(false)
+                    ->setCountItems(\count($eventsData));
+            } catch (\Throwable $ex) {
+                $logEntry
+                    ->setCountItems(0)
+                    ->setErrorDetails($ex->getMessage())
+                    ->setFailed(true);
+            }
+
+            $this->logService->saveLogEntry($logEntry);
 
             $addedETags = [];
 
