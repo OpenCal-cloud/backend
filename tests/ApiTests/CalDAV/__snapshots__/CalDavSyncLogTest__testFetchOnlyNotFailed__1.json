@@ -1,0 +1,32 @@
+[
+    {
+        "id": 9,
+        "countItems": 24,
+        "createdAt": "2024-01-08T00:00:00+00:00",
+        "failed": false
+    },
+    {
+        "id": 7,
+        "countItems": 18,
+        "createdAt": "2024-01-06T00:00:00+00:00",
+        "failed": false
+    },
+    {
+        "id": 5,
+        "countItems": 12,
+        "createdAt": "2024-01-04T00:00:00+00:00",
+        "failed": false
+    },
+    {
+        "id": 3,
+        "countItems": 6,
+        "createdAt": "2024-01-02T00:00:00+00:00",
+        "failed": false
+    },
+    {
+        "id": 1,
+        "countItems": 0,
+        "createdAt": "2023-12-31T00:00:00+00:00",
+        "failed": false
+    }
+]

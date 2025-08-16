@@ -874,6 +874,18 @@ paths:
           style: form
           explode: false
           allowReserved: false
+        -
+          name: failed
+          in: query
+          description: ''
+          required: false
+          deprecated: false
+          allowEmptyValue: false
+          schema:
+            type: boolean
+          style: form
+          explode: false
+          allowReserved: false
       deprecated: false
   '/events/{id}/cancel':
     post:

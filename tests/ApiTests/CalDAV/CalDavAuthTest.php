@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\ApiTests;
+namespace App\Tests\ApiTests\CalDAV;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use App\Tests\ApiTests\Traits\RetrieveTokenTrait;

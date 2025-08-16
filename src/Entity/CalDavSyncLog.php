@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
@@ -18,6 +19,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
     'calDavAuth.id' => 'exact',
 ])]
 #[ApiFilter(DateFilter::class, properties: ['createdAt'])]
+#[ApiFilter(BooleanFilter::class, properties: ['failed'])]
 #[ApiResource(
     operations: [
         new GetCollection(),
