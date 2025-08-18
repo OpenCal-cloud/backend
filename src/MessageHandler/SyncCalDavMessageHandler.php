@@ -14,6 +14,7 @@ use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Safe\DateTime;
+use Safe\DateTimeImmutable;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
@@ -58,6 +59,8 @@ class SyncCalDavMessageHandler
                 $logEntry
                     ->setFailed(false)
                     ->setCountItems(\count($eventsData));
+
+                $this->setSyncedAt($calDavAuth);
             } catch (\Throwable $ex) {
                 $logEntry
                     ->setCountItems(0)
@@ -119,6 +122,14 @@ class SyncCalDavMessageHandler
             ));
         }
 
+        $this->entityManager->flush();
+    }
+
+    public function setSyncedAt(CalDavAuth $auth): void
+    {
+        $auth->setSyncedAt(new DateTimeImmutable());
+
+        $this->entityManager->persist($auth);
         $this->entityManager->flush();
     }
 }

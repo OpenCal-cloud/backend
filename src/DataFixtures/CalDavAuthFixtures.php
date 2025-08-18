@@ -26,6 +26,7 @@ class CalDavAuthFixtures extends Fixture implements DependentFixtureInterface
         $user1       = $this->getReference('user1', User::class);
         $calDavAuth1 = new CalDavAuth();
         $calDavAuth1
+            ->setSyncedAt(new DateTimeImmutable('12.01.2023 21:22:21'))
             ->setEnabled(true)
             ->setUsername('dev')
             ->setPassword('dev')

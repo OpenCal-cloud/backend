@@ -64,18 +64,23 @@ class SyncCalDavMessageHandlerTest extends TestCase
             ->expects(self::atLeastOnce())
             ->method('saveLogEntry');
 
+        $authMock1 = $this->createMock(CalDavAuth::class);
+        $authMock1
+            ->expects(self::once())
+            ->method('setSyncedAt');
+
         $this->calDavAuthRepositoryMock
             ->method('findBy')
             ->willReturn([
-                $this->createMock(CalDavAuth::class),
+                $authMock1,
                 $this->createMock(CalDavAuth::class),
             ]);
 
         $this->entityManagerMock
-            ->expects($this->exactly(4))
+            ->expects($this->exactly(6))
             ->method('persist');
         $this->entityManagerMock
-            ->expects($this->exactly(4))
+            ->expects($this->exactly(6))
             ->method('flush');
 
         $this->calDavServiceMock

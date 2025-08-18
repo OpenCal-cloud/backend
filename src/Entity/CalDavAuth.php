@@ -76,6 +76,10 @@ class CalDavAuth
     #[ORM\OneToMany(targetEntity: CalDavSyncLog::class, mappedBy: 'calDavAuth', orphanRemoval: true)]
     private Collection $calDavSyncLogs;
 
+    #[ORM\Column(nullable: true)]
+    #[Groups(['cal-dav-auth:read'])]
+    private ?\DateTimeImmutable $syncedAt = null;
+
     public function __construct()
     {
         $this->events         = new ArrayCollection();
@@ -201,6 +205,18 @@ class CalDavAuth
                 $calDavSyncLog->setCalDavAuth(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSyncedAt(): ?\DateTimeImmutable
+    {
+        return $this->syncedAt;
+    }
+
+    public function setSyncedAt(?\DateTimeImmutable $syncedAt): static
+    {
+        $this->syncedAt = $syncedAt;
 
         return $this;
     }

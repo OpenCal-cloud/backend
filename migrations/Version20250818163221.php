@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250815120639 extends AbstractMigration
+final class Version20250818163221 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -21,7 +21,7 @@ final class Version20250815120639 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE availability (id INT AUTO_INCREMENT NOT NULL, day_of_week VARCHAR(255) NOT NULL, start_time TIME NOT NULL, end_time TIME NOT NULL, user_id INT NOT NULL, INDEX IDX_3FB7A2BFA76ED395 (user_id), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci`');
-        $this->addSql('CREATE TABLE cal_dav_auth (id INT AUTO_INCREMENT NOT NULL, enabled TINYINT(1) NOT NULL, base_uri VARCHAR(255) NOT NULL, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, user_id INT NOT NULL, INDEX IDX_14B16BA5A76ED395 (user_id), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci`');
+        $this->addSql('CREATE TABLE cal_dav_auth (id INT AUTO_INCREMENT NOT NULL, enabled TINYINT(1) NOT NULL, base_uri VARCHAR(255) NOT NULL, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, synced_at DATETIME DEFAULT NULL, user_id INT NOT NULL, INDEX IDX_14B16BA5A76ED395 (user_id), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci`');
         $this->addSql('CREATE TABLE cal_dav_sync_log (id INT AUTO_INCREMENT NOT NULL, count_items INT NOT NULL, created_at DATETIME NOT NULL, failed TINYINT(1) NOT NULL, error_details LONGTEXT DEFAULT NULL, error_message LONGTEXT DEFAULT NULL, cal_dav_auth_id INT NOT NULL, INDEX IDX_37C4BB83839D6BD9 (cal_dav_auth_id), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci`');
         $this->addSql('CREATE TABLE event (id INT AUTO_INCREMENT NOT NULL, start_time TIME NOT NULL, end_time TIME NOT NULL, day DATE NOT NULL, participant_name VARCHAR(255) DEFAULT NULL, participant_email VARCHAR(255) DEFAULT NULL, participant_message TINYTEXT DEFAULT NULL, cancellation_hash VARCHAR(32) DEFAULT NULL, canceled_by_attendee TINYINT(1) DEFAULT NULL, sync_hash VARCHAR(255) DEFAULT NULL, event_type_id INT DEFAULT NULL, cal_dav_auth_id INT DEFAULT NULL, INDEX IDX_3BAE0AA7401B253C (event_type_id), INDEX IDX_3BAE0AA7839D6BD9 (cal_dav_auth_id), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci`');
         $this->addSql('CREATE TABLE event_type (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, description LONGTEXT DEFAULT NULL, duration INT NOT NULL, slug VARCHAR(255) NOT NULL, host_id INT NOT NULL, INDEX IDX_93151B821FB8D185 (host_id), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci`');

@@ -2023,6 +2023,11 @@ components:
           type: string
         password:
           type: string
+        syncedAt:
+          type:
+            - string
+            - 'null'
+          format: date-time
     CalDavAuth-cal-dav-auth.write:
       type: object
       description: ''
@@ -2075,6 +2080,11 @@ components:
           type: string
         password:
           type: string
+        syncedAt:
+          type:
+            - string
+            - 'null'
+          format: date-time
     CalDavAuth.jsonld-cal-dav-auth.write:
       type: object
       description: ''
