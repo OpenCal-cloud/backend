@@ -61,7 +61,7 @@ class CalDavAuthFixtures extends Fixture implements DependentFixtureInterface
                 ->setCountItems(3 * $i)
                 ->setFailed($failed)
                 ->setErrorMessage($failed ? 'CalDAV-Sync has failed.' : null)
-                ->setErrorMessage($failed ? 'This is a example stack trace...' : null);
+                ->setErrorDetails($failed ? 'This is a example stack trace...' : null);
 
             $manager->persist($entry);
         }
