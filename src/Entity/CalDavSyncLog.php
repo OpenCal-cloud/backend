@@ -57,6 +57,7 @@ class CalDavSyncLog
 
     #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(inversedBy: 'calDavSyncLogs')]
+    #[Groups(['log:read'])]
     private CalDavAuth $calDavAuth;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

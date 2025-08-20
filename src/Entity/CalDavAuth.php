@@ -53,11 +53,11 @@ class CalDavAuth
     private bool $enabled;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write'])]
+    #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write', 'log:read'])]
     private string $baseUri;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write'])]
+    #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write', 'log:read'])]
     private string $username;
 
     #[ORM\Column(length: 255)]
