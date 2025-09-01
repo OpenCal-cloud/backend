@@ -1807,6 +1807,324 @@ paths:
               $ref: '#/components/schemas/ResetPassword.jsonld'
         required: true
       deprecated: false
+  /unavailabilities:
+    get:
+      operationId: api_unavailabilities_get_collection
+      tags:
+        - Unavailability
+      responses:
+        '200':
+          description: 'Unavailability collection'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unavailability-unavailabilities.read'
+            application/ld+json:
+              schema:
+                type: object
+                properties:
+                  member: { type: array, items: { $ref: '#/components/schemas/Unavailability.jsonld-unavailabilities.read' } }
+                  totalItems: { type: integer, minimum: 0 }
+                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
+                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
+                required:
+                  - member
+        '403':
+          description: Forbidden
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+      summary: 'Retrieves the collection of Unavailability resources.'
+      description: 'Retrieves the collection of Unavailability resources.'
+      parameters:
+        -
+          name: page
+          in: query
+          description: 'The collection page number'
+          required: false
+          deprecated: false
+          allowEmptyValue: true
+          schema:
+            type: integer
+            default: 1
+          style: form
+          explode: false
+          allowReserved: false
+      deprecated: false
+    post:
+      operationId: api_unavailabilities_post
+      tags:
+        - Unavailability
+      responses:
+        '201':
+          description: 'Unavailability resource created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unavailability-unavailabilities.read'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Unavailability.jsonld-unavailabilities.read'
+          links: {  }
+        '400':
+          description: 'Invalid input'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+        '422':
+          description: 'An error occurred'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation-json'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation-json'
+          links: {  }
+        '403':
+          description: Forbidden
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+      summary: 'Creates a Unavailability resource.'
+      description: 'Creates a Unavailability resource.'
+      parameters: []
+      requestBody:
+        description: 'The new Unavailability resource'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Unavailability-unavailabilities.write'
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Unavailability.jsonld-unavailabilities.write'
+        required: true
+      deprecated: false
+  '/unavailabilities/{id}':
+    get:
+      operationId: api_unavailabilities_id_get
+      tags:
+        - Unavailability
+      responses:
+        '200':
+          description: 'Unavailability resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unavailability-unavailabilities.read'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Unavailability.jsonld-unavailabilities.read'
+        '403':
+          description: Forbidden
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+        '404':
+          description: 'Not found'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+      summary: 'Retrieves a Unavailability resource.'
+      description: 'Retrieves a Unavailability resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'Unavailability identifier'
+          required: true
+          deprecated: false
+          allowEmptyValue: false
+          schema:
+            type: string
+          style: simple
+          explode: false
+          allowReserved: false
+      deprecated: false
+    delete:
+      operationId: api_unavailabilities_id_delete
+      tags:
+        - Unavailability
+      responses:
+        '204':
+          description: 'Unavailability resource deleted'
+        '403':
+          description: Forbidden
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+        '404':
+          description: 'Not found'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+      summary: 'Removes the Unavailability resource.'
+      description: 'Removes the Unavailability resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'Unavailability identifier'
+          required: true
+          deprecated: false
+          allowEmptyValue: false
+          schema:
+            type: string
+          style: simple
+          explode: false
+          allowReserved: false
+      deprecated: false
+    patch:
+      operationId: api_unavailabilities_id_patch
+      tags:
+        - Unavailability
+      responses:
+        '200':
+          description: 'Unavailability resource updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unavailability-unavailabilities.read'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Unavailability.jsonld-unavailabilities.read'
+          links: {  }
+        '400':
+          description: 'Invalid input'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+        '422':
+          description: 'An error occurred'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation-json'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation-json'
+          links: {  }
+        '403':
+          description: Forbidden
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+        '404':
+          description: 'Not found'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+      summary: 'Updates the Unavailability resource.'
+      description: 'Updates the Unavailability resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'Unavailability identifier'
+          required: true
+          deprecated: false
+          allowEmptyValue: false
+          schema:
+            type: string
+          style: simple
+          explode: false
+          allowReserved: false
+      requestBody:
+        description: 'The updated Unavailability resource'
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/Unavailability-unavailabilities.write'
+        required: true
+      deprecated: false
   /me:
     get:
       operationId: api_me_get
@@ -3011,6 +3329,119 @@ components:
           type: string
         password:
           type: string
+    Unavailability-unavailabilities.read:
+      type: object
+      description: ''
+      deprecated: false
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        dayOfWeek:
+          type: string
+        startTime:
+          type:
+            - string
+            - 'null'
+          format: date-time
+        endTime:
+          type:
+            - string
+            - 'null'
+          format: date-time
+        fullDay:
+          type:
+            - boolean
+            - 'null'
+    Unavailability-unavailabilities.write:
+      type: object
+      description: ''
+      deprecated: false
+      properties:
+        dayOfWeek:
+          type: string
+        startTime:
+          type:
+            - string
+            - 'null'
+          format: date-time
+        endTime:
+          type:
+            - string
+            - 'null'
+          format: date-time
+        fullDay:
+          type:
+            - boolean
+            - 'null'
+    Unavailability.jsonld-unavailabilities.read:
+      type: object
+      description: ''
+      deprecated: false
+      properties:
+        '@context':
+          readOnly: true
+          oneOf:
+            -
+              type: string
+            -
+              type: object
+              properties:
+                '@vocab':
+                  type: string
+                hydra:
+                  type: string
+                  enum: ['http://www.w3.org/ns/hydra/core#']
+              required:
+                - '@vocab'
+                - hydra
+              additionalProperties: true
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        dayOfWeek:
+          type: string
+        startTime:
+          type:
+            - string
+            - 'null'
+          format: date-time
+        endTime:
+          type:
+            - string
+            - 'null'
+          format: date-time
+        fullDay:
+          type:
+            - boolean
+            - 'null'
+    Unavailability.jsonld-unavailabilities.write:
+      type: object
+      description: ''
+      deprecated: false
+      properties:
+        dayOfWeek:
+          type: string
+        startTime:
+          type:
+            - string
+            - 'null'
+          format: date-time
+        endTime:
+          type:
+            - string
+            - 'null'
+          format: date-time
+        fullDay:
+          type:
+            - boolean
+            - 'null'
     User-event_type.read:
       type: object
       description: ''
@@ -3184,6 +3615,8 @@ tags:
     name: Event
   -
     name: EventType
+  -
+    name: Unavailability
   -
     name: User
 webhooks: {  }

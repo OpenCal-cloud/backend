@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\ApiTests;
+namespace App\Tests\ApiTests\Availability;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use App\Entity\Availability;

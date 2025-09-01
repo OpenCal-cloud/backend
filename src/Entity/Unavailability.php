@@ -4,16 +4,47 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use App\Controller\CreateUnavailabilityController;
 use App\Repository\UnavailabilityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
+#[ApiResource(
+    operations: [
+        new GetCollection(),
+        new Get(),
+        new Post(
+            controller: CreateUnavailabilityController::class,
+        ),
+        new Patch(),
+        new Delete(),
+    ],
+    normalizationContext: [
+        'groups' => [
+            'unavailabilities:read',
+        ],
+    ],
+    denormalizationContext: [
+        'groups' => [
+            'unavailabilities:write',
+        ],
+    ],
+    security: "is_granted('IS_AUTHENTICATED_FULLY')",
+)]
 #[ORM\Entity(repositoryClass: UnavailabilityRepository::class)]
 class Unavailability
 {
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
+    #[Groups(['unavailabilities:read'])]
     private int $id;
 
     #[ORM\JoinColumn(nullable: false)]
@@ -21,15 +52,19 @@ class Unavailability
     private User $user;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['unavailabilities:read', 'unavailabilities:write'])]
     private string $dayOfWeek;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    #[Groups(['unavailabilities:read', 'unavailabilities:write'])]
     private ?\DateTime $startTime = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    #[Groups(['unavailabilities:read', 'unavailabilities:write'])]
     private ?\DateTime $endTime = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['unavailabilities:read', 'unavailabilities:write'])]
     private ?bool $fullDay = null;
 
     public function getId(): ?int
