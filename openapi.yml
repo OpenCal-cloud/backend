@@ -1578,6 +1578,84 @@ paths:
               $ref: '#/components/schemas/EventType-event_type.write'
         required: true
       deprecated: false
+  /holidays:
+    get:
+      operationId: api_holidays_get_collection
+      tags:
+        - Holiday
+      responses:
+        '200':
+          description: 'Holiday collection'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Holiday'
+            application/ld+json:
+              schema:
+                type: object
+                properties:
+                  member: { type: array, items: { $ref: '#/components/schemas/Holiday.jsonld' } }
+                  totalItems: { type: integer, minimum: 0 }
+                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
+                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
+                required:
+                  - member
+        '403':
+          description: Forbidden
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+      summary: 'Retrieves the collection of Holiday resources.'
+      description: 'Retrieves the collection of Holiday resources.'
+      parameters:
+        -
+          name: page
+          in: query
+          description: 'The collection page number'
+          required: false
+          deprecated: false
+          allowEmptyValue: true
+          schema:
+            type: integer
+            default: 1
+          style: form
+          explode: false
+          allowReserved: false
+        -
+          name: country
+          in: query
+          description: 'Holiday country'
+          required: false
+          deprecated: false
+          allowEmptyValue: false
+          schema:
+            type: string
+          style: form
+          explode: false
+          allowReserved: false
+        -
+          name: year
+          in: query
+          description: 'Holiday year'
+          required: false
+          deprecated: false
+          allowEmptyValue: false
+          schema:
+            type: string
+          style: form
+          explode: false
+          allowReserved: false
+      deprecated: false
   /auth:
     post:
       operationId: login_check_post
@@ -2813,6 +2891,44 @@ components:
         slug:
           pattern: '^([a-z0-9-]+)$'
           type: string
+    Holiday:
+      type: object
+      description: ''
+      deprecated: false
+      properties:
+        country:
+          type: string
+        year:
+          type: integer
+        date:
+          type: string
+          format: date-time
+        localName:
+          type: string
+        name:
+          type: string
+    Holiday.jsonld:
+      type: object
+      description: ''
+      deprecated: false
+      properties:
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        country:
+          type: string
+        year:
+          type: integer
+        date:
+          type: string
+          format: date-time
+        localName:
+          type: string
+        name:
+          type: string
     RequestPassword:
       type: object
       description: ''
@@ -3054,6 +3170,8 @@ tags:
     name: Availability
   -
     name: CancelEvent
+  -
+    name: Holiday
   -
     name: RequestPassword
   -
