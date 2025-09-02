@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\DataFixtures;
 
 use App\Entity\EventType;
+use App\Entity\EventTypeMeetingProvider;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -41,6 +42,8 @@ class EventTypeFixtures extends Fixture implements DependentFixtureInterface
             ],
         ];
 
+        $count = 0;
+
         foreach ($eventTypesData as $index => $data) {
             $eventType = new EventType();
             $eventType->setName($data['name'])
@@ -52,6 +55,18 @@ class EventTypeFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($eventType);
 
             $this->addReference('eventType' . ($index + 1), $eventType);
+
+            if (0 === $count) {
+                $etMeetingProvider = new EventTypeMeetingProvider();
+                $etMeetingProvider
+                    ->setEventType($eventType)
+                    ->setEnabled(true)
+                    ->setProviderIdentifier('jitsi_meet');
+
+                $manager->persist($etMeetingProvider);
+            }
+
+            $count++;
         }
 
         $manager->flush();

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\ApiTests;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
+use App\MeetingProvider\JitsiMeetingProvider;
 use App\Tests\ApiTests\Traits\RetrieveTokenTrait;
 use Spatie\Snapshots\MatchesSnapshots;
 use Symfony\Component\HttpClient\Exception\ClientException;
@@ -107,10 +108,13 @@ class EventTypeTest extends ApiTestCase
                 'accept' => 'application/json',
             ],
             'json'        => [
-                'name'        => 'Test Event Type',
-                'description' => 'Test Event Type Description',
-                'duration'    => 30,
-                'slug'        => 'test-event-type',
+                'name'                       => 'Test Event Type',
+                'description'                => 'Test Event Type Description',
+                'duration'                   => 30,
+                'slug'                       => 'test-event-type',
+                'meetingProviderIdentifiers' => [
+                    JitsiMeetingProvider::PROVIDER_IDENTIFIER,
+                ],
             ],
         ]);
 

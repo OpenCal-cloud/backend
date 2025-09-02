@@ -1,0 +1,56 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\MeetingProvider;
+
+use App\Entity\Event;
+use App\Helper\SlugHelper;
+use function Safe\preg_match;
+
+class JitsiMeetingProvider extends AbstractMeetingProvider
+{
+    public const string PROVIDER_IDENTIFIER = 'jitsi_meet';
+
+    public function __construct(
+        private readonly string $jitsiMeetBaseUrl,
+        private readonly SlugHelper $slugHelper,
+    ) {
+    }
+
+    public function getIdentifier(): string
+    {
+        return self::PROVIDER_IDENTIFIER;
+    }
+
+    public function getName(): string
+    {
+        return 'Jitsi Meet';
+    }
+
+    public function generateMeetingUrl(Event $event): string
+    {
+        $meetingName = \sprintf(
+            '%s - %s (Meeting #%s)',
+            $event->getEventType()?->getName(),
+            $event->getDay()->format('d.m.Y'),
+            $event->getId(),
+        );
+
+        $meetingName = $this->slugHelper->slugify($meetingName);
+
+        return \sprintf(
+            '%s/%s',
+            $this->jitsiMeetBaseUrl,
+            $meetingName,
+        );
+    }
+
+    public function isAvailable(): bool
+    {
+        return (bool) preg_match(
+            "/\b(?:https:\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",
+            $this->jitsiMeetBaseUrl,
+        );
+    }
+}

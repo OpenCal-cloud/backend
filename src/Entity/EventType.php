@@ -13,11 +13,13 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Repository\EventTypeRepository;
+use App\State\EventTypeStateProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
+use Symfony\Component\Serializer\Attribute\SerializedName;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiFilter(SearchFilter::class, properties: [
@@ -30,9 +32,11 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Get(),
         new Post(
             security: "is_granted('IS_AUTHENTICATED_FULLY')",
+            processor: EventTypeStateProcessor::class,
         ),
         new Patch(
             security: "is_granted('IS_AUTHENTICATED_FULLY')",
+            processor: EventTypeStateProcessor::class,
         ),
         new Delete(
             security: "is_granted('IS_AUTHENTICATED_FULLY')",
@@ -88,12 +92,23 @@ class EventType
     private User $host;
 
     /** @var Collection<int, Event> */
-        #[ORM\OneToMany(targetEntity: Event::class, mappedBy: 'eventType')]
+    #[ORM\OneToMany(targetEntity: Event::class, mappedBy: 'eventType')]
     private Collection $events;
+
+    /** @var Collection<int, EventTypeMeetingProvider> */
+    #[ORM\OneToMany(targetEntity: EventTypeMeetingProvider::class, mappedBy: 'eventType')]
+    #[Groups(['event_type:read'])]
+    #[SerializedName('meetingProviders')]
+    private Collection $eventTypeMeetingProviders;
+
+    /** @var array<string> */
+    #[Groups(['event_type:write'])]
+    private array $meetingProviderIdentifiers;
 
     public function __construct()
     {
-        $this->events = new ArrayCollection();
+        $this->events                    = new ArrayCollection();
+        $this->eventTypeMeetingProviders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -187,6 +202,48 @@ class EventType
                 $event->setEventType(null);
             }
         }
+
+        return $this;
+    }
+
+    /** @return Collection<int, EventTypeMeetingProvider> */
+    public function getEventTypeMeetingProviders(): Collection
+    {
+        return $this->eventTypeMeetingProviders;
+    }
+
+    public function addEventTypeMeetingProvider(EventTypeMeetingProvider $createdAt): static
+    {
+        if (!$this->eventTypeMeetingProviders->contains($createdAt)) {
+            $this->eventTypeMeetingProviders->add($createdAt);
+            $createdAt->setEventType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventTypeMeetingProvider(EventTypeMeetingProvider $createdAt): static
+    {
+        if ($this->eventTypeMeetingProviders->removeElement($createdAt)) {
+            // set the owning side to null (unless already changed)
+            if ($createdAt->getEventType() === $this) {
+                $createdAt->setEventType(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /** @return array<string> */
+    public function getMeetingProviderIdentifiers(): array
+    {
+        return $this->meetingProviderIdentifiers;
+    }
+
+    /** @param array<string> $meetingProviderIdentifiers */
+    public function setMeetingProviderIdentifiers(array $meetingProviderIdentifiers): static
+    {
+        $this->meetingProviderIdentifiers = $meetingProviderIdentifiers;
 
         return $this;
     }
