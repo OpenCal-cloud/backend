@@ -3291,8 +3291,8 @@ components:
           type: string
         enabled:
           type: boolean
-        eventType:
-          $ref: '#/components/schemas/EventType-event_type.read'
+        name:
+          type: string
     EventTypeMeetingProvider.jsonld-event_type.read:
       type: object
       description: ''
@@ -3328,8 +3328,8 @@ components:
           type: string
         enabled:
           type: boolean
-        eventType:
-          $ref: '#/components/schemas/EventType.jsonld-event_type.read'
+        name:
+          type: string
     Holiday:
       type: object
       description: ''

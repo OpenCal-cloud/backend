@@ -12,8 +12,7 @@
         {
             "id": 2,
             "providerIdentifier": "jitsi_meet",
-            "enabled": true,
-            "eventType": "/event_types/4"
+            "enabled": true
         }
     ]
 }

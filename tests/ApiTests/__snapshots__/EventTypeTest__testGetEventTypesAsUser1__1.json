@@ -14,7 +14,7 @@
                 "id": 1,
                 "providerIdentifier": "jitsi_meet",
                 "enabled": true,
-                "eventType": "/event_types/1"
+                "name": "Jitsi Meet"
             }
         ]
     },

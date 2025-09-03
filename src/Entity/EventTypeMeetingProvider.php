@@ -18,7 +18,7 @@ class EventTypeMeetingProvider
     private int $id;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['event_type:read', 'event_type:read'])]
+    #[Groups(['event_type:read'])]
     private string $providerIdentifier;
 
     #[ORM\Column]
@@ -27,8 +27,10 @@ class EventTypeMeetingProvider
 
     #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(inversedBy: 'eventTypeMeetingProviders')]
-    #[Groups(['event_type:read'])]
     private EventType $eventType;
+
+    #[Groups(['event_type:read'])]
+    private string $name;
 
     public function getId(): int
     {
@@ -69,6 +71,18 @@ class EventTypeMeetingProvider
         if ($eventType instanceof EventType) {
             $this->eventType = $eventType;
         }
+
+        return $this;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
 
         return $this;
     }
