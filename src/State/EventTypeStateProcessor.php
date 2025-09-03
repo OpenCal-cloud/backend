@@ -23,6 +23,8 @@ class EventTypeStateProcessor implements ProcessorInterface
     }
 
     /**
+     * @param EventType $data
+     *
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint
      * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter
      */
@@ -44,6 +46,17 @@ class EventTypeStateProcessor implements ProcessorInterface
 
         /** @var array<string> $providerIdentifiers */
         $providerIdentifiers = $requestDataArray['meetingProviderIdentifiers'];
+
+        foreach ($data->getEventTypeMeetingProviders() as $existingProvider) {
+            if (\in_array($existingProvider->getProviderIdentifier(), $providerIdentifiers, true)) {
+                continue;
+            }
+
+            $this->entityManager->remove($existingProvider);
+        }
+
+        // this is required because $providerIdentifiers can be empty.
+        $this->entityManager->flush();
 
         if (0 === \count($providerIdentifiers)) {
             return $data;
