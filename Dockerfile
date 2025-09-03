@@ -17,7 +17,7 @@ RUN apk update && apk --no-cache add libzip-dev=~1.11 zip=~3.0 \
     && docker-php-ext-install zip
 
 #RUN docker-php-ext-enable apcu
-COPY --from=composer:2.8.9 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2.8.11 /usr/bin/composer /usr/local/bin/composer
 
 VOLUME /var/run/php
 
@@ -134,7 +134,7 @@ FROM base AS php_dev
 WORKDIR /srv/app
 
 RUN apk update && apk --no-cache add dpkg-dev=~1.22 dpkg=~1.22 file=~5.46 g++=~14.2 gcc=~14.2 make=~4.4 pkgconf=~2.4 re2c=~4.2 linux-headers=~6.14 autoconf=~2.72 \
-    && pecl install xdebug-3.4.2 \
+    && pecl install xdebug-3.4.5 \
     && docker-php-ext-enable xdebug
 
 ARG COMPOSER_AUTH=
