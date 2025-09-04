@@ -107,3 +107,4 @@ See [changelog_config.yml](.gitlab/changelog_config.yml) for details.
 By contributing, you agree that your contributions will be licensed under the [GNU AGPLv3 License](./LICENSE).
 
 Thank you for your contribution!
+
