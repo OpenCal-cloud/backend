@@ -6,6 +6,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Event;
 use App\Entity\EventType;
+use App\MeetingProvider\JitsiMeetingProvider;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -28,6 +29,7 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 'participantName'    => 'John Doe',
                 'participantEmail'   => 'john.doe@example.com',
                 'participantMessage' => 'Looking forward to the event!',
+                'meeting_provider' => JitsiMeetingProvider::PROVIDER_IDENTIFIER,
             ],
             [
                 'type'               => $eventType2,
@@ -37,6 +39,7 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 'participantName'    => 'Jane Smith',
                 'participantEmail'   => 'jane.smith@example.com',
                 'participantMessage' => 'Can we discuss the agenda beforehand?',
+                'meeting_provider' => JitsiMeetingProvider::PROVIDER_IDENTIFIER,
             ],
             [
                 'type'               => $eventType1,
@@ -46,6 +49,7 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 'participantName'    => 'Alice Johnson',
                 'participantEmail'   => 'alice.johnson@example.com',
                 'participantMessage' => null,
+                'meeting_provider' => JitsiMeetingProvider::PROVIDER_IDENTIFIER,
             ],
         ];
 
@@ -58,7 +62,8 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 ->setDay(new DateTime($data['day']))
                 ->setParticipantName($data['participantName'])
                 ->setParticipantEmail($data['participantEmail'])
-                ->setParticipantMessage($data['participantMessage'] ?? null);
+                ->setParticipantMessage($data['participantMessage'] ?? null)
+                ->setMeetingProviderIdentifier($data['meeting_provider']);
 
             $manager->persist($event);
         }

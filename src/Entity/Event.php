@@ -10,6 +10,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use App\Controller\CreateEventController;
 use App\Repository\EventRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,7 +23,9 @@ use Symfony\Component\Validator\Constraints as Assert;
             security: "is_granted('IS_AUTHENTICATED_FULLY')",
         ),
         new Get(),
-        new Post(),
+        new Post(
+            controller: CreateEventController::class,
+        ),
         new Patch(),
         new Delete(
             security: "is_granted('IS_AUTHENTICATED_FULLY')",
@@ -98,6 +101,13 @@ class Event
 
     #[ORM\ManyToOne(inversedBy: 'events')]
     private ?CalDavAuth $calDavAuth = null;
+
+    #[ORM\Column(length: 255)]
+    #[Groups(['event:read', 'event:write'])]
+    private string $meetingProviderIdentifier;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $participationUrl = null;
 
     public function getId(): int
     {
@@ -233,6 +243,30 @@ class Event
     public function setCalDavAuth(?CalDavAuth $calDavAuth): static
     {
         $this->calDavAuth = $calDavAuth;
+
+        return $this;
+    }
+
+    public function getMeetingProviderIdentifier(): string
+    {
+        return $this->meetingProviderIdentifier;
+    }
+
+    public function setMeetingProviderIdentifier(string $meetingProviderIdentifier): static
+    {
+        $this->meetingProviderIdentifier = $meetingProviderIdentifier;
+
+        return $this;
+    }
+
+    public function getParticipationUrl(): ?string
+    {
+        return $this->participationUrl;
+    }
+
+    public function setParticipationUrl(?string $participationUrl): static
+    {
+        $this->participationUrl = $participationUrl;
 
         return $this;
     }
