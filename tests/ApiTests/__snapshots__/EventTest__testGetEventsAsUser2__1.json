@@ -13,7 +13,8 @@
         "day": "2024-01-01T00:00:00+00:00",
         "participantName": "John Doe",
         "participantEmail": "john.doe@example.com",
-        "participantMessage": "Looking forward to the event!"
+        "participantMessage": "Looking forward to the event!",
+        "meetingProviderIdentifier": "jitsi_meet"
     },
     {
         "id": 2,
@@ -29,7 +30,8 @@
         "day": "2024-01-01T00:00:00+00:00",
         "participantName": "Jane Smith",
         "participantEmail": "jane.smith@example.com",
-        "participantMessage": "Can we discuss the agenda beforehand?"
+        "participantMessage": "Can we discuss the agenda beforehand?",
+        "meetingProviderIdentifier": "jitsi_meet"
     },
     {
         "id": 3,
@@ -44,6 +46,7 @@
         "endTime": "1970-01-01T11:00:00+00:00",
         "day": "2024-01-01T00:00:00+00:00",
         "participantName": "Alice Johnson",
-        "participantEmail": "alice.johnson@example.com"
+        "participantEmail": "alice.johnson@example.com",
+        "meetingProviderIdentifier": "jitsi_meet"
     }
 ]

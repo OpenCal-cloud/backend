@@ -2906,6 +2906,8 @@ components:
           type:
             - string
             - 'null'
+        meetingProviderIdentifier:
+          type: string
         cancelledByAttendee:
           readOnly: true
           type:
@@ -2958,6 +2960,8 @@ components:
           type:
             - string
             - 'null'
+        meetingProviderIdentifier:
+          type: string
     Event.jsonld-event.read:
       type: object
       description: ''
@@ -3023,6 +3027,8 @@ components:
           type:
             - string
             - 'null'
+        meetingProviderIdentifier:
+          type: string
         cancelledByAttendee:
           readOnly: true
           type:
@@ -3075,6 +3081,8 @@ components:
           type:
             - string
             - 'null'
+        meetingProviderIdentifier:
+          type: string
     EventType-event.read:
       type: object
       description: ''

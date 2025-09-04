@@ -29,7 +29,7 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 'participantName'    => 'John Doe',
                 'participantEmail'   => 'john.doe@example.com',
                 'participantMessage' => 'Looking forward to the event!',
-                'meeting_provider' => JitsiMeetingProvider::PROVIDER_IDENTIFIER,
+                'meeting_provider'   => JitsiMeetingProvider::PROVIDER_IDENTIFIER,
             ],
             [
                 'type'               => $eventType2,
@@ -39,7 +39,7 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 'participantName'    => 'Jane Smith',
                 'participantEmail'   => 'jane.smith@example.com',
                 'participantMessage' => 'Can we discuss the agenda beforehand?',
-                'meeting_provider' => JitsiMeetingProvider::PROVIDER_IDENTIFIER,
+                'meeting_provider'   => JitsiMeetingProvider::PROVIDER_IDENTIFIER,
             ],
             [
                 'type'               => $eventType1,
@@ -49,7 +49,7 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
                 'participantName'    => 'Alice Johnson',
                 'participantEmail'   => 'alice.johnson@example.com',
                 'participantMessage' => null,
-                'meeting_provider' => JitsiMeetingProvider::PROVIDER_IDENTIFIER,
+                'meeting_provider'   => JitsiMeetingProvider::PROVIDER_IDENTIFIER,
             ],
         ];
 

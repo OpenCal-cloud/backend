@@ -96,14 +96,15 @@ class EventTest extends ApiTestCase
                 'accept' => 'application/json',
             ],
             'json'        => [
-                'eventType'        => 'event_types/1',
-                'name'             => 'Test Event',
-                'description'      => 'Test Event Description',
-                'day'              => '2024-03-05',
-                'startTime'        => '11:00',
-                'endTime'          => '11:30',
-                'participantName'  => 'Test User',
-                'participantEmail' => 'mail@user.tld',
+                'eventType'                 => 'event_types/1',
+                'name'                      => 'Test Event',
+                'description'               => 'Test Event Description',
+                'day'                       => '2024-03-05',
+                'startTime'                 => '11:00',
+                'endTime'                   => '11:30',
+                'participantName'           => 'Test User',
+                'participantEmail'          => 'mail@user.tld',
+                'meetingProviderIdentifier' => 'test',
             ],
         ]);
 

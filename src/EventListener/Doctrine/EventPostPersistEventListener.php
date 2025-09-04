@@ -6,8 +6,11 @@ namespace App\EventListener\Doctrine;
 
 use App\Entity\CalDavAuth;
 use App\Entity\Event;
+use App\MeetingProvider\AbstractMeetingProvider;
+use App\MeetingProvider\MeetingProviderService;
 use App\Message\NewBookingMessage;
 use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Events;
 use Symfony\Component\Messenger\MessageBusInterface;
 
@@ -16,11 +19,27 @@ class EventPostPersistEventListener
 {
     public function __construct(
         private readonly MessageBusInterface $messageBus,
+        private readonly MeetingProviderService $meetingProviderService,
+        private readonly EntityManagerInterface $entityManager,
     ) {
     }
 
     public function postPersist(Event $event): void
     {
+        if (null === $event->getParticipationUrl()) {
+            $meetingProvider = $this->meetingProviderService
+                ->getProviderByIdentifier($event->getMeetingProviderIdentifier());
+
+            if ($meetingProvider instanceof AbstractMeetingProvider) {
+                $participationUrl = $meetingProvider->generateMeetingUrl($event);
+
+                $event->setParticipationUrl($participationUrl);
+            }
+
+            $this->entityManager->persist($event);
+            $this->entityManager->flush();
+        }
+
         if ($event->getCalDavAuth() instanceof CalDavAuth) {
             return;
         }

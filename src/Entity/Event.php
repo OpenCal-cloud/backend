@@ -10,7 +10,6 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\Controller\CreateEventController;
 use App\Repository\EventRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -23,9 +22,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             security: "is_granted('IS_AUTHENTICATED_FULLY')",
         ),
         new Get(),
-        new Post(
-            controller: CreateEventController::class,
-        ),
+        new Post(),
         new Patch(),
         new Delete(
             security: "is_granted('IS_AUTHENTICATED_FULLY')",
