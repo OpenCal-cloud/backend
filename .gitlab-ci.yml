@@ -216,7 +216,6 @@ build_dev:
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker build --target php --tag git.var-lab.com:5050/opencal/backend:dev-latest --cache-from git.var-lab.com:5050/opencal/backend:dev-latest --push .
-    - docker build --target nginx --tag git.var-lab.com:5050/opencal/backend:dev-nginx-latest --cache-from git.var-lab.com:5050/opencal/backend:dev-latest --push .
 
 
 prepare_release:

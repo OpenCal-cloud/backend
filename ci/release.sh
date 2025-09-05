@@ -19,10 +19,6 @@ TAG_PATCH="$REPO:$CURRENT_TAG"
 TAG_MINOR="$REPO:${MAJOR}.${MINOR}"
 TAG_MAJOR="$REPO:${MAJOR}"
 
-TAG_PATCH_NGINX="$REPO:nginx-$CURRENT_TAG"
-TAG_MINOR_NGINX="$REPO:nginx-${MAJOR}.${MINOR}"
-TAG_MAJOR_NGINX="$REPO:nginx-${MAJOR}"
-
 IS_HIGHEST=false
 if [ "$CURRENT_TAG" = "$HIGHEST_TAG" ]; then
   IS_HIGHEST=true
@@ -41,16 +37,3 @@ docker push "$TAG_PATCH"
 docker push "$TAG_MINOR"
 docker push "$TAG_MAJOR"
 $IS_HIGHEST && docker push "$REPO:latest"
-
-docker build \
-  --target nginx \
-  --tag "$TAG_PATCH_NGINX" \
-  --tag "$TAG_MINOR_NGINX" \
-  --tag "$TAG_MAJOR_NGINX" \
-  $( $IS_HIGHEST && echo "--tag $REPO:nginx-latest" ) \
-  .
-
-docker push "$TAG_PATCH_NGINX"
-docker push "$TAG_MINOR_NGINX"
-docker push "$TAG_MAJOR_NGINX"
-$IS_HIGHEST && docker push "$REPO:nginx-latest"

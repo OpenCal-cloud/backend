@@ -1,5 +1,3 @@
-ARG NGINX_VERSION=1.24
-
 # -------------
 # generic php base image
 # -------------
@@ -16,6 +14,11 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql posix pcntl intl
 RUN apk update && apk --no-cache add libzip-dev=~1.11 zip=~3.0 \
     && docker-php-ext-install zip
 
+RUN apk update && apk --no-cache add nginx=~1.28
+
+COPY docker/nginx.conf /etc/nginx/nginx.conf
+COPY docker/conf.d /etc/nginx/conf.d/
+
 #RUN docker-php-ext-enable apcu
 COPY --from=composer:2.8.11 /usr/bin/composer /usr/local/bin/composer
 
@@ -29,8 +32,6 @@ RUN chmod +x /usr/local/bin/docker-entrypoint
 COPY docker/php/docker-healthcheck.sh /usr/local/bin/docker-healthcheck
 RUN chmod +x /usr/local/bin/docker-healthcheck
 
-HEALTHCHECK --interval=10s --timeout=3s --retries=3 CMD ["docker-healthcheck"]
-
 RUN apk update && apk --no-cache add supervisor=~4.2
 
 COPY docker/supervisord.conf /etc/supervisor/supervisord.conf
@@ -38,8 +39,10 @@ COPY docker/supervisord.conf /etc/supervisor/supervisord.conf
 COPY docker/crontab /etc/cron/crontab
 RUN crontab /etc/cron/crontab
 
+EXPOSE 8080
 ENTRYPOINT ["docker-entrypoint"]
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+HEALTHCHECK --timeout=3s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping || exit 1
 
 FROM generic AS base
 
@@ -151,25 +154,3 @@ RUN echo 'memory_limit = -1' >> "$PHP_INI_DIR/conf.d/memory_limit_php.ini" && \
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV COMPOSER_AUTH=${COMPOSER_AUTH}
-
-# ----------------
-# nginx prod image
-# ----------------
-FROM nginx:${NGINX_VERSION}-alpine AS nginx
-
-COPY docker/php/nginx_prod.conf /etc/nginx/conf.d/default.conf
-
-WORKDIR /srv/app
-
-COPY --from=php /srv/app/public public/
-
-# ---------------
-# nginx dev image
-# ---------------
-FROM nginx:${NGINX_VERSION}-alpine AS nginx_dev
-
-COPY docker/php/nginx_dev.conf /etc/nginx/conf.d/default.conf
-
-WORKDIR /srv/app
-
-COPY --from=php_dev /srv/app/public public/
