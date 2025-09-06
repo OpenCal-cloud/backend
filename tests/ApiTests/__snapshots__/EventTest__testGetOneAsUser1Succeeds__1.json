@@ -13,5 +13,6 @@
     "participantName": "John Doe",
     "participantEmail": "john.doe@example.com",
     "participantMessage": "Looking forward to the event!",
-    "meetingProviderIdentifier": "jitsi_meet"
+    "meetingProviderIdentifier": "jitsi_meet",
+    "participationUrl": "/conference-call-01-01-2024-meeting-1"
 }

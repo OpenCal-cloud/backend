@@ -2908,6 +2908,10 @@ components:
             - 'null'
         meetingProviderIdentifier:
           type: string
+        participationUrl:
+          type:
+            - string
+            - 'null'
         cancelledByAttendee:
           readOnly: true
           type:
@@ -3029,6 +3033,10 @@ components:
             - 'null'
         meetingProviderIdentifier:
           type: string
+        participationUrl:
+          type:
+            - string
+            - 'null'
         cancelledByAttendee:
           readOnly: true
           type:

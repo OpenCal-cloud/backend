@@ -113,6 +113,7 @@
   "extra": {
     "symfony": {
       "allow-contrib": false,
+      "dotenv_overload": true,
       "require": "7.3.*"
     }
   },

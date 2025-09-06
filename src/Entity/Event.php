@@ -104,6 +104,7 @@ class Event
     private string $meetingProviderIdentifier;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['event:read'])]
     private ?string $participationUrl = null;
 
     public function getId(): int
