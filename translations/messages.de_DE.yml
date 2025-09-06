@@ -29,7 +29,7 @@ mails:
           E-Mail-Adresse des Teilnehmers:
           {email_attendee}
           
-          Termine verwalten: {frontend_url}/login
+          Termine verwalten: {frontend_url}/dashboard
           ---
           Diese E-Mail wurde automatisch über das Open-Source-Buchungstool OpenCal versendet.
       to_attendee:
@@ -65,6 +65,6 @@ mails:
           E-Mail-Adresse des Teilnehmers:
           {email_attendee}
           
-          Termine verwalten: {frontend_url}/login
+          Termine verwalten: {frontend_url}/dashboard
           ---
           Diese E-Mail wurde automatisch über das Open-Source-Buchungstool OpenCal versendet.

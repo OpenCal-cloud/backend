@@ -29,7 +29,7 @@ mails:
           Attendee's email address:
           {email_attendee}
           
-          Manage appointments: {frontend_url}/login
+          Manage appointments: {frontend_url}/dashboard
           ---
           This email was automatically sent using the open-source booking tool OpenCal.
       to_attendee:
@@ -63,6 +63,6 @@ mails:
           Attendee's email address:
           {email_attendee}
           
-          Manage appointments: {frontend_url}/login
+          Manage appointments: {frontend_url}/dashboard
           ---
           This email was automatically sent using the open-source booking tool OpenCal.
