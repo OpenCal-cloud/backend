@@ -11,6 +11,7 @@ use OpenCal\iCal\Domain\Entity\Calendar;
 use OpenCal\iCal\Domain\Entity\Event as iCalEvent;
 use OpenCal\iCal\Domain\ValueObject\DateTime;
 use OpenCal\iCal\Domain\ValueObject\EmailAddress;
+use OpenCal\iCal\Domain\ValueObject\Location;
 use OpenCal\iCal\Domain\ValueObject\Organizer;
 use OpenCal\iCal\Domain\ValueObject\TimeSpan;
 use OpenCal\iCal\Presentation\Factory\CalendarFactory;
@@ -61,6 +62,10 @@ class ExportEventService
                     )), true),
                 ),
             );
+
+        if (null !== $event->getParticipationUrl()) {
+            $iCalEvent->setLocation(new Location($event->getParticipationUrl()));
+        }
 
         if (null !== $event->getParticipantEmail()) {
             $attendee = new Attendee(
