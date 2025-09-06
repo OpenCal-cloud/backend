@@ -64,6 +64,7 @@ COPY config config/
 COPY public public/
 COPY src src/
 COPY migrations migrations/
+COPY translations translations/
 
 RUN mkdir -p files && \
     mkdir -p var/cache var/log
