@@ -41,7 +41,7 @@ mails:
           
           {event_type_name} mit {given_name} {family_name} findet am {booking_date} um {time_from} statt.
           
-          Dauer: {duration}min)
+          Dauer: {duration}min
           
           Organisator: {given_name} {family_name}
           
