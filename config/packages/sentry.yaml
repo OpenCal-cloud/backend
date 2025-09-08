@@ -10,11 +10,6 @@ when@prod:
         - 'Symfony\Component\Debug\Exception\FatalErrorException'
       release: '%opencal_version%'
 
-      #        If you are using Monolog, you also need this additional configuration to log the errors correctly:
-      #        https://docs.sentry.io/platforms/php/guides/symfony/#monolog-integration
-      register_error_listener: false
-      register_error_handler: false
-
       environment: "%kernel.environment%"
 
     monolog:
