@@ -46,12 +46,8 @@ HEALTHCHECK --timeout=3s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping
 
 FROM generic AS base
 
-#ARG CI_JOB_TOKEN=
-ARG COMPOSER_AUTH=
-
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
-ENV COMPOSER_AUTH=${COMPOSER_AUTH}
 
 WORKDIR /srv/app
 
@@ -141,8 +137,6 @@ RUN apk update && apk --no-cache add dpkg-dev=~1.22 dpkg=~1.22 file=~5.46 g++=~1
     && pecl install xdebug-3.4.5 \
     && docker-php-ext-enable xdebug
 
-ARG COMPOSER_AUTH=
-
 COPY phpunit.dist.xml phpstan.neon ./
 COPY --from=build_dev /srv/app /srv/app
 
@@ -152,6 +146,3 @@ RUN chown -R www-data var && \
 # Modify memory limit
 RUN echo 'memory_limit = -1' >> "$PHP_INI_DIR/conf.d/memory_limit_php.ini" && \
     echo 'upload_max_filesize = 200 M' >> "$PHP_INI_DIR/conf.d/memory_limit_php.ini"
-
-ENV COMPOSER_ALLOW_SUPERUSER=1
-ENV COMPOSER_AUTH=${COMPOSER_AUTH}
