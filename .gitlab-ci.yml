@@ -202,7 +202,20 @@ api_tests:
         path: tests/reports/cobertura-api.xml
 #  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
 
-build_dev:
+build_dev_mr:
+  needs:
+    - unit_tests
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+  stage: build_dev
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build --target php --cache-from git.var-lab.com:5050/opencal/backend:dev-latest .
+
+build_dev_main:
   needs:
     - api_tests
     - unit_tests
