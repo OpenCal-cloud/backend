@@ -2,7 +2,7 @@
     {
         "id": 10,
         "countItems": 27,
-        "createdAt": "2024-01-09T00:00:00+00:00",
+        "createdAt": "2024-01-09T00:00:00+01:00",
         "failed": true,
         "calDavAuth": {
             "baseUri": "http://radicale:5232/dev/example/",
@@ -14,7 +14,7 @@
     {
         "id": 8,
         "countItems": 21,
-        "createdAt": "2024-01-07T00:00:00+00:00",
+        "createdAt": "2024-01-07T00:00:00+01:00",
         "failed": true,
         "calDavAuth": {
             "baseUri": "http://radicale:5232/dev/example/",
@@ -26,7 +26,7 @@
     {
         "id": 6,
         "countItems": 15,
-        "createdAt": "2024-01-05T00:00:00+00:00",
+        "createdAt": "2024-01-05T00:00:00+01:00",
         "failed": true,
         "calDavAuth": {
             "baseUri": "http://radicale:5232/dev/example/",
@@ -38,7 +38,7 @@
     {
         "id": 4,
         "countItems": 9,
-        "createdAt": "2024-01-03T00:00:00+00:00",
+        "createdAt": "2024-01-03T00:00:00+01:00",
         "failed": true,
         "calDavAuth": {
             "baseUri": "http://radicale:5232/dev/example/",
@@ -50,7 +50,7 @@
     {
         "id": 2,
         "countItems": 3,
-        "createdAt": "2024-01-01T00:00:00+00:00",
+        "createdAt": "2024-01-01T00:00:00+01:00",
         "failed": true,
         "calDavAuth": {
             "baseUri": "http://radicale:5232/dev/example/",

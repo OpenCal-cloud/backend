@@ -12,3 +12,4 @@
 | `OPENCAL_VERSION`         | The version of OpenCal                                                                                                                                    | `dev` in local-dev / `<your-version>` in prod |
 | `SENTRY_DSN`              | Sentry DSN (see https://docs.sentry.io/platforms/php/guides/symfony/)                                                                                     | empty                                         |
 | `JITSI_MEET_BASE_URL`     | URL to a Jitsi Meet server. It must use `https` to be valid. If the URL is empty or invalid, Jitsi cannot be selected in event-types as meeting location. | empty                                         |
+| `TIMEZONE`                | Your timezone                                                                                                                                             | `Europe/Berlin`                               |

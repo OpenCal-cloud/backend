@@ -11,6 +11,7 @@ parameters:
   use_ssl: '%env(bool:USE_SSL)%'
   opencal_version: '%env(OPENCAL_VERSION)%'
   jitsi_meet_base_url: '%env(JITSI_MEET_BASE_URL)%'
+  timezone: '%env(TIMEZONE)%'
 
 services:
   # default configuration for services in *this* file
@@ -24,6 +25,7 @@ services:
       $frontendDomain: '%frontend_domain%'
       $useSSL: '%use_ssl%'
       $jitsiMeetBaseUrl: '%jitsi_meet_base_url%'
+      $timezone: '%timezone%'
 
   # makes classes in src/ available to be used as services
   # this creates a service per class whose id is the fully-qualified class name

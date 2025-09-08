@@ -5,6 +5,6 @@
         "baseUri": "http://radicale:5232/dev/example/",
         "username": "dev",
         "password": "dev",
-        "syncedAt": "2023-01-12T21:22:21+00:00"
+        "syncedAt": "2023-01-12T21:22:21+01:00"
     }
 ]

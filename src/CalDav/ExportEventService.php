@@ -9,6 +9,7 @@ use App\Entity\EventType;
 use OpenCal\iCal\Domain\Entity\Attendee;
 use OpenCal\iCal\Domain\Entity\Calendar;
 use OpenCal\iCal\Domain\Entity\Event as iCalEvent;
+use OpenCal\iCal\Domain\Entity\TimeZone;
 use OpenCal\iCal\Domain\ValueObject\DateTime;
 use OpenCal\iCal\Domain\ValueObject\EmailAddress;
 use OpenCal\iCal\Domain\ValueObject\Location;
@@ -23,8 +24,9 @@ use function Safe\fclose;
 
 class ExportEventService
 {
-    public function __construct()
-    {
+    public function __construct(
+        private readonly string $timezone,
+    ) {
     }
 
     public function exportEvent(Event $event): string
@@ -81,6 +83,8 @@ class ExportEventService
         }
 
         $calendar = new Calendar([$iCalEvent]);
+
+        $calendar->addTimeZone(new TimeZone($this->timezone));
 
         $componentFactory = new CalendarFactory();
 

@@ -39,7 +39,7 @@ class ICalExportServiceTest extends TestCase
                     ),
             );
 
-        $service = new ExportEventService();
+        $service = new ExportEventService('Europe/Berlin');
         $result  = $service->exportEvent($event);
 
         $iCalContent = file_get_contents($result);
@@ -68,6 +68,18 @@ class ICalExportServiceTest extends TestCase
             'ATTENDEE;CN=Someone:mailto:email@someone.tld',
             $iCalContent,
         );
+        self::assertStringContainsString(
+            'BEGIN:VTIMEZONE',
+            $iCalContent,
+        );
+        self::assertStringContainsString(
+            'TZID:Europe/Berlin',
+            $iCalContent,
+        );
+        self::assertStringContainsString(
+            'END:VTIMEZONE',
+            $iCalContent,
+        );
 
         unlink($result);
     }
@@ -94,13 +106,54 @@ class ICalExportServiceTest extends TestCase
                     ),
             );
 
-        $service = new ExportEventService();
+        $service = new ExportEventService('Europe/Berlin');
         $result  = $service->exportEvent($event);
 
         $iCalContent = file_get_contents($result);
 
         self::assertStringContainsString(
             'LOCATION:https://meeting-domain.org/meeting-id',
+            $iCalContent,
+        );
+    }
+
+    public function testExportWithAnotherTimezone(): void
+    {
+        $event = new Event();
+        $event
+            ->setParticipantEmail('email@someone.tld')
+            ->setParticipationUrl('https://meeting-domain.org/meeting-id')
+            ->setParticipantName('Someone')
+            ->setDay(new DateTime('2021-01-01'))
+            ->setStartTime(new DateTime('10:00:00'))
+            ->setEndTime(new DateTime('12:00:00'))
+            ->setEventType(
+                (new EventType())
+                    ->setName('Test')
+                    ->setDuration(30)
+                    ->setHost(
+                        (new User())
+                            ->setEmail('test@unit.tld')
+                            ->setGivenName('Test')
+                            ->setFamilyName('User'),
+                    ),
+            );
+
+        $service = new ExportEventService('Africa/Abidjan');
+        $result  = $service->exportEvent($event);
+
+        $iCalContent = file_get_contents($result);
+
+        self::assertStringContainsString(
+            'BEGIN:VTIMEZONE',
+            $iCalContent,
+        );
+        self::assertStringContainsString(
+            'TZID:Africa/Abidjan',
+            $iCalContent,
+        );
+        self::assertStringContainsString(
+            'END:VTIMEZONE',
             $iCalContent,
         );
     }
@@ -113,7 +166,7 @@ class ICalExportServiceTest extends TestCase
         self::expectException(\RuntimeException::class);
         self::expectExceptionMessage('A synced event cannot be exported as .ics-file.');
 
-        $service = new ExportEventService();
+        $service = new ExportEventService('Europe/Berlin');
         $service->exportEvent($event);
     }
 }
