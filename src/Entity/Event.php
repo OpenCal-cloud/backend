@@ -99,9 +99,9 @@ class Event
     #[ORM\ManyToOne(inversedBy: 'events')]
     private ?CalDavAuth $calDavAuth = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['event:read', 'event:write'])]
-    private string $meetingProviderIdentifier;
+    private ?string $meetingProviderIdentifier = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['event:read'])]
@@ -245,7 +245,7 @@ class Event
         return $this;
     }
 
-    public function getMeetingProviderIdentifier(): string
+    public function getMeetingProviderIdentifier(): ?string
     {
         return $this->meetingProviderIdentifier;
     }

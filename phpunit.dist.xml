@@ -30,6 +30,9 @@
         <testsuite name="UnitTests">
             <directory>tests/UnitTests</directory>
         </testsuite>
+        <testsuite name="IntegrationTests">
+            <directory>tests/IntegrationTests</directory>
+        </testsuite>
         <testsuite name="ApiTests">
             <directory>tests/ApiTests</directory>
         </testsuite>

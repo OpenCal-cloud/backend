@@ -26,7 +26,7 @@ class EventPostPersistEventListener
 
     public function postPersist(Event $event): void
     {
-        if (null === $event->getParticipationUrl()) {
+        if (null === $event->getParticipationUrl() && null !== $event->getMeetingProviderIdentifier()) {
             $meetingProvider = $this->meetingProviderService
                 ->getProviderByIdentifier($event->getMeetingProviderIdentifier());
 

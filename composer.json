@@ -164,22 +164,31 @@
     ],
     "openapi:export": "bin/console api:openapi:export -y -o openapi.yml",
     "phpstan": "XDEBUG_MODE=off phpstan",
-    "rit": "XDEBUG_MODE=coverage,debug phpunit --testsuite=ApiTests --log-junit=tests/reports/junit-apitests.xml --coverage-text --colors=never --coverage-cobertura=tests/reports/cobertura-api.xml",
+    "real-api-tests": "XDEBUG_MODE=coverage,debug phpunit --testsuite=ApiTests --log-junit=tests/reports/junit-apitests.xml --coverage-text --colors=never --coverage-cobertura=tests/reports/cobertura-api.xml",
+    "real-integration-tests": "XDEBUG_MODE=coverage,debug phpunit --testsuite=IntegrationTests",
     "tests": [
       "@tests:unit",
+      "@tests:integration",
       "@tests:api"
     ],
     "tests:api": [
       "@db:recreate:test",
       "bin/console doctrine:schema:validate -n --env=test",
       "chmod -R 777 var",
-      "@rit"
+      "@real-api-tests"
     ],
     "tests:api:ci": [
       "bin/console doctrine:schema:validate -n --env=test",
       "chmod -R 777 var",
-      "@rit"
+      "@real-api-tests"
     ],
+    "tests:integration": [
+      "@db:recreate:test",
+      "bin/console doctrine:schema:validate -n --env=test",
+      "chmod -R 777 var",
+      "@real-integration-tests"
+    ],
+    "tests:integration:ci": "XDEBUG_MODE=coverage,debug phpunit --testsuite=IntegrationTests --log-junit=tests/reports/junit-unittests.xml --colors=never --coverage-cobertura=tests/reports/cobertura.xml",
     "tests:snapshots:update": [
       "XDEBUG_MODE=coverage,debug phpunit --testsuite=UnitTests -d --update-snapshots",
       "@db:recreate:test",

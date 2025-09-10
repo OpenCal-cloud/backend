@@ -2907,7 +2907,9 @@ components:
             - string
             - 'null'
         meetingProviderIdentifier:
-          type: string
+          type:
+            - string
+            - 'null'
         participationUrl:
           type:
             - string
@@ -2965,7 +2967,9 @@ components:
             - string
             - 'null'
         meetingProviderIdentifier:
-          type: string
+          type:
+            - string
+            - 'null'
     Event.jsonld-event.read:
       type: object
       description: ''
@@ -3032,7 +3036,9 @@ components:
             - string
             - 'null'
         meetingProviderIdentifier:
-          type: string
+          type:
+            - string
+            - 'null'
         participationUrl:
           type:
             - string
@@ -3090,7 +3096,9 @@ components:
             - string
             - 'null'
         meetingProviderIdentifier:
-          type: string
+          type:
+            - string
+            - 'null'
     EventType-event.read:
       type: object
       description: ''
