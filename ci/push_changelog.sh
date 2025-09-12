@@ -17,13 +17,13 @@ fi
 git checkout -b "add_changelog_$CI_COMMIT_TAG"
 
 mkdir -p docs/changelog/backend/
-mv ../release_notes.md "docs/changelog/backend/$CI_COMMIT_TAG.md"
+cp ../release_notes.md "docs/changelog/backend/$CI_COMMIT_TAG.md"
 git add "docs/changelog/backend/$CI_COMMIT_TAG.md"
 git commit -m "add changelog file docs/changelog/backend/$CI_COMMIT_TAG.md"
 git push -u origin "add_changelog_$CI_COMMIT_TAG"
 
-curl -H "PRIVATE-TOKEN: $CI_API_TOKEN" \
+curl -H "PRIVATE-TOKEN: $OPENCAL_PUSH_RELEASE_NOTES_ACCESS_TOKEN" \
      -X POST \
      -H "Content-Type: application/json" \
-     -d "{\"id\": $CI_PROJECT_ID, \"source_branch\": \"add_changelog_$CI_COMMIT_TAG\", \"target_branch\": \"main\", \"title\": \"Changelog for backend $CI_COMMIT_TAG\"}" \
+     -d "{\"id\": 96, \"source_branch\": \"add_changelog_$CI_COMMIT_TAG\", \"target_branch\": \"main\", \"title\": \"Changelog backend $CI_COMMIT_TAG\"}" \
      "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests"
