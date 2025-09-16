@@ -107,6 +107,9 @@ class Event
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $participationUrl = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $reminderSentAt = null;
+
     public function getId(): int
     {
         return $this->id;
@@ -265,6 +268,18 @@ class Event
     public function setParticipationUrl(?string $participationUrl): static
     {
         $this->participationUrl = $participationUrl;
+
+        return $this;
+    }
+
+    public function getReminderSentAt(): ?\DateTimeImmutable
+    {
+        return $this->reminderSentAt;
+    }
+
+    public function setReminderSentAt(?\DateTimeImmutable $reminderSentAt): static
+    {
+        $this->reminderSentAt = $reminderSentAt;
 
         return $this;
     }

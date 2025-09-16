@@ -104,6 +104,17 @@ lint_dockerfile:
       codequality:
         - "hadolint-code-climate.json"
 
+lint_crontab:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH)
+  needs:
+    - commit_message_check
+  stage: checks
+  image: git.var-lab.com:5050/opencal/docker-ci-image:latest
+  script:
+    - crontab docker/crontab
+
 openapi_diff:
   rules:
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
@@ -122,6 +133,7 @@ unit_tests:
   needs:
     - security_checks
     - lint_dockerfile
+    - lint_crontab
     - openapi_diff
     - static_analysis
     - shellcheck

@@ -1,2 +1,3 @@
-*/15 * * * * php /srv/app/bin/console opencal:sync:caldav -v --env=$APP_ENV >> /dev/stdout 2>&1
+*/15 * * * *echo "Run opencal:sync:caldav cronjob" && php /srv/app/bin/console opencal:sync:caldav -v --env=$APP_ENV >> /dev/stdout
+* * * * * echo "Run opencal:reminders:populate cronjob" && php /srv/app/bin/console opencal:reminders:populate -v --env=$APP_ENV >> /dev/stdout
 # crontab requires empty line at end of file

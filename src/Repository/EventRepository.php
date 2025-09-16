@@ -9,6 +9,7 @@ use App\Entity\Event;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Safe\DateTime;
 
 /** @extends ServiceEntityRepository<Event> */
 class EventRepository extends ServiceEntityRepository
@@ -65,6 +66,25 @@ class EventRepository extends ServiceEntityRepository
             ->andWhere('event.syncHash NOT IN (:e_tag_list)')
             ->setParameter('auth_id', $auth->getId())
             ->setParameter('e_tag_list', $eTagList)
+            ->getQuery()
+            ->getResult();
+
+        return $result;
+    }
+
+    /** @return array<Event> */
+    public function findUpcomingEvents(): array
+    {
+        /** @var array<Event> $result */
+        $result = $this->createQueryBuilder('event')
+            ->where('event.syncHash IS NULL')
+            ->andWhere('event.day >= DATE(:date_yesterday) AND event.day <= DATE(:date_tomorrow)')
+            ->andWhere('event.startTime >= TIME(:time_now) AND event.startTime <= TIME(:time_p30m)')
+            ->andWhere('event.syncHash IS NULL')
+            ->setParameter('date_yesterday', new DateTime('yesterday')->format('Y-m-d'))
+            ->setParameter('date_tomorrow', new DateTime('tomorrow')->format('Y-m-d'))
+            ->setParameter('time_now', new DateTime('now')->format('H:i:s'))
+            ->setParameter('time_p30m', new DateTime('now +30 min')->format('H:i:s'))
             ->getQuery()
             ->getResult();
 

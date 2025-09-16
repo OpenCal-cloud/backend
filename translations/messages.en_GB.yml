@@ -9,7 +9,7 @@ mails:
       
       Please click the following link to set a new password for your OpenCal account: {reset_url}
       ---
-          This email was automatically sent using the open-source booking tool OpenCal.
+      This email was automatically sent by OpenCal, an open-source booking tool.
 
   booking:
     new:
@@ -31,7 +31,7 @@ mails:
           
           Manage appointments: {frontend_url}/dashboard
           ---
-          This email was automatically sent using the open-source booking tool OpenCal.
+          This email was automatically sent by OpenCal, an open-source booking tool.
       to_attendee:
         subject: 'Confirmation: {event_type_name} with {given_name} {family_name} on {booking_date} at {time_from}'
         message: |
@@ -47,7 +47,7 @@ mails:
           
           Cancel this appointment: {cancellation_url}
           ---
-          This email was automatically sent using the open-source booking tool OpenCal.
+          This email was automatically sent by OpenCal, an open-source booking tool.
 
     cancellation:
       to_host:
@@ -65,4 +65,42 @@ mails:
           
           Manage appointments: {frontend_url}/dashboard
           ---
-          This email was automatically sent using the open-source booking tool OpenCal.
+          This email was automatically sent by OpenCal, an open-source booking tool.
+
+  event_reminder:
+    to_host:
+      subject: 'Reminder: {attendee_name} - {time_from}, {booking_date} - {event_type_name}'
+      message: |
+        Hello {given_name} {family_name},
+        
+        Just a quick reminder that your appointment with {attendee_name} starts at {time_from} today.
+        
+        Event details:
+        {event_type_name} ({duration}min)
+        
+        Location: {location_name}
+        
+        Attendee's email address:
+        {email_attendee}
+        
+        Manage appointments: {frontend_url}/dashboard
+        ---
+        This email was automatically sent by OpenCal, an open-source booking tool.
+
+    to_attendee:
+      subject: 'Reminder: {event_type_name} with {given_name} {family_name} on {booking_date} at {time_from}'
+      message: |
+        Hello {attendee_name},
+        
+        Just a quick reminder that your appointment with {given_name} {family_name} starts at {time_from} today.
+        
+        Event details:
+        {event_type_name} ({duration}min)
+        
+        Location: {location_name}
+        
+        Organizer: {given_name} {family_name} ({host_email})
+        
+        Cancel this appointment: {cancellation_url}
+        ---
+        This email was automatically sent by OpenCal, an open-source booking tool.

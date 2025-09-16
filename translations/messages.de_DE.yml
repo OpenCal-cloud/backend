@@ -68,3 +68,41 @@ mails:
           Termine verwalten: {frontend_url}/dashboard
           ---
           Diese E-Mail wurde automatisch über das Open-Source-Buchungstool OpenCal versendet.
+
+  event_reminder:
+    to_host:
+      subject: 'Erinnerung: {attendee_name} - {time_from}, {booking_date} - {event_type_name}'
+      message: |
+        Hallo {given_name} {family_name},
+        
+        zur Erinnerung: Dein Termin mit {attendee_name} startet heute um {time_from}.
+        
+        Details zum Termin:
+        {event_type_name} ({duration}min)
+        
+        Ort: {location_name}
+        
+        E-Mail-Adresse des Teilnehmenden:
+        {email_attendee}
+        
+        Terminbuchungen verwalten: {frontend_url}/dashboard
+        ---
+        Diese E-Mail wurde automatisch über das Open-Source-Buchungstool OpenCal versendet.
+
+    to_attendee:
+      subject: 'Erinnerung: {event_type_name} ,it {given_name} {family_name} am {booking_date} um {time_from}'
+      message: |
+        Hello {attendee_name},
+        
+        zur Erinnerung: Dein Termin mit {given_name} {family_name} startet heute um {time_from}.
+        
+        Event details:
+        {event_type_name} ({duration}min)
+        
+        Location: {location_name}
+        
+        Organizer: {given_name} {family_name} ({host_email})
+        
+        Termin absagen: {cancellation_url}
+        ---
+        Diese E-Mail wurde automatisch über das Open-Source-Buchungstool OpenCal versendet.
