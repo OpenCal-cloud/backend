@@ -429,6 +429,83 @@ paths:
           explode: false
           allowReserved: false
       deprecated: false
+  /availability_check/month:
+    get:
+      operationId: api_availability_checkmonth_get_collection
+      tags:
+        - Availability
+      responses:
+        '200':
+          description: 'Availability collection'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Availability-availability.read'
+            application/ld+json:
+              schema:
+                type: object
+                properties:
+                  member: { type: array, items: { $ref: '#/components/schemas/Availability.jsonld-availability.read' } }
+                  totalItems: { type: integer, minimum: 0 }
+                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
+                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
+                required:
+                  - member
+      summary: 'Retrieves the collection of Availability resources.'
+      description: 'Retrieves the collection of Availability resources.'
+      parameters:
+        -
+          name: page
+          in: query
+          description: 'The collection page number'
+          required: false
+          deprecated: false
+          allowEmptyValue: true
+          schema:
+            type: integer
+            default: 1
+          style: form
+          explode: false
+          allowReserved: false
+        -
+          name: event_type_id
+          in: query
+          description: 'Availability event_type_id'
+          required: false
+          deprecated: false
+          allowEmptyValue: false
+          schema:
+            type: string
+          style: form
+          explode: false
+          allowReserved: false
+        -
+          name: date
+          in: query
+          description: 'Availability date'
+          required: false
+          deprecated: false
+          allowEmptyValue: false
+          schema:
+            type: string
+          style: form
+          explode: false
+          allowReserved: false
+        -
+          name: email
+          in: query
+          description: 'Availability email'
+          required: false
+          deprecated: false
+          allowEmptyValue: false
+          schema:
+            type: string
+          style: form
+          explode: false
+          allowReserved: false
+      deprecated: false
   /cal_dav_auths:
     get:
       operationId: api_cal_dav_auths_get_collection

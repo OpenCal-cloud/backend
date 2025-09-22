@@ -1,0 +1,64 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\State;
+
+use ApiPlatform\Metadata\Operation;
+use ApiPlatform\State\ProviderInterface;
+use App\Availability\AvailabilityService;
+use App\Entity\EventType;
+use App\Repository\EventTypeRepository;
+use Safe\DateTime;
+
+/** @phpstan-ignore-next-line */
+class MonthAvailabilityStateProvider implements ProviderInterface
+{
+    public function __construct(
+        private readonly AvailabilityService $availabilityService,
+        private readonly EventTypeRepository $eventTypeRepository,
+    ) {
+    }
+
+    /** @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter */
+    public function provide(Operation $operation, array $uriVariables = [], array $context = []): object|array|null
+    {
+        /** @var array{
+         *     email: string,
+         *     date: string,
+         *     event_type_id: string,
+        } $filters */
+        $filters = $context['filters'] ?? [];
+
+        $dayDT = new DateTime($filters['date']);
+
+        $eventType = $this
+            ->eventTypeRepository
+            ->find(\intval($filters['event_type_id']));
+
+        if (!$eventType instanceof EventType) {
+            return [];
+        }
+
+        $dateInterval = new \DateInterval('P1D');
+        $datePeriod   = new \DatePeriod(
+            new DateTime($dayDT->modify('first day of this month')->format('Y-m-d')),
+            $dateInterval,
+            new DateTime($dayDT->modify('last day of this month')->format('Y-m-d')),
+            \DatePeriod::INCLUDE_END_DATE,
+        );
+
+        $data = [];
+
+        foreach ($datePeriod as $day) {
+            $availability = $this->availabilityService->getDayAvailability($day, $eventType);
+
+            $data[] = [
+                'day'             => $day->format('Y-m-d'),
+                'count_timeslots' => \count($availability),
+            ];
+        }
+
+        return $data; // @phpstan-ignore-line
+    }
+}

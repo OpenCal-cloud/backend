@@ -11,6 +11,7 @@ use App\Entity\Unavailability;
 use App\Repository\AvailabilityRepository;
 use App\Repository\EventRepository;
 use App\Repository\UnavailabilityRepository;
+use DateTime as NativeDateTime;
 use Safe\DateTime;
 use function Safe\strtotime;
 
@@ -32,7 +33,7 @@ class AvailabilityService
     }
 
     /** @return list<array<string, string>> */
-    public function getDayAvailability(DateTime $day, EventType $eventType): array
+    public function getDayAvailability(NativeDateTime $day, EventType $eventType): array
     {
         $weekDay = $day->format('l');
 
