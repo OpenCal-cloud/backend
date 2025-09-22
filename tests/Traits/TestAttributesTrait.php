@@ -39,6 +39,7 @@ trait TestAttributesTrait
                                 $refClass   = new \ReflectionClass($item);
                                 $propValues = $refClass->getProperties();
 
+                                /** @phpstan-ignore-next-line */
                                 $data[$attribute->getName()][$item::class] = [];
 
                                 foreach ($propValues as $property) {

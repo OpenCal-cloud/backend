@@ -42,26 +42,26 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ORM\Entity(repositoryClass: CalDavAuthRepository::class)]
 class CalDavAuth
 {
+    #[Groups(['cal-dav-auth:read'])]
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
-    #[Groups(['cal-dav-auth:read'])]
     private int $id;
 
-    #[ORM\Column]
     #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write'])]
+    #[ORM\Column]
     private bool $enabled;
 
-    #[ORM\Column(length: 255)]
     #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write', 'log:read'])]
+    #[ORM\Column(length: 255)]
     private string $baseUri;
 
-    #[ORM\Column(length: 255)]
     #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write', 'log:read'])]
+    #[ORM\Column(length: 255)]
     private string $username;
 
-    #[ORM\Column(length: 255)]
     #[Groups(['cal-dav-auth:read', 'cal-dav-auth:write'])]
+    #[ORM\Column(length: 255)]
     private string $password;
 
     #[ORM\JoinColumn(nullable: false)]
@@ -76,8 +76,8 @@ class CalDavAuth
     #[ORM\OneToMany(targetEntity: CalDavSyncLog::class, mappedBy: 'calDavAuth', orphanRemoval: true)]
     private Collection $calDavSyncLogs;
 
-    #[ORM\Column(nullable: true)]
     #[Groups(['cal-dav-auth:read'])]
+    #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $syncedAt = null;
 
     public function __construct()

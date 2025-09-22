@@ -25,13 +25,10 @@ paths:
             application/ld+json:
               schema:
                 type: object
-                properties:
-                  member: { type: array, items: { $ref: '#/components/schemas/Availability.jsonld-availabilities.read' } }
-                  totalItems: { type: integer, minimum: 0 }
-                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
-                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
-                required:
-                  - member
+                description: 'Availability.jsonld-availabilities.read collection.'
+                allOf:
+                  - { $ref: '#/components/schemas/HydraCollectionBaseSchema' }
+                  - { type: object, properties: { member: { type: array, items: { $ref: '#/components/schemas/Availability.jsonld-availabilities.read' } } } }
         '403':
           description: Forbidden
           content:
@@ -54,40 +51,33 @@ paths:
           description: 'The collection page number'
           required: false
           deprecated: false
-          allowEmptyValue: true
           schema:
             type: integer
             default: 1
           style: form
           explode: false
-          allowReserved: false
         -
           name: dayOfWeek
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
         -
           name: 'dayOfWeek[]'
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: array
             items:
               type: string
           style: form
           explode: true
-          allowReserved: false
-      deprecated: false
     post:
       operationId: api_availabilities_post
       tags:
@@ -121,13 +111,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
         '403':
           description: Forbidden
@@ -155,7 +145,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Availability.jsonld-availabilities.write'
         required: true
-      deprecated: false
   '/availabilities/{id}':
     get:
       operationId: api_availabilities_id_get
@@ -206,13 +195,10 @@ paths:
           description: 'Availability identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
-      deprecated: false
     delete:
       operationId: api_availabilities_id_delete
       tags:
@@ -255,13 +241,10 @@ paths:
           description: 'Availability identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
-      deprecated: false
     patch:
       operationId: api_availabilities_id_patch
       tags:
@@ -295,13 +278,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
         '403':
           description: Forbidden
@@ -338,12 +321,10 @@ paths:
           description: 'Availability identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
       requestBody:
         description: 'The updated Availability resource'
         content:
@@ -351,7 +332,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Availability-availabilities.write'
         required: true
-      deprecated: false
   /availability_check/day:
     get:
       operationId: api_availability_checkday_get_collection
@@ -369,13 +349,10 @@ paths:
             application/ld+json:
               schema:
                 type: object
-                properties:
-                  member: { type: array, items: { $ref: '#/components/schemas/Availability.jsonld-availability.read' } }
-                  totalItems: { type: integer, minimum: 0 }
-                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
-                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
-                required:
-                  - member
+                description: 'Availability.jsonld-availability.read collection.'
+                allOf:
+                  - { $ref: '#/components/schemas/HydraCollectionBaseSchema' }
+                  - { type: object, properties: { member: { type: array, items: { $ref: '#/components/schemas/Availability.jsonld-availability.read' } } } }
       summary: 'Retrieves the collection of Availability resources.'
       description: 'Retrieves the collection of Availability resources.'
       parameters:
@@ -385,50 +362,41 @@ paths:
           description: 'The collection page number'
           required: false
           deprecated: false
-          allowEmptyValue: true
           schema:
             type: integer
             default: 1
           style: form
           explode: false
-          allowReserved: false
         -
           name: event_type_id
           in: query
           description: 'Availability event_type_id'
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
         -
           name: date
           in: query
           description: 'Availability date'
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
         -
           name: email
           in: query
           description: 'Availability email'
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
-      deprecated: false
   /availability_check/month:
     get:
       operationId: api_availability_checkmonth_get_collection
@@ -446,13 +414,10 @@ paths:
             application/ld+json:
               schema:
                 type: object
-                properties:
-                  member: { type: array, items: { $ref: '#/components/schemas/Availability.jsonld-availability.read' } }
-                  totalItems: { type: integer, minimum: 0 }
-                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
-                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
-                required:
-                  - member
+                description: 'Availability.jsonld-availability.read collection.'
+                allOf:
+                  - { $ref: '#/components/schemas/HydraCollectionBaseSchema' }
+                  - { type: object, properties: { member: { type: array, items: { $ref: '#/components/schemas/Availability.jsonld-availability.read' } } } }
       summary: 'Retrieves the collection of Availability resources.'
       description: 'Retrieves the collection of Availability resources.'
       parameters:
@@ -462,50 +427,41 @@ paths:
           description: 'The collection page number'
           required: false
           deprecated: false
-          allowEmptyValue: true
           schema:
             type: integer
             default: 1
           style: form
           explode: false
-          allowReserved: false
         -
           name: event_type_id
           in: query
           description: 'Availability event_type_id'
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
         -
           name: date
           in: query
           description: 'Availability date'
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
         -
           name: email
           in: query
           description: 'Availability email'
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
-      deprecated: false
   /cal_dav_auths:
     get:
       operationId: api_cal_dav_auths_get_collection
@@ -523,13 +479,10 @@ paths:
             application/ld+json:
               schema:
                 type: object
-                properties:
-                  member: { type: array, items: { $ref: '#/components/schemas/CalDavAuth.jsonld-cal-dav-auth.read' } }
-                  totalItems: { type: integer, minimum: 0 }
-                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
-                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
-                required:
-                  - member
+                description: 'CalDavAuth.jsonld-cal-dav-auth.read collection.'
+                allOf:
+                  - { $ref: '#/components/schemas/HydraCollectionBaseSchema' }
+                  - { type: object, properties: { member: { type: array, items: { $ref: '#/components/schemas/CalDavAuth.jsonld-cal-dav-auth.read' } } } }
         '403':
           description: Forbidden
           content:
@@ -552,14 +505,11 @@ paths:
           description: 'The collection page number'
           required: false
           deprecated: false
-          allowEmptyValue: true
           schema:
             type: integer
             default: 1
           style: form
           explode: false
-          allowReserved: false
-      deprecated: false
     post:
       operationId: api_cal_dav_auths_post
       tags:
@@ -593,13 +543,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
         '403':
           description: Forbidden
@@ -627,7 +577,6 @@ paths:
             schema:
               $ref: '#/components/schemas/CalDavAuth.jsonld-cal-dav-auth.write'
         required: true
-      deprecated: false
   '/cal_dav_auths/{id}':
     get:
       operationId: api_cal_dav_auths_id_get
@@ -678,13 +627,10 @@ paths:
           description: 'CalDavAuth identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
-      deprecated: false
     delete:
       operationId: api_cal_dav_auths_id_delete
       tags:
@@ -727,13 +673,10 @@ paths:
           description: 'CalDavAuth identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
-      deprecated: false
     patch:
       operationId: api_cal_dav_auths_id_patch
       tags:
@@ -767,13 +710,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
         '403':
           description: Forbidden
@@ -810,12 +753,10 @@ paths:
           description: 'CalDavAuth identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
       requestBody:
         description: 'The updated CalDavAuth resource'
         content:
@@ -823,7 +764,6 @@ paths:
             schema:
               $ref: '#/components/schemas/CalDavAuth-cal-dav-auth.write'
         required: true
-      deprecated: false
   /cal_dav_sync_logs:
     get:
       operationId: api_cal_dav_sync_logs_get_collection
@@ -841,13 +781,10 @@ paths:
             application/ld+json:
               schema:
                 type: object
-                properties:
-                  member: { type: array, items: { $ref: '#/components/schemas/CalDavSyncLog.jsonld-log.read' } }
-                  totalItems: { type: integer, minimum: 0 }
-                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
-                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
-                required:
-                  - member
+                description: 'CalDavSyncLog.jsonld-log.read collection.'
+                allOf:
+                  - { $ref: '#/components/schemas/HydraCollectionBaseSchema' }
+                  - { type: object, properties: { member: { type: array, items: { $ref: '#/components/schemas/CalDavSyncLog.jsonld-log.read' } } } }
         '403':
           description: Forbidden
           content:
@@ -870,100 +807,83 @@ paths:
           description: 'The collection page number'
           required: false
           deprecated: false
-          allowEmptyValue: true
           schema:
             type: integer
             default: 1
           style: form
           explode: false
-          allowReserved: false
         -
           name: calDavAuth.id
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: integer
           style: form
           explode: false
-          allowReserved: false
         -
           name: 'calDavAuth.id[]'
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: array
             items:
               type: integer
           style: form
           explode: true
-          allowReserved: false
         -
           name: 'createdAt[before]'
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
         -
           name: 'createdAt[strictly_before]'
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
         -
           name: 'createdAt[after]'
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
         -
           name: 'createdAt[strictly_after]'
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
         -
           name: failed
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: boolean
           style: form
           explode: false
-          allowReserved: false
-      deprecated: false
   '/events/{id}/cancel':
     post:
       operationId: api_events_idcancel_post
@@ -998,13 +918,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
       summary: 'Creates a CancelEvent resource.'
       description: 'Cancels a specific event. Requires a valid cancellationHash to authorize the cancellation.'
@@ -1015,12 +935,10 @@ paths:
           description: 'CancelEvent identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
       requestBody:
         description: 'The cancellation hash'
         content:
@@ -1031,7 +949,6 @@ paths:
             schema:
               $ref: '#/components/schemas/CancelEvent.jsonld'
         required: false
-      deprecated: false
   /events:
     get:
       operationId: api_events_get_collection
@@ -1049,13 +966,10 @@ paths:
             application/ld+json:
               schema:
                 type: object
-                properties:
-                  member: { type: array, items: { $ref: '#/components/schemas/Event.jsonld-event.read' } }
-                  totalItems: { type: integer, minimum: 0 }
-                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
-                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
-                required:
-                  - member
+                description: 'Event.jsonld-event.read collection.'
+                allOf:
+                  - { $ref: '#/components/schemas/HydraCollectionBaseSchema' }
+                  - { type: object, properties: { member: { type: array, items: { $ref: '#/components/schemas/Event.jsonld-event.read' } } } }
         '403':
           description: Forbidden
           content:
@@ -1078,14 +992,11 @@ paths:
           description: 'The collection page number'
           required: false
           deprecated: false
-          allowEmptyValue: true
           schema:
             type: integer
             default: 1
           style: form
           explode: false
-          allowReserved: false
-      deprecated: false
     post:
       operationId: api_events_post
       tags:
@@ -1119,13 +1030,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
       summary: 'Creates a Event resource.'
       description: 'Creates a Event resource.'
@@ -1140,7 +1051,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Event.jsonld-event.write'
         required: true
-      deprecated: false
   '/events/{id}':
     get:
       operationId: api_events_id_get
@@ -1178,13 +1088,10 @@ paths:
           description: 'Event identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
-      deprecated: false
     delete:
       operationId: api_events_id_delete
       tags:
@@ -1227,13 +1134,10 @@ paths:
           description: 'Event identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
-      deprecated: false
     patch:
       operationId: api_events_id_patch
       tags:
@@ -1267,13 +1171,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
         '404':
           description: 'Not found'
@@ -1297,12 +1201,10 @@ paths:
           description: 'Event identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
       requestBody:
         description: 'The updated Event resource'
         content:
@@ -1310,7 +1212,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Event-event.write'
         required: true
-      deprecated: false
   /event_types:
     get:
       operationId: api_event_types_get_collection
@@ -1328,13 +1229,10 @@ paths:
             application/ld+json:
               schema:
                 type: object
-                properties:
-                  member: { type: array, items: { $ref: '#/components/schemas/EventType.jsonld-event_type.read' } }
-                  totalItems: { type: integer, minimum: 0 }
-                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
-                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
-                required:
-                  - member
+                description: 'EventType.jsonld-event_type.read collection.'
+                allOf:
+                  - { $ref: '#/components/schemas/HydraCollectionBaseSchema' }
+                  - { type: object, properties: { member: { type: array, items: { $ref: '#/components/schemas/EventType.jsonld-event_type.read' } } } }
       summary: 'Retrieves the collection of EventType resources.'
       description: 'Retrieves the collection of EventType resources.'
       parameters:
@@ -1344,66 +1242,55 @@ paths:
           description: 'The collection page number'
           required: false
           deprecated: false
-          allowEmptyValue: true
           schema:
             type: integer
             default: 1
           style: form
           explode: false
-          allowReserved: false
         -
           name: host.email
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
         -
           name: 'host.email[]'
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: array
             items:
               type: string
           style: form
           explode: true
-          allowReserved: false
         -
           name: slug
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
         -
           name: 'slug[]'
           in: query
           description: ''
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: array
             items:
               type: string
           style: form
           explode: true
-          allowReserved: false
-      deprecated: false
     post:
       operationId: api_event_types_post
       tags:
@@ -1437,13 +1324,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
         '403':
           description: Forbidden
@@ -1471,7 +1358,6 @@ paths:
             schema:
               $ref: '#/components/schemas/EventType.jsonld-event_type.write'
         required: true
-      deprecated: false
   '/event_types/{id}':
     get:
       operationId: api_event_types_id_get
@@ -1509,13 +1395,10 @@ paths:
           description: 'EventType identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
-      deprecated: false
     delete:
       operationId: api_event_types_id_delete
       tags:
@@ -1558,13 +1441,10 @@ paths:
           description: 'EventType identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
-      deprecated: false
     patch:
       operationId: api_event_types_id_patch
       tags:
@@ -1598,13 +1478,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
         '403':
           description: Forbidden
@@ -1641,12 +1521,10 @@ paths:
           description: 'EventType identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
       requestBody:
         description: 'The updated EventType resource'
         content:
@@ -1654,7 +1532,6 @@ paths:
             schema:
               $ref: '#/components/schemas/EventType-event_type.write'
         required: true
-      deprecated: false
   /holidays:
     get:
       operationId: api_holidays_get_collection
@@ -1672,13 +1549,10 @@ paths:
             application/ld+json:
               schema:
                 type: object
-                properties:
-                  member: { type: array, items: { $ref: '#/components/schemas/Holiday.jsonld' } }
-                  totalItems: { type: integer, minimum: 0 }
-                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
-                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
-                required:
-                  - member
+                description: 'Holiday.jsonld collection.'
+                allOf:
+                  - { $ref: '#/components/schemas/HydraCollectionBaseSchema' }
+                  - { type: object, properties: { member: { type: array, items: { $ref: '#/components/schemas/Holiday.jsonld' } } } }
         '403':
           description: Forbidden
           content:
@@ -1701,38 +1575,31 @@ paths:
           description: 'The collection page number'
           required: false
           deprecated: false
-          allowEmptyValue: true
           schema:
             type: integer
             default: 1
           style: form
           explode: false
-          allowReserved: false
         -
           name: country
           in: query
           description: 'Holiday country'
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
         -
           name: year
           in: query
           description: 'Holiday year'
           required: false
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: form
           explode: false
-          allowReserved: false
-      deprecated: false
   /auth:
     post:
       operationId: login_check_post
@@ -1785,13 +1652,10 @@ paths:
             application/ld+json:
               schema:
                 type: object
-                properties:
-                  member: { type: array, items: { $ref: '#/components/schemas/MeetingProvider.jsonld-meeting_provider.read' } }
-                  totalItems: { type: integer, minimum: 0 }
-                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
-                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
-                required:
-                  - member
+                description: 'MeetingProvider.jsonld-meeting_provider.read collection.'
+                allOf:
+                  - { $ref: '#/components/schemas/HydraCollectionBaseSchema' }
+                  - { type: object, properties: { member: { type: array, items: { $ref: '#/components/schemas/MeetingProvider.jsonld-meeting_provider.read' } } } }
         '403':
           description: Forbidden
           content:
@@ -1814,14 +1678,11 @@ paths:
           description: 'The collection page number'
           required: false
           deprecated: false
-          allowEmptyValue: true
           schema:
             type: integer
             default: 1
           style: form
           explode: false
-          allowReserved: false
-      deprecated: false
   /password/request:
     post:
       operationId: api_passwordrequest_post
@@ -1858,13 +1719,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
       summary: 'Creates a RequestPassword resource.'
       description: 'Creates a RequestPassword resource.'
@@ -1879,7 +1740,6 @@ paths:
             schema:
               $ref: '#/components/schemas/RequestPassword.jsonld'
         required: true
-      deprecated: false
   /password/reset:
     post:
       operationId: api_passwordreset_post
@@ -1916,13 +1776,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
       summary: 'Creates a ResetPassword resource.'
       description: 'Creates a ResetPassword resource.'
@@ -1937,7 +1797,6 @@ paths:
             schema:
               $ref: '#/components/schemas/ResetPassword.jsonld'
         required: true
-      deprecated: false
   /unavailabilities:
     get:
       operationId: api_unavailabilities_get_collection
@@ -1955,13 +1814,10 @@ paths:
             application/ld+json:
               schema:
                 type: object
-                properties:
-                  member: { type: array, items: { $ref: '#/components/schemas/Unavailability.jsonld-unavailabilities.read' } }
-                  totalItems: { type: integer, minimum: 0 }
-                  view: { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, first: { type: string, format: iri-reference }, last: { type: string, format: iri-reference }, previous: { type: string, format: iri-reference }, next: { type: string, format: iri-reference } }, example: { '@id': string, type: string, first: string, last: string, previous: string, next: string } }
-                  search: { type: object, properties: { '@type': { type: string }, template: { type: string }, variableRepresentation: { type: string }, mapping: { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: [string, 'null'] }, required: { type: boolean } } } } } }
-                required:
-                  - member
+                description: 'Unavailability.jsonld-unavailabilities.read collection.'
+                allOf:
+                  - { $ref: '#/components/schemas/HydraCollectionBaseSchema' }
+                  - { type: object, properties: { member: { type: array, items: { $ref: '#/components/schemas/Unavailability.jsonld-unavailabilities.read' } } } }
         '403':
           description: Forbidden
           content:
@@ -1984,14 +1840,11 @@ paths:
           description: 'The collection page number'
           required: false
           deprecated: false
-          allowEmptyValue: true
           schema:
             type: integer
             default: 1
           style: form
           explode: false
-          allowReserved: false
-      deprecated: false
     post:
       operationId: api_unavailabilities_post
       tags:
@@ -2025,13 +1878,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
         '403':
           description: Forbidden
@@ -2059,7 +1912,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Unavailability.jsonld-unavailabilities.write'
         required: true
-      deprecated: false
   '/unavailabilities/{id}':
     get:
       operationId: api_unavailabilities_id_get
@@ -2110,13 +1962,10 @@ paths:
           description: 'Unavailability identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
-      deprecated: false
     delete:
       operationId: api_unavailabilities_id_delete
       tags:
@@ -2159,13 +2008,10 @@ paths:
           description: 'Unavailability identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
-      deprecated: false
     patch:
       operationId: api_unavailabilities_id_patch
       tags:
@@ -2199,13 +2045,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
         '403':
           description: Forbidden
@@ -2242,12 +2088,10 @@ paths:
           description: 'Unavailability identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
       requestBody:
         description: 'The updated Unavailability resource'
         content:
@@ -2255,7 +2099,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Unavailability-unavailabilities.write'
         required: true
-      deprecated: false
   /me:
     get:
       operationId: api_me_get
@@ -2300,7 +2143,6 @@ paths:
       summary: 'Retrieves a User resource.'
       description: 'Retrieves a User resource.'
       parameters: []
-      deprecated: false
   '/me/{id}':
     patch:
       operationId: api_me_id_patch
@@ -2335,13 +2177,13 @@ paths:
           content:
             application/ld+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation.jsonld-jsonld'
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
             application/json:
               schema:
-                $ref: '#/components/schemas/ConstraintViolation-json'
+                $ref: '#/components/schemas/ConstraintViolation'
           links: {  }
         '403':
           description: Forbidden
@@ -2378,12 +2220,10 @@ paths:
           description: 'User identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
       requestBody:
         description: 'The updated User resource'
         content:
@@ -2391,7 +2231,6 @@ paths:
             schema:
               $ref: '#/components/schemas/User-me.write'
         required: true
-      deprecated: false
   '/users/{id}':
     get:
       operationId: api_users_id_get
@@ -2429,19 +2268,14 @@ paths:
           description: 'User identifier'
           required: true
           deprecated: false
-          allowEmptyValue: false
           schema:
             type: string
           style: simple
           explode: false
-          allowReserved: false
-      deprecated: false
 components:
   schemas:
     Availability-availabilities.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
         id:
           readOnly: true
@@ -2456,8 +2290,6 @@ components:
           format: date-time
     Availability-availabilities.write:
       type: object
-      description: ''
-      deprecated: false
       properties:
         dayOfWeek:
           type: string
@@ -2469,51 +2301,26 @@ components:
           format: date-time
     Availability-availability.read:
       type: object
-      description: ''
-      deprecated: false
     Availability.jsonld-availabilities.read:
-      type: object
-      description: ''
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            id:
+              readOnly: true
+              type: integer
+            dayOfWeek:
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        dayOfWeek:
-          type: string
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
+            startTime:
+              type: string
+              format: date-time
+            endTime:
+              type: string
+              format: date-time
     Availability.jsonld-availabilities.write:
       type: object
-      description: ''
-      deprecated: false
       properties:
         dayOfWeek:
           type: string
@@ -2525,19 +2332,8 @@ components:
           format: date-time
     Availability.jsonld-availability.read:
       type: object
-      description: ''
-      deprecated: false
-      properties:
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
     CalDavAuth-cal-dav-auth.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
         id:
           readOnly: true
@@ -2557,8 +2353,6 @@ components:
           format: date-time
     CalDavAuth-cal-dav-auth.write:
       type: object
-      description: ''
-      deprecated: false
       properties:
         enabled:
           type: boolean
@@ -2570,61 +2364,36 @@ components:
           type: string
     CalDavAuth-log.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
         baseUri:
           type: string
         username:
           type: string
     CalDavAuth.jsonld-cal-dav-auth.read:
-      type: object
-      description: ''
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            id:
+              readOnly: true
+              type: integer
+            enabled:
+              type: boolean
+            baseUri:
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        enabled:
-          type: boolean
-        baseUri:
-          type: string
-        username:
-          type: string
-        password:
-          type: string
-        syncedAt:
-          type:
-            - string
-            - 'null'
-          format: date-time
+            username:
+              type: string
+            password:
+              type: string
+            syncedAt:
+              type:
+                - string
+                - 'null'
+              format: date-time
     CalDavAuth.jsonld-cal-dav-auth.write:
       type: object
-      description: ''
-      deprecated: false
       properties:
         enabled:
           type: boolean
@@ -2635,41 +2404,18 @@ components:
         password:
           type: string
     CalDavAuth.jsonld-log.read:
-      type: object
-      description: ''
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            baseUri:
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        baseUri:
-          type: string
-        username:
-          type: string
+            username:
+              type: string
     CalDavSyncLog-log.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
         id:
           readOnly: true
@@ -2693,15 +2439,7 @@ components:
             - 'null'
     CalDavSyncLog.jsonld-log.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
         id:
           readOnly: true
           type: integer
@@ -2724,49 +2462,24 @@ components:
             - 'null'
     CancelEvent:
       type: object
-      description: ''
-      deprecated: false
       properties:
         cancellationHash:
           type: string
     CancelEvent.jsonld:
-      type: object
-      description: ''
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            cancellationHash:
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        cancellationHash:
-          type: string
-    ConstraintViolation-json:
+    ConstraintViolation:
       type: object
       description: 'Unprocessable entity'
-      deprecated: false
       properties:
         status:
           default: 422
-          example: 422
           type: integer
         violations:
           type: array
@@ -2795,72 +2508,46 @@ components:
           type:
             - string
             - 'null'
-    ConstraintViolation.jsonld-jsonld:
-      type: object
-      description: 'Unprocessable entity'
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+    ConstraintViolation.jsonld:
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            status:
+              default: 422
+              type: integer
+            violations:
+              type: array
+              items:
+                type: object
+                properties:
+                  propertyPath: { type: string, description: 'The property path of the violation' }
+                  message: { type: string, description: 'The message associated with the violation' }
+            detail:
+              readOnly: true
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        status:
-          default: 422
-          example: 422
-          type: integer
-        violations:
-          type: array
-          items:
-            type: object
-            properties:
-              propertyPath:
-                type: string
-                description: 'The property path of the violation'
-              message:
-                type: string
-                description: 'The message associated with the violation'
-        detail:
-          readOnly: true
-          type: string
-        description:
-          readOnly: true
-          type: string
-        type:
-          readOnly: true
-          type: string
-        title:
-          readOnly: true
-          type:
-            - string
-            - 'null'
-        instance:
-          readOnly: true
-          type:
-            - string
-            - 'null'
+            description:
+              readOnly: true
+              type: string
+            type:
+              readOnly: true
+              type: string
+            title:
+              readOnly: true
+              type:
+                - string
+                - 'null'
+            instance:
+              readOnly: true
+              type:
+                - string
+                - 'null'
+      description: 'Unprocessable entity'
     Error:
       type: object
       description: 'A representation of common errors.'
-      deprecated: false
       properties:
         title:
           readOnly: true
@@ -2886,65 +2573,43 @@ components:
           description: 'A URI reference that identifies the problem type'
           type: string
     Error.jsonld:
-      type: object
-      description: 'A representation of common errors.'
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            title:
+              readOnly: true
+              description: 'A short, human-readable summary of the problem.'
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        title:
-          readOnly: true
-          description: 'A short, human-readable summary of the problem.'
-          type: string
-        detail:
-          readOnly: true
-          description: 'A human-readable explanation specific to this occurrence of the problem.'
-          type: string
-        status:
-          type: number
-          examples:
-            - 404
-          default: 400
-        instance:
-          readOnly: true
-          description: 'A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced.'
-          type:
-            - string
-            - 'null'
-        type:
-          readOnly: true
-          description: 'A URI reference that identifies the problem type'
-          type: string
-        description:
-          readOnly: true
-          type:
-            - string
-            - 'null'
+            detail:
+              readOnly: true
+              description: 'A human-readable explanation specific to this occurrence of the problem.'
+              type: string
+            status:
+              type: number
+              examples:
+                - 404
+              default: 400
+            instance:
+              readOnly: true
+              description: 'A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced.'
+              type:
+                - string
+                - 'null'
+            type:
+              readOnly: true
+              description: 'A URI reference that identifies the problem type'
+              type: string
+            description:
+              readOnly: true
+              type:
+                - string
+                - 'null'
+      description: 'A representation of common errors.'
     Event-event.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
         id:
           readOnly: true
@@ -3004,8 +2669,6 @@ components:
         - participantEmail
     Event-event.write:
       type: object
-      description: ''
-      deprecated: false
       required:
         - eventType
         - startTime
@@ -3048,93 +2711,70 @@ components:
             - string
             - 'null'
     Event.jsonld-event.read:
-      type: object
-      description: ''
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            id:
+              readOnly: true
+              type: integer
+            eventType:
+              anyOf:
+                -
+                  $ref: '#/components/schemas/EventType.jsonld-event.read'
+                -
+                  type: 'null'
+            startTime:
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        eventType:
-          anyOf:
-            -
-              $ref: '#/components/schemas/EventType.jsonld-event.read'
-            -
-              type: 'null'
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-        day:
-          type: string
-          format: date-time
-        participantName:
-          type:
-            - string
-            - 'null'
-        participantEmail:
-          format: email
-          externalDocs:
-            url: 'https://schema.org/email'
-          type:
-            - string
-            - 'null'
-        participantMessage:
-          type:
-            - string
-            - 'null'
-        cancellationHash:
-          type:
-            - string
-            - 'null'
-        meetingProviderIdentifier:
-          type:
-            - string
-            - 'null'
-        participationUrl:
-          type:
-            - string
-            - 'null'
-        cancelledByAttendee:
-          readOnly: true
-          type:
-            - boolean
-            - 'null'
-      required:
-        - eventType
-        - startTime
-        - endTime
-        - participantName
-        - participantEmail
+              format: date-time
+            endTime:
+              type: string
+              format: date-time
+            day:
+              type: string
+              format: date-time
+            participantName:
+              type:
+                - string
+                - 'null'
+            participantEmail:
+              format: email
+              externalDocs:
+                url: 'https://schema.org/email'
+              type:
+                - string
+                - 'null'
+            participantMessage:
+              type:
+                - string
+                - 'null'
+            cancellationHash:
+              type:
+                - string
+                - 'null'
+            meetingProviderIdentifier:
+              type:
+                - string
+                - 'null'
+            participationUrl:
+              type:
+                - string
+                - 'null'
+            cancelledByAttendee:
+              readOnly: true
+              type:
+                - boolean
+                - 'null'
+          required:
+            - eventType
+            - startTime
+            - endTime
+            - participantName
+            - participantEmail
     Event.jsonld-event.write:
       type: object
-      description: ''
-      deprecated: false
       required:
         - eventType
         - startTime
@@ -3178,8 +2818,6 @@ components:
             - 'null'
     EventType-event.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
         id:
           readOnly: true
@@ -3202,8 +2840,6 @@ components:
         - slug
     EventType-event_type.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
         id:
           readOnly: true
@@ -3232,8 +2868,6 @@ components:
         - slug
     EventType-event_type.write:
       type: object
-      description: ''
-      deprecated: false
       required:
         - name
         - duration
@@ -3254,111 +2888,67 @@ components:
         meetingProviderIdentifiers:
           type: array
           items:
-            type: string
+            type: 'null'
     EventType.jsonld-event.read:
-      type: object
-      description: ''
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            id:
+              readOnly: true
+              type: integer
+            name:
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        name:
-          type: string
-        description:
-          type:
-            - string
-            - 'null'
-        duration:
-          minimum: 5
-          type: integer
-        slug:
-          pattern: '^([a-z0-9-]+)$'
-          type: string
-      required:
-        - name
-        - duration
-        - slug
+            description:
+              type:
+                - string
+                - 'null'
+            duration:
+              minimum: 5
+              type: integer
+            slug:
+              pattern: '^([a-z0-9-]+)$'
+              type: string
+          required:
+            - name
+            - duration
+            - slug
     EventType.jsonld-event_type.read:
-      type: object
-      description: ''
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            id:
+              readOnly: true
+              type: integer
+            name:
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        name:
-          type: string
-        description:
-          type:
-            - string
-            - 'null'
-        duration:
-          minimum: 5
-          type: integer
-        slug:
-          pattern: '^([a-z0-9-]+)$'
-          type: string
-        host:
-          $ref: '#/components/schemas/User.jsonld-event_type.read'
-        meetingProviders:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventTypeMeetingProvider.jsonld-event_type.read'
-      required:
-        - name
-        - duration
-        - slug
+            description:
+              type:
+                - string
+                - 'null'
+            duration:
+              minimum: 5
+              type: integer
+            slug:
+              pattern: '^([a-z0-9-]+)$'
+              type: string
+            host:
+              $ref: '#/components/schemas/User.jsonld-event_type.read'
+            meetingProviders:
+              type: array
+              items:
+                $ref: '#/components/schemas/EventTypeMeetingProvider.jsonld-event_type.read'
+          required:
+            - name
+            - duration
+            - slug
     EventType.jsonld-event_type.write:
       type: object
-      description: ''
-      deprecated: false
       required:
         - name
         - duration
@@ -3379,11 +2969,9 @@ components:
         meetingProviderIdentifiers:
           type: array
           items:
-            type: string
+            type: 'null'
     EventTypeMeetingProvider-event_type.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
         id:
           readOnly: true
@@ -3396,32 +2984,7 @@ components:
           type: string
     EventTypeMeetingProvider.jsonld-event_type.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
-              type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
         id:
           readOnly: true
           type: integer
@@ -3433,8 +2996,6 @@ components:
           type: string
     Holiday:
       type: object
-      description: ''
-      deprecated: false
       properties:
         country:
           type: string
@@ -3449,15 +3010,7 @@ components:
           type: string
     Holiday.jsonld:
       type: object
-      description: ''
-      deprecated: false
       properties:
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
         country:
           type: string
         year:
@@ -3469,10 +3022,89 @@ components:
           type: string
         name:
           type: string
+    HydraCollectionBaseSchema:
+      type: object
+      required:
+        - member
+      properties:
+        member:
+          type: array
+        totalItems:
+          type: integer
+          minimum: 0
+        view:
+          type: object
+          properties:
+            '@id':
+              type: string
+              format: iri-reference
+            '@type':
+              type: string
+            first:
+              type: string
+              format: iri-reference
+            last:
+              type: string
+              format: iri-reference
+            previous:
+              type: string
+              format: iri-reference
+            next:
+              type: string
+              format: iri-reference
+          example:
+            '@id': string
+            type: string
+            first: string
+            last: string
+            previous: string
+            next: string
+        search:
+          type: object
+          properties:
+            '@type':
+              type: string
+            template:
+              type: string
+            variableRepresentation:
+              type: string
+            mapping:
+              type: array
+              items:
+                type: object
+                properties:
+                  '@type': { type: string }
+                  variable: { type: string }
+                  property: { type: [string, 'null'] }
+                  required: { type: boolean }
+    HydraItemBaseSchema:
+      required:
+        - '@id'
+        - '@type'
+      type: object
+      properties:
+        '@context':
+          oneOf:
+            -
+              type: string
+            -
+              type: object
+              properties:
+                '@vocab':
+                  type: string
+                hydra:
+                  type: string
+                  enum: ['http://www.w3.org/ns/hydra/core#']
+              required:
+                - '@vocab'
+                - hydra
+              additionalProperties: true
+        '@id':
+          type: string
+        '@type':
+          type: string
     MeetingProvider-meeting_provider.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
         identifier:
           type: string
@@ -3482,15 +3114,7 @@ components:
           type: boolean
     MeetingProvider.jsonld-meeting_provider.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
         identifier:
           type: string
         name:
@@ -3499,45 +3123,20 @@ components:
           type: boolean
     RequestPassword:
       type: object
-      description: ''
-      deprecated: false
       properties:
         email:
           type: string
     RequestPassword.jsonld:
-      type: object
-      description: ''
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            email:
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        email:
-          type: string
     ResetPassword:
       type: object
-      description: ''
-      deprecated: false
       properties:
         token:
           type: string
@@ -3546,43 +3145,20 @@ components:
         password:
           type: string
     ResetPassword.jsonld:
-      type: object
-      description: ''
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            token:
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        token:
-          type: string
-        email:
-          type: string
-        password:
-          type: string
+            email:
+              type: string
+            password:
+              type: string
     Unavailability-unavailabilities.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
         id:
           readOnly: true
@@ -3605,8 +3181,6 @@ components:
             - 'null'
     Unavailability-unavailabilities.write:
       type: object
-      description: ''
-      deprecated: false
       properties:
         dayOfWeek:
           type: string
@@ -3625,56 +3199,33 @@ components:
             - boolean
             - 'null'
     Unavailability.jsonld-unavailabilities.read:
-      type: object
-      description: ''
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            id:
+              readOnly: true
+              type: integer
+            dayOfWeek:
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        dayOfWeek:
-          type: string
-        startTime:
-          type:
-            - string
-            - 'null'
-          format: date-time
-        endTime:
-          type:
-            - string
-            - 'null'
-          format: date-time
-        fullDay:
-          type:
-            - boolean
-            - 'null'
+            startTime:
+              type:
+                - string
+                - 'null'
+              format: date-time
+            endTime:
+              type:
+                - string
+                - 'null'
+              format: date-time
+            fullDay:
+              type:
+                - boolean
+                - 'null'
     Unavailability.jsonld-unavailabilities.write:
       type: object
-      description: ''
-      deprecated: false
       properties:
         dayOfWeek:
           type: string
@@ -3694,8 +3245,6 @@ components:
             - 'null'
     User-event_type.read:
       type: object
-      description: ''
-      deprecated: false
       required:
         - givenName
         - familyName
@@ -3706,8 +3255,6 @@ components:
           type: string
     User-me.read:
       type: object
-      description: ''
-      deprecated: false
       properties:
         id:
           readOnly: true
@@ -3731,8 +3278,6 @@ components:
         - familyName
     User-me.write:
       type: object
-      description: ''
-      deprecated: false
       properties:
         id:
           readOnly: true
@@ -3751,88 +3296,46 @@ components:
         - givenName
         - familyName
     User.jsonld-event_type.read:
-      type: object
-      description: ''
-      deprecated: false
-      required:
-        - givenName
-        - familyName
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          required:
+            - givenName
+            - familyName
+          properties:
+            givenName:
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        givenName:
-          type: string
-        familyName:
-          type: string
+            familyName:
+              type: string
     User.jsonld-me.read:
-      type: object
-      description: ''
-      deprecated: false
-      properties:
-        '@context':
-          readOnly: true
-          oneOf:
-            -
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            id:
+              readOnly: true
+              type: integer
+            email:
+              format: email
+              externalDocs:
+                url: 'https://schema.org/email'
               type: string
-            -
-              type: object
-              properties:
-                '@vocab':
-                  type: string
-                hydra:
-                  type: string
-                  enum: ['http://www.w3.org/ns/hydra/core#']
-              required:
-                - '@vocab'
-                - hydra
-              additionalProperties: true
-        '@id':
-          readOnly: true
-          type: string
-        '@type':
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        email:
-          format: email
-          externalDocs:
-            url: 'https://schema.org/email'
-          type: string
-        roles:
-          type: array
-          items:
-            type: string
-        givenName:
-          type: string
-        familyName:
-          type: string
-      required:
-        - email
-        - givenName
-        - familyName
+            roles:
+              type: array
+              items:
+                type: string
+            givenName:
+              type: string
+            familyName:
+              type: string
+          required:
+            - email
+            - givenName
+            - familyName
   responses: {  }
   parameters: {  }
   examples: {  }
@@ -3849,26 +3352,38 @@ security:
 tags:
   -
     name: Availability
+    description: "Resource 'Availability' operations."
   -
     name: CancelEvent
+    description: "Resource 'CancelEvent' operations."
   -
     name: Holiday
+    description: "Resource 'Holiday' operations."
   -
     name: MeetingProvider
+    description: "Resource 'MeetingProvider' operations."
   -
     name: RequestPassword
+    description: "Resource 'RequestPassword' operations."
   -
     name: ResetPassword
+    description: "Resource 'ResetPassword' operations."
   -
     name: CalDavAuth
+    description: "Resource 'CalDavAuth' operations."
   -
     name: CalDavSyncLog
+    description: "Resource 'CalDavSyncLog' operations."
   -
     name: Event
+    description: "Resource 'Event' operations."
   -
     name: EventType
+    description: "Resource 'EventType' operations."
   -
     name: Unavailability
+    description: "Resource 'Unavailability' operations."
   -
     name: User
+    description: "Resource 'User' operations."
 webhooks: {  }

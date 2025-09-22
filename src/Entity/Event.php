@@ -42,52 +42,52 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 class Event
 {
+    #[Groups(['event:read'])]
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
-    #[Groups(['event:read'])]
     private int $id;
 
-    #[ORM\JoinColumn(nullable: true)]
-    #[ORM\ManyToOne(targetEntity: EventType::class, cascade: ['persist'], inversedBy: 'events')]
-    #[Groups(['event:read', 'event:write'])]
     #[Assert\NotBlank]
     #[Assert\Type(
         type: 'App\Entity\EventType',
     )]
+    #[Groups(['event:read', 'event:write'])]
+    #[ORM\JoinColumn(nullable: true)]
+    #[ORM\ManyToOne(targetEntity: EventType::class, cascade: ['persist'], inversedBy: 'events')]
     private ?EventType $eventType = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: false)]
-    #[Groups(['event:read', 'event:write'])]
     #[Assert\NotBlank]
+    #[Groups(['event:read', 'event:write'])]
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: false)]
     private \DateTime $startTime;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: false)]
-    #[Groups(['event:read', 'event:write'])]
     #[Assert\NotBlank]
+    #[Groups(['event:read', 'event:write'])]
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: false)]
     private \DateTime $endTime;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
     #[Groups(['event:read', 'event:write'])]
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
     private \DateTime $day;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['event:read', 'event:write'])]
     #[Assert\NotBlank]
+    #[Groups(['event:read', 'event:write'])]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $participantName;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['event:read', 'event:write'])]
     #[Assert\Email]
     #[Assert\NotBlank]
+    #[Groups(['event:read', 'event:write'])]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $participantEmail;
 
-    #[ORM\Column(type: 'text', length: 255, nullable: true)]
     #[Groups(['event:read', 'event:write'])]
+    #[ORM\Column(type: 'text', length: 255, nullable: true)]
     private ?string $participantMessage = null;
 
-    #[ORM\Column(type: TYPES::STRING, length: 32, nullable: true)]
     #[Groups(['event:read'])]
+    #[ORM\Column(type: TYPES::STRING, length: 32, nullable: true)]
     private ?string $cancellationHash;
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
@@ -99,12 +99,12 @@ class Event
     #[ORM\ManyToOne(inversedBy: 'events')]
     private ?CalDavAuth $calDavAuth = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['event:read', 'event:write'])]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $meetingProviderIdentifier = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['event:read'])]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $participationUrl = null;
 
     public function getId(): int

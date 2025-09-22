@@ -56,39 +56,39 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: EventTypeRepository::class)]
 class EventType
 {
+    #[Groups(['event_type:read', 'event:read'])]
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
-    #[Groups(['event_type:read', 'event:read'])]
     private int $id;
 
-    #[ORM\Column(length: 255)]
-    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
     #[Assert\NotBlank]
+    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
+    #[ORM\Column(length: 255)]
     private string $name;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column]
-    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
     #[Assert\NotBlank]
     #[Assert\Range(min: 5)]
+    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
+    #[ORM\Column]
     private int $duration;
 
-    #[ORM\Column(length: 255)]
-    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
     #[Assert\NotBlank]
     #[Assert\Regex(
         pattern: '/^[a-z0-9-]+$/',
         message: 'The slug can only contain lowercase letters, numbers and dashes.',
     )]
+    #[Groups(['event_type:read', 'event_type:write', 'event:read'])]
+    #[ORM\Column(length: 255)]
     private string $slug;
 
+    #[Groups(['event_type:read'])]
     #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(inversedBy: 'eventTypes')]
-    #[Groups(['event_type:read'])]
     private User $host;
 
     /** @var Collection<int, Event> */
@@ -96,8 +96,8 @@ class EventType
     private Collection $events;
 
     /** @var Collection<int, EventTypeMeetingProvider> */
-    #[ORM\OneToMany(targetEntity: EventTypeMeetingProvider::class, mappedBy: 'eventType')]
     #[Groups(['event_type:read'])]
+    #[ORM\OneToMany(targetEntity: EventTypeMeetingProvider::class, mappedBy: 'eventType')]
     #[SerializedName('meetingProviders')]
     private Collection $eventTypeMeetingProviders;
 

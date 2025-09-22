@@ -41,30 +41,30 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ORM\Entity(repositoryClass: UnavailabilityRepository::class)]
 class Unavailability
 {
+    #[Groups(['unavailabilities:read'])]
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
-    #[Groups(['unavailabilities:read'])]
     private int $id;
 
     #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(inversedBy: 'unavailabilities')]
     private User $user;
 
-    #[ORM\Column(length: 255)]
     #[Groups(['unavailabilities:read', 'unavailabilities:write'])]
+    #[ORM\Column(length: 255)]
     private string $dayOfWeek;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     #[Groups(['unavailabilities:read', 'unavailabilities:write'])]
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTime $startTime = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     #[Groups(['unavailabilities:read', 'unavailabilities:write'])]
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTime $endTime = null;
 
-    #[ORM\Column(nullable: true)]
     #[Groups(['unavailabilities:read', 'unavailabilities:write'])]
+    #[ORM\Column(nullable: true)]
     private ?bool $fullDay = null;
 
     public function getId(): ?int

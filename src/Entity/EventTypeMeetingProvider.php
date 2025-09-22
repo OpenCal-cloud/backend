@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ORM\Entity(repositoryClass: EventTypeMeetingProviderRepository::class)]
 class EventTypeMeetingProvider
 {
+    #[Groups(['event_type:read'])]
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
-    #[Groups(['event_type:read'])]
     private int $id;
 
-    #[ORM\Column(length: 255)]
     #[Groups(['event_type:read'])]
+    #[ORM\Column(length: 255)]
     private string $providerIdentifier;
 
-    #[ORM\Column]
     #[Groups(['event_type:read'])]
+    #[ORM\Column]
     private bool $enabled;
 
     #[ORM\JoinColumn(nullable: false)]

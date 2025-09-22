@@ -37,35 +37,35 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ORM\Entity(repositoryClass: CalDavSyncLogRepository::class)]
 class CalDavSyncLog
 {
+    #[Groups(['log:read'])]
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
-    #[Groups(['log:read'])]
     private int $id;
 
-    #[ORM\Column]
     #[Groups(['log:read'])]
+    #[ORM\Column]
     private int $countItems;
 
-    #[ORM\Column]
     #[Groups(['log:read'])]
+    #[ORM\Column]
     private \DateTimeImmutable $createdAt;
 
-    #[ORM\Column]
     #[Groups(['log:read'])]
+    #[ORM\Column]
     private bool $failed;
 
+    #[Groups(['log:read'])]
     #[ORM\JoinColumn(nullable: false)]
     #[ORM\ManyToOne(inversedBy: 'calDavSyncLogs')]
-    #[Groups(['log:read'])]
     private CalDavAuth $calDavAuth;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Groups(['log:read'])]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $errorDetails = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Groups(['log:read'])]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $errorMessage = null;
 
     public function getId(): int

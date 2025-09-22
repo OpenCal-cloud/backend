@@ -44,22 +44,22 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ORM\Entity(repositoryClass: AvailabilityRepository::class)]
 class Availability
 {
+    #[Groups(['availabilities:read'])]
     #[ORM\Column]
     #[ORM\GeneratedValue]
     #[ORM\Id]
-    #[Groups(['availabilities:read'])]
     private int $id;
 
-    #[ORM\Column(length: 255)]
     #[Groups(['availabilities:read', 'availabilities:write'])]
+    #[ORM\Column(length: 255)]
     private string $dayOfWeek;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
     #[Groups(['availabilities:read', 'availabilities:write'])]
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
     private \DateTime $startTime;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
     #[Groups(['availabilities:read', 'availabilities:write'])]
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
     private \DateTime $endTime;
 
     #[ORM\JoinColumn(nullable: false)]
