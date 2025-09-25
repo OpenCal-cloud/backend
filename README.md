@@ -18,10 +18,7 @@ you want.
 
 ## Documentation
 
-- [Configuration](docs/config.md)
-- [Getting started (for developers)](docs/dev_setup.md)
-- [How to contribute](CONTRIBUTING.md)
-- [Admin documentation](docs/admin/index.md)
+https://docs.opencal.cloud
 
 OpenCal is licensed under the [GNU AGPLv3 License](LICENSE).
 
