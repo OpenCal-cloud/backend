@@ -1,23 +1,5 @@
 [
     {
-        "id": 1,
-        "eventType": {
-            "id": 1,
-            "name": "Conference Call",
-            "description": "A call to discuss project updates.",
-            "duration": 60,
-            "slug": "conference-call"
-        },
-        "startTime": "1970-01-01T10:00:00+01:00",
-        "endTime": "1970-01-01T11:00:00+01:00",
-        "day": "2024-01-01T00:00:00+01:00",
-        "participantName": "John Doe",
-        "participantEmail": "john.doe@example.com",
-        "participantMessage": "Looking forward to the event!",
-        "meetingProviderIdentifier": "jitsi_meet",
-        "participationUrl": "/conference-call-01-01-2024-meeting-1"
-    },
-    {
         "id": 2,
         "eventType": {
             "id": 2,
@@ -34,22 +16,5 @@
         "participantMessage": "Can we discuss the agenda beforehand?",
         "meetingProviderIdentifier": "jitsi_meet",
         "participationUrl": "/team-meeting-01-01-2024-meeting-2"
-    },
-    {
-        "id": 3,
-        "eventType": {
-            "id": 1,
-            "name": "Conference Call",
-            "description": "A call to discuss project updates.",
-            "duration": 60,
-            "slug": "conference-call"
-        },
-        "startTime": "1970-01-01T10:00:00+01:00",
-        "endTime": "1970-01-01T11:00:00+01:00",
-        "day": "2024-01-01T00:00:00+01:00",
-        "participantName": "Alice Johnson",
-        "participantEmail": "alice.johnson@example.com",
-        "meetingProviderIdentifier": "jitsi_meet",
-        "participationUrl": "/conference-call-01-01-2024-meeting-3"
     }
 ]
