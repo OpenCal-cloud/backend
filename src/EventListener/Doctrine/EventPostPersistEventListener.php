@@ -41,7 +41,7 @@ class EventPostPersistEventListener
                 ->getProviderByIdentifier($event->getMeetingProviderIdentifier());
 
             if ($meetingProvider instanceof AbstractMeetingProvider) {
-                $participationUrl = $meetingProvider->generateMeetingUrl($event);
+                $participationUrl = $meetingProvider->generateLocation($event);
 
                 $event->setParticipationUrl($participationUrl);
             }

@@ -36,6 +36,7 @@ class MeetingProviderStateProvider implements ProviderInterface
 
         foreach ($providers as $provider) {
             $meetingProviderObjects[] = new MeetingProvider()
+                ->setFieldTypes($provider->getRequiredFields())
                 ->setName($provider->getName())
                 ->setIdentifier($provider->getIdentifier())
                 ->setAvailable($provider->isAvailable());

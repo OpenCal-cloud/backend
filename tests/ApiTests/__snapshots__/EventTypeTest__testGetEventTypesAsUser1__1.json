@@ -11,10 +11,28 @@
         },
         "meetingProviders": [
             {
+                "id": 2,
+                "providerIdentifier": "phone",
+                "enabled": true,
+                "name": "Phone call"
+            },
+            {
                 "id": 1,
                 "providerIdentifier": "jitsi_meet",
                 "enabled": true,
                 "name": "Jitsi Meet"
+            }
+        ],
+        "additionalEventFields": [
+            {
+                "fieldType": "phone_number",
+                "label": "booking.form.fields.provider_field.phone_number",
+                "meetingProviderIdentifier": "phone"
+            },
+            {
+                "fieldType": "country",
+                "label": "booking.form.fields.provider_field.country",
+                "meetingProviderIdentifier": "phone"
             }
         ]
     },
@@ -28,6 +46,7 @@
             "givenName": "John",
             "familyName": "Doe"
         },
-        "meetingProviders": []
+        "meetingProviders": [],
+        "additionalEventFields": []
     }
 ]

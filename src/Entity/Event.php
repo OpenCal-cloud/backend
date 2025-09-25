@@ -21,6 +21,8 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -119,6 +121,16 @@ class Event
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $reminderSentAt = null;
+
+    /** @var Collection<int, AdditionalEventFieldValue> */
+    #[ORM\OneToMany(targetEntity: AdditionalEventFieldValue::class, mappedBy: 'event')]
+    #[Groups(['event:write'])]
+    private Collection $additionalEventFieldValues;
+
+    public function __construct()
+    {
+        $this->additionalEventFieldValues = new ArrayCollection();
+    }
 
     public function getId(): int
     {
@@ -290,6 +302,34 @@ class Event
     public function setReminderSentAt(?\DateTimeImmutable $reminderSentAt): static
     {
         $this->reminderSentAt = $reminderSentAt;
+
+        return $this;
+    }
+
+    /** @return Collection<int, AdditionalEventFieldValue> */
+    public function getAdditionalEventFieldValues(): Collection
+    {
+        return $this->additionalEventFieldValues;
+    }
+
+    public function addAdditionalEventFieldValue(AdditionalEventFieldValue $additionalEventFieldValue): static
+    {
+        if (!$this->additionalEventFieldValues->contains($additionalEventFieldValue)) {
+            $this->additionalEventFieldValues->add($additionalEventFieldValue);
+            $additionalEventFieldValue->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdditionalEventFieldValue(AdditionalEventFieldValue $additionalEventFieldValue): static
+    {
+        if ($this->additionalEventFieldValues->removeElement($additionalEventFieldValue)) {
+            // set the owning side to null (unless already changed)
+            if ($additionalEventFieldValue->getEvent() === $this) {
+                $additionalEventFieldValue->setEvent(null);
+            }
+        }
 
         return $this;
     }

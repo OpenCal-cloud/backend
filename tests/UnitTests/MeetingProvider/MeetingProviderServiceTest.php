@@ -16,16 +16,19 @@ namespace App\Tests\UnitTests\MeetingProvider;
 
 use App\MeetingProvider\JitsiMeetingProvider;
 use App\MeetingProvider\MeetingProviderService;
+use App\MeetingProvider\PhoneMeetingProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class MeetingProviderServiceTest extends TestCase
 {
     private JitsiMeetingProvider&MockObject $jitsiMeetingProviderMock;
+    private PhoneMeetingProvider&MockObject $phoneMeetingProviderMock;
 
     protected function setUp(): void
     {
         $this->jitsiMeetingProviderMock = $this->createMock(JitsiMeetingProvider::class);
+        $this->phoneMeetingProviderMock = $this->createMock(PhoneMeetingProvider::class);
     }
 
     public function testGetMeetingProviders(): void
@@ -67,6 +70,7 @@ class MeetingProviderServiceTest extends TestCase
     {
         return new MeetingProviderService(
             $this->jitsiMeetingProviderMock,
+            $this->phoneMeetingProviderMock,
         );
     }
 }

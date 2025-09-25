@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace App\ApiResource;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
 use App\State\MeetingProviderStateProvider;
@@ -42,6 +43,18 @@ class MeetingProvider
 
     #[Groups(['meeting_provider:read'])]
     private bool $available;
+
+    #[ApiProperty(
+        example: [
+            'example' => [
+                'field_name' => [
+                    'type' => 'type_name',
+                ],
+            ],
+        ],
+    )]
+    #[Groups(['meeting_provider:read'])]
+    private array $fieldTypes;
 
     public function getIdentifier(): string
     {
@@ -75,6 +88,18 @@ class MeetingProvider
     public function setAvailable(bool $available): self
     {
         $this->available = $available;
+
+        return $this;
+    }
+
+    public function getFieldTypes(): array
+    {
+        return $this->fieldTypes;
+    }
+
+    public function setFieldTypes(array $fieldTypes): self
+    {
+        $this->fieldTypes = $fieldTypes;
 
         return $this;
     }

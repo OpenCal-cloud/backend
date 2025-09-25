@@ -18,6 +18,7 @@ class MeetingProviderService
 {
     public function __construct(
         private readonly JitsiMeetingProvider $jitsiMeetingProvider,
+        private readonly PhoneMeetingProvider $phoneMeetingProvider,
     ) {
     }
 
@@ -26,6 +27,7 @@ class MeetingProviderService
     {
         $providers = [
             $this->jitsiMeetingProvider,
+            $this->phoneMeetingProvider,
         ];
 
         $availableProviders = [];

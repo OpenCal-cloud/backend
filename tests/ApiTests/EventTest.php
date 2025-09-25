@@ -16,7 +16,9 @@ namespace App\Tests\ApiTests;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use App\MeetingProvider\JitsiMeetingProvider;
+use App\MeetingProvider\PhoneMeetingProvider;
 use App\Tests\ApiTests\Traits\RetrieveTokenTrait;
+use App\Tests\UnitTests\MeetingProvider\JitsiMeetingProviderTest;
 use Spatie\Snapshots\MatchesSnapshots;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -95,7 +97,7 @@ class EventTest extends ApiTestCase
         self::assertResponseIsSuccessful();
     }
 
-    public function testCreateEventSucceeds(): void
+    public function testCreateEventJitsiSucceeds(): void
     {
         $client = static::createClient();
 
@@ -138,14 +140,15 @@ class EventTest extends ApiTestCase
                 'accept' => 'application/json',
             ],
             'json'        => [
-                'eventType'        => 'event_types/1',
-                'name'             => 'Test Event',
-                'description'      => 'Test Event Description',
-                'day'              => '2024-03-05',
-                'startTime'        => '11:00',
-                'endTime'          => '11:30',
-                'participantName'  => 'Test User',
-                'participantEmail' => 'mail@user.tld',
+                'eventType'                 => 'event_types/1',
+                'name'                      => 'Test Event',
+                'description'               => 'Test Event Description',
+                'day'                       => '2024-03-05',
+                'startTime'                 => '11:00',
+                'endTime'                   => '11:30',
+                'participantName'           => 'Test User',
+                'participantEmail'          => 'mail@user.tld',
+                'meetingProviderIdentifier' => PhoneMeetingProvider::PROVIDER_IDENTIFIER
             ],
         ]);
 

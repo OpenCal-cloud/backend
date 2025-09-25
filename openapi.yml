@@ -8,6 +8,243 @@ servers:
     url: /
     description: ''
 paths:
+  /additional_field_types:
+    get:
+      operationId: api_additional_field_types_get_collection
+      tags:
+        - AdditionalFieldType
+      responses:
+        '200':
+          description: 'AdditionalFieldType collection'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AdditionalFieldType'
+            application/ld+json:
+              schema:
+                type: object
+                description: 'AdditionalFieldType.jsonld collection.'
+                allOf:
+                  - { $ref: '#/components/schemas/HydraCollectionBaseSchema' }
+                  - { type: object, properties: { member: { type: array, items: { $ref: '#/components/schemas/AdditionalFieldType.jsonld' } } } }
+      summary: 'Retrieves the collection of AdditionalFieldType resources.'
+      description: 'Retrieves the collection of AdditionalFieldType resources.'
+      parameters:
+        -
+          name: page
+          in: query
+          description: 'The collection page number'
+          required: false
+          deprecated: false
+          schema:
+            type: integer
+            default: 1
+          style: form
+          explode: false
+    post:
+      operationId: api_additional_field_types_post
+      tags:
+        - AdditionalFieldType
+      responses:
+        '201':
+          description: 'AdditionalFieldType resource created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdditionalFieldType'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/AdditionalFieldType.jsonld'
+          links: {  }
+        '400':
+          description: 'Invalid input'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+        '422':
+          description: 'An error occurred'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation'
+          links: {  }
+      summary: 'Creates a AdditionalFieldType resource.'
+      description: 'Creates a AdditionalFieldType resource.'
+      parameters: []
+      requestBody:
+        description: 'The new AdditionalFieldType resource'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdditionalFieldType'
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/AdditionalFieldType.jsonld'
+        required: true
+  '/additional_field_types/{id}':
+    get:
+      operationId: api_additional_field_types_id_get
+      tags:
+        - AdditionalFieldType
+      responses:
+        '200':
+          description: 'AdditionalFieldType resource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdditionalFieldType'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/AdditionalFieldType.jsonld'
+        '404':
+          description: 'Not found'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+      summary: 'Retrieves a AdditionalFieldType resource.'
+      description: 'Retrieves a AdditionalFieldType resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'AdditionalFieldType identifier'
+          required: true
+          deprecated: false
+          schema:
+            type: string
+          style: simple
+          explode: false
+    delete:
+      operationId: api_additional_field_types_id_delete
+      tags:
+        - AdditionalFieldType
+      responses:
+        '204':
+          description: 'AdditionalFieldType resource deleted'
+        '404':
+          description: 'Not found'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+      summary: 'Removes the AdditionalFieldType resource.'
+      description: 'Removes the AdditionalFieldType resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'AdditionalFieldType identifier'
+          required: true
+          deprecated: false
+          schema:
+            type: string
+          style: simple
+          explode: false
+    patch:
+      operationId: api_additional_field_types_id_patch
+      tags:
+        - AdditionalFieldType
+      responses:
+        '200':
+          description: 'AdditionalFieldType resource updated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdditionalFieldType'
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/AdditionalFieldType.jsonld'
+          links: {  }
+        '400':
+          description: 'Invalid input'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+        '422':
+          description: 'An error occurred'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConstraintViolation'
+          links: {  }
+        '404':
+          description: 'Not found'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Error.jsonld'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links: {  }
+      summary: 'Updates the AdditionalFieldType resource.'
+      description: 'Updates the AdditionalFieldType resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'AdditionalFieldType identifier'
+          required: true
+          deprecated: false
+          schema:
+            type: string
+          style: simple
+          explode: false
+      requestBody:
+        description: 'The updated AdditionalFieldType resource'
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/AdditionalFieldType'
+        required: true
   /availabilities:
     get:
       operationId: api_availabilities_get_collection
@@ -2274,6 +2511,30 @@ paths:
           explode: false
 components:
   schemas:
+    AdditionalFieldType:
+      type: object
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        name:
+          type: string
+        identifier:
+          type: string
+    AdditionalFieldType.jsonld:
+      allOf:
+        -
+          $ref: '#/components/schemas/HydraItemBaseSchema'
+        -
+          type: object
+          properties:
+            id:
+              readOnly: true
+              type: integer
+            name:
+              type: string
+            identifier:
+              type: string
     Availability-availabilities.read:
       type: object
       properties:
@@ -3112,6 +3373,11 @@ components:
           type: string
         available:
           type: boolean
+        fieldTypes:
+          example:
+            field_name:
+              type: type_name
+          type: array
     MeetingProvider.jsonld-meeting_provider.read:
       type: object
       properties:
@@ -3121,6 +3387,11 @@ components:
           type: string
         available:
           type: boolean
+        fieldTypes:
+          example:
+            field_name:
+              type: type_name
+          type: array
     RequestPassword:
       type: object
       properties:
@@ -3368,6 +3639,9 @@ tags:
   -
     name: ResetPassword
     description: "Resource 'ResetPassword' operations."
+  -
+    name: AdditionalFieldType
+    description: "Resource 'AdditionalFieldType' operations."
   -
     name: CalDavAuth
     description: "Resource 'CalDavAuth' operations."

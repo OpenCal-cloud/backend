@@ -67,13 +67,19 @@ class EventTypeFixtures extends Fixture implements DependentFixtureInterface
             $this->addReference('eventType' . ($index + 1), $eventType);
 
             if (0 === $count) {
-                $etMeetingProvider = new EventTypeMeetingProvider();
-                $etMeetingProvider
+                $jitsiMeetingProvider = new EventTypeMeetingProvider();
+                $jitsiMeetingProvider
                     ->setEventType($eventType)
                     ->setEnabled(true)
                     ->setProviderIdentifier('jitsi_meet');
+                $manager->persist($jitsiMeetingProvider);
 
-                $manager->persist($etMeetingProvider);
+                $phoneMeetingProvider = new EventTypeMeetingProvider();
+                $phoneMeetingProvider
+                    ->setEventType($eventType)
+                    ->setEnabled(true)
+                    ->setProviderIdentifier('phone');
+                $manager->persist($phoneMeetingProvider);
             }
 
             $count++;

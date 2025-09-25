@@ -14,6 +14,13 @@
             "providerIdentifier": "jitsi_meet",
             "enabled": true,
             "name": "Jitsi Meet"
+        },
+        {
+            "id": 2,
+            "providerIdentifier": "phone",
+            "enabled": true,
+            "name": "Phone call"
         }
-    ]
+    ],
+    "additionalEventFields": []
 }

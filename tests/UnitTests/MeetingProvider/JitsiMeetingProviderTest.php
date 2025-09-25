@@ -66,7 +66,7 @@ class JitsiMeetingProviderTest extends TestCase
             ->method('slugify')
             ->willReturn('any-event-slug');
 
-        $result = $provider->generateMeetingUrl($eventMock);
+        $result = $provider->generateLocation($eventMock);
 
         self::assertSame(
             'https://any-valid-jitsi-server-url.com/any-event-slug',

@@ -24,6 +24,7 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Repository\EventTypeRepository;
 use App\State\EventTypeStateProcessor;
+use App\State\EventTypesCollectionStateProvider;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -38,7 +39,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 ])]
 #[ApiResource(
     operations: [
-        new getCollection(),
+        new getCollection(
+            provider: EventTypesCollectionStateProvider::class,
+        ),
         new Get(),
         new Post(
             security: "is_granted('IS_AUTHENTICATED_FULLY')",
@@ -115,10 +118,16 @@ class EventType
     #[Groups(['event_type:write'])]
     private array $meetingProviderIdentifiers;
 
+    /** @var Collection<int, AdditionalEventField> */
+    #[Groups(['event_type:read'])]
+    #[ORM\OneToMany(targetEntity: AdditionalEventField::class, mappedBy: 'eventType')]
+    private Collection $additionalEventFields;
+
     public function __construct()
     {
         $this->events                    = new ArrayCollection();
         $this->eventTypeMeetingProviders = new ArrayCollection();
+        $this->additionalEventFields     = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -254,6 +263,34 @@ class EventType
     public function setMeetingProviderIdentifiers(array $meetingProviderIdentifiers): static
     {
         $this->meetingProviderIdentifiers = $meetingProviderIdentifiers;
+
+        return $this;
+    }
+
+    /** @return Collection<int, AdditionalEventField> */
+    public function getAdditionalEventFields(): Collection
+    {
+        return $this->additionalEventFields;
+    }
+
+    public function addAdditionalEventField(AdditionalEventField $additionalEventField): static
+    {
+        if (!$this->additionalEventFields->contains($additionalEventField)) {
+            $this->additionalEventFields->add($additionalEventField);
+            $additionalEventField->setEventType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdditionalEventField(AdditionalEventField $additionalEventField): static
+    {
+        if ($this->additionalEventFields->removeElement($additionalEventField)) {
+            // set the owning side to null (unless already changed)
+            if ($additionalEventField->getEventType() === $this) {
+                $additionalEventField->setEventType(null);
+            }
+        }
 
         return $this;
     }

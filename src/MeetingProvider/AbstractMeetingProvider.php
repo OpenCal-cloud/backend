@@ -22,7 +22,9 @@ abstract class AbstractMeetingProvider
 
     abstract public function getName(): string;
 
-    abstract public function generateMeetingUrl(Event $event): string;
+    abstract public function generateLocation(Event $event): string;
 
     abstract public function isAvailable(): bool;
+
+    abstract public function getRequiredFields(): array;
 }

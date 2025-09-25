@@ -38,7 +38,7 @@ class JitsiMeetingProvider extends AbstractMeetingProvider
         return 'Jitsi Meet';
     }
 
-    public function generateMeetingUrl(Event $event): string
+    public function generateLocation(Event $event): string
     {
         $meetingName = \sprintf(
             '%s - %s (Meeting #%s)',
@@ -62,5 +62,10 @@ class JitsiMeetingProvider extends AbstractMeetingProvider
             "/\b(?:https:\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",
             $this->jitsiMeetBaseUrl,
         );
+    }
+
+    public function getRequiredFields(): array
+    {
+        return [];
     }
 }

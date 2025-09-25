@@ -10,9 +10,10 @@
     },
     "meetingProviders": [
         {
-            "id": 2,
+            "id": 3,
             "providerIdentifier": "jitsi_meet",
             "enabled": true
         }
-    ]
+    ],
+    "additionalEventFields": []
 }
