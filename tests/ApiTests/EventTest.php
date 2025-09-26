@@ -1,10 +1,21 @@
 <?php
+/*
+ * Copyright (c) 2025. All Rights Reserved.
+ *
+ * This file is part of the OpenCal project, see https://git.var-lab.com/opencal
+ *
+ * You may use, distribute and modify this code under the terms of the AGPL 3.0 license,
+ * which unfortunately won't be written for another century.
+ *
+ * Visit https://git.var-lab.com/opencal/backend/-/blob/main/LICENSE to read the full license text.
+ */
 
 declare(strict_types=1);
 
 namespace App\Tests\ApiTests;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
+use App\MeetingProvider\JitsiMeetingProvider;
 use App\Tests\ApiTests\Traits\RetrieveTokenTrait;
 use Spatie\Snapshots\MatchesSnapshots;
 use Symfony\Component\HttpFoundation\Response;
@@ -104,7 +115,37 @@ class EventTest extends ApiTestCase
                 'endTime'                   => '11:30',
                 'participantName'           => 'Test User',
                 'participantEmail'          => 'mail@user.tld',
-                'meetingProviderIdentifier' => 'test',
+                'meetingProviderIdentifier' => JitsiMeetingProvider::PROVIDER_IDENTIFIER,
+            ],
+        ]);
+
+        $json = $response->toArray();
+        unset($json['cancellationHash']);
+
+        self::assertMatchesJsonSnapshot($json);
+        self::assertResponseIsSuccessful();
+    }
+
+    public function testCreateEventPhoneSucceeds(): void
+    {
+        $client = static::createClient();
+
+        $token = $this->retrieveToken();
+
+        $response = $client->request('POST', '/events', [
+            'auth_bearer' => $token,
+            'headers'     => [
+                'accept' => 'application/json',
+            ],
+            'json'        => [
+                'eventType'        => 'event_types/1',
+                'name'             => 'Test Event',
+                'description'      => 'Test Event Description',
+                'day'              => '2024-03-05',
+                'startTime'        => '11:00',
+                'endTime'          => '11:30',
+                'participantName'  => 'Test User',
+                'participantEmail' => 'mail@user.tld',
             ],
         ]);
 

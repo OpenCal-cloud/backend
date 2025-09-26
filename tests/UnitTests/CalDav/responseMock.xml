@@ -1,4 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
+<!--
+  ~ Copyright (c) 2025. All Rights Reserved.
+  ~
+  ~ This file is part of the OpenCal project, see https://git.var-lab.com/opencal
+  ~
+  ~ You may use, distribute and modify this code under the terms of the AGPL 3.0 license,
+  ~ which unfortunately won't be written for another century.
+  ~
+  ~ Visit https://git.var-lab.com/opencal/backend/-/blob/main/LICENSE to read the full license text.
+  -->
+
 <multistatus xmlns="DAV:" xmlns:C="urn:ietf:params:xml:ns:caldav"><response><href>/dev/example/meeting-095@examplecorp.com.ics</href><propstat><prop><getetag>"82c285918c61034c68be81889a8df89487bc5eb5e48605c75a5cf39fcab626b8"</getetag><C:calendar-data>BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Radicale Dev//EN

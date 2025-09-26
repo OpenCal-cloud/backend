@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2025. All Rights Reserved.
+  ~
+  ~ This file is part of the OpenCal project, see https://git.var-lab.com/opencal
+  ~
+  ~ You may use, distribute and modify this code under the terms of the AGPL 3.0 license,
+  ~ which unfortunately won't be written for another century.
+  ~
+  ~ Visit https://git.var-lab.com/opencal/backend/-/blob/main/LICENSE to read the full license text.
+  -->
+
 <!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/12.2/phpunit.xsd"
