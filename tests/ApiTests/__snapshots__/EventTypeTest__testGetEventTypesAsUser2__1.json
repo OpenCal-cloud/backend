@@ -6,6 +6,7 @@
         "duration": 30,
         "slug": "team-meeting",
         "host": {
+            "email": "jane.smith@example.tld",
             "givenName": "Jane",
             "familyName": "Smith"
         },

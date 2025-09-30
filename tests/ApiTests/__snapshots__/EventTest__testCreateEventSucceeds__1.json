@@ -1,5 +1,5 @@
 {
-    "id": 5,
+    "id": 4,
     "eventType": {
         "id": 1,
         "name": "Conference Call",
@@ -13,5 +13,5 @@
     "participantName": "Test User",
     "participantEmail": "mail@user.tld",
     "meetingProviderIdentifier": "jitsi_meet",
-    "participationUrl": "/conference-call-05-03-2024-meeting-5"
+    "participationUrl": "/conference-call-05-03-2024-meeting-4"
 }

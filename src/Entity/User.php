@@ -68,7 +68,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[Assert\Email]
     #[Assert\NotBlank]
-    #[Groups(['me:read', 'me:write'])]
+    #[Groups(['me:read', 'me:write', 'event_type:read'])]
     #[ORM\Column(length: 180)]
     private string $email;
 

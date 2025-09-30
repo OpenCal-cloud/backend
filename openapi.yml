@@ -3246,9 +3246,15 @@ components:
     User-event_type.read:
       type: object
       required:
+        - email
         - givenName
         - familyName
       properties:
+        email:
+          format: email
+          externalDocs:
+            url: 'https://schema.org/email'
+          type: string
         givenName:
           type: string
         familyName:
@@ -3302,9 +3308,15 @@ components:
         -
           type: object
           required:
+            - email
             - givenName
             - familyName
           properties:
+            email:
+              format: email
+              externalDocs:
+                url: 'https://schema.org/email'
+              type: string
             givenName:
               type: string
             familyName:

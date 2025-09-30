@@ -6,6 +6,7 @@
         "duration": 60,
         "slug": "conference-call",
         "host": {
+            "email": "user@example.tld",
             "givenName": "John",
             "familyName": "Doe"
         },
@@ -25,6 +26,7 @@
         "duration": 45,
         "slug": "one-on-one",
         "host": {
+            "email": "user@example.tld",
             "givenName": "John",
             "familyName": "Doe"
         },

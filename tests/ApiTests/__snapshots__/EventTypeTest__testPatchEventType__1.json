@@ -5,6 +5,7 @@
     "duration": 60,
     "slug": "conference-call",
     "host": {
+        "email": "user@example.tld",
         "givenName": "John",
         "familyName": "Doe"
     },

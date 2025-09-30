@@ -5,6 +5,7 @@
     "duration": 30,
     "slug": "test-event-type",
     "host": {
+        "email": "user@example.tld",
         "givenName": "John",
         "familyName": "Doe"
     },
