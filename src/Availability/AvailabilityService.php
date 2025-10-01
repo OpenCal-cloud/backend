@@ -45,11 +45,24 @@ class AvailabilityService
     /** @return list<array<string, string>> */
     public function getDayAvailability(NativeDateTime $day, EventType $eventType): array
     {
+        $now = new DateTime();
+
+        if ($day < $now) {
+            return [];
+        }
+
         $weekDay = $day->format('l');
 
         $unavailabilities = $this
             ->unavailabilityRepository
             ->findByWeekDayAndUser($weekDay, $eventType->getHost());
+
+        if ($day->format('Y-m-d') === $now->format('Y-m-d')) {
+            $unavailabilities[] = new Unavailability()
+                ->setStartTime($now->modify('00:00:00'))
+                ->setEndTime(new DateTime('now'))
+                ->setFullDay(false);
+        }
 
         $availabilities = $this
             ->availabilityRepository

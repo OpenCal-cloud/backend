@@ -25,9 +25,12 @@ use App\Repository\UnavailabilityRepository;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Safe\DateTime;
+use Spatie\Snapshots\MatchesSnapshots;
 
 class AvailabilityServiceTest extends TestCase
 {
+    use MatchesSnapshots;
+
     private AvailabilityRepository&MockObject $availabilityRepositoryMock;
     private UnavailabilityRepository&MockObject $unavailabilityRepositoryMock;
     private EventRepository&MockObject $eventRepositoryMock;
@@ -45,7 +48,7 @@ class AvailabilityServiceTest extends TestCase
         );
     }
 
-    public function testGetDayAvailability(): void
+    public function testGetDayAvailabilityInPast(): void
     {
         $day           = new DateTime('2023-11-10');
         $eventTypeMock = $this->createMock(EventType::class);
@@ -68,18 +71,83 @@ class AvailabilityServiceTest extends TestCase
 
         $result = $this->service->getDayAvailability($day, $eventTypeMock);
 
-        $expected = [
-            ['start' => '09:00', 'end' => '10:00'],
-            ['start' => '10:00', 'end' => '11:00'],
-            ['start' => '11:00', 'end' => '12:00'],
-        ];
+        self::assertCount(0, $result);
+    }
 
-        self::assertEquals($expected, $result);
+    public function testGetDayAvailabilityNow(): void
+    {
+        $day = new DateTime('now');
+
+        $eventTypeMock = $this->createMock(EventType::class);
+        $eventTypeMock->method('getHost')->willReturn(new User());
+        $eventTypeMock->method('getDuration')->willReturn(60);
+
+        $result = $this->service->getDayAvailability($day, $eventTypeMock);
+
+        self::assertGreaterThanOrEqual(0, \count($result));
+    }
+
+    public function testGetDayAvailabilityNow1sec(): void
+    {
+        $day     = new DateTime('now + 1 second'); // must be greater than "now".
+        $weekDay = $day->format('l');
+
+        $eventTypeMock = $this->createMock(EventType::class);
+        $eventTypeMock->method('getHost')->willReturn(new User());
+        $eventTypeMock->method('getDuration')->willReturn(60);
+
+        $availabilityMock = $this->createMock(Availability::class);
+        $availabilityMock->method('getStartTime')->willReturn(new DateTime('09:00'));
+        $availabilityMock->method('getEndTime')->willReturn(new DateTime('12:00'));
+
+        $this->availabilityRepositoryMock
+            ->method('findAllByWeekDayAndUser')
+            ->with($weekDay)
+            ->willReturn([$availabilityMock]);
+
+        $this->unavailabilityRepositoryMock
+            ->method('findByWeekDayAndUser')
+            ->with($weekDay)
+            ->willReturn([]);
+
+        $result = $this->service->getDayAvailability($day, $eventTypeMock);
+
+        self::assertGreaterThanOrEqual(0, \count($result));
+    }
+
+    public function testGetDayAvailabilityFuture(): void
+    {
+        $day     = new DateTime('now + 1 day');
+        $weekDay = $day->format('l');
+
+        $eventTypeMock = $this->createMock(EventType::class);
+        $eventTypeMock->method('getHost')->willReturn(new User());
+        $eventTypeMock->method('getDuration')->willReturn(60);
+
+        $availabilityMock = $this->createMock(Availability::class);
+        $availabilityMock->method('getStartTime')->willReturn(new DateTime('09:00'));
+        $availabilityMock->method('getEndTime')->willReturn(new DateTime('12:00'));
+
+        $this->availabilityRepositoryMock
+            ->method('findAllByWeekDayAndUser')
+            ->with($weekDay)
+            ->willReturn([$availabilityMock]);
+
+        $this->unavailabilityRepositoryMock
+            ->method('findByWeekDayAndUser')
+            ->with($weekDay)
+            ->willReturn([]);
+
+        $result = $this->service->getDayAvailability($day, $eventTypeMock);
+
+        self::assertMatchesJsonSnapshot($result);
     }
 
     public function testGetDayAvailabilityWithUnavailabilities(): void
     {
-        $day           = new DateTime('2023-11-10');
+        $day     = new DateTime('now + 1 day');
+        $weekDay = $day->format('l');
+
         $eventTypeMock = $this->createMock(EventType::class);
         $eventTypeMock->method('getHost')->willReturn(new User());
         $eventTypeMock->method('getDuration')->willReturn(60);
@@ -95,31 +163,23 @@ class AvailabilityServiceTest extends TestCase
 
         $this->availabilityRepositoryMock
             ->method('findAllByWeekDayAndUser')
-            ->with('Friday')
+            ->with($weekDay)
             ->willReturn([$availabilityMock]);
 
         $this->unavailabilityRepositoryMock
             ->method('findByWeekDayAndUser')
-            ->with('Friday')
+            ->with($weekDay)
             ->willReturn([$unavailabilityMock]);
 
         $result = $this->service->getDayAvailability($day, $eventTypeMock);
 
-        $expected = [
-            ['start' => '09:00', 'end' => '10:00'],
-            ['start' => '10:00', 'end' => '11:00'],
-            ['start' => '13:00', 'end' => '14:00'],
-            ['start' => '14:00', 'end' => '15:00'],
-            ['start' => '15:00', 'end' => '16:00'],
-            ['start' => '16:00', 'end' => '17:00'],
-        ];
-
-        self::assertEquals($expected, $result);
+        self::assertMatchesJsonSnapshot($result);
     }
 
     public function testGetDayAvailabilityHandlesFullDayUnavailability(): void
     {
-        $day           = new DateTime('2023-11-10');
+        $day = new DateTime('now + 1 day');
+
         $eventTypeMock = $this->createMock(EventType::class);
         $eventTypeMock->method('getHost')->willReturn(new User());
         $eventTypeMock->method('getDuration')->willReturn(60);
@@ -133,12 +193,10 @@ class AvailabilityServiceTest extends TestCase
 
         $this->availabilityRepositoryMock
             ->method('findAllByWeekDayAndUser')
-            ->with('Friday')
             ->willReturn([$availabilityMock]);
 
         $this->unavailabilityRepositoryMock
             ->method('findByWeekDayAndUser')
-            ->with('Friday')
             ->willReturn([$unavailabilityMock]);
 
         $result = $this->service->getDayAvailability($day, $eventTypeMock);

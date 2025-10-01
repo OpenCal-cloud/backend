@@ -14,40 +14,11 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use ApiPlatform\Metadata\ApiResource;
-use ApiPlatform\Metadata\Delete;
-use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\GetCollection;
-use ApiPlatform\Metadata\Patch;
-use ApiPlatform\Metadata\Post;
-use App\Controller\CreateUnavailabilityController;
 use App\Repository\UnavailabilityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
 
-#[ApiResource(
-    operations: [
-        new GetCollection(),
-        new Get(),
-        new Post(
-            controller: CreateUnavailabilityController::class,
-        ),
-        new Patch(),
-        new Delete(),
-    ],
-    normalizationContext: [
-        'groups' => [
-            'unavailabilities:read',
-        ],
-    ],
-    denormalizationContext: [
-        'groups' => [
-            'unavailabilities:write',
-        ],
-    ],
-    security: "is_granted('IS_AUTHENTICATED_FULLY')",
-)]
 #[ORM\Entity(repositoryClass: UnavailabilityRepository::class)]
 class Unavailability
 {
