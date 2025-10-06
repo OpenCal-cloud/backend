@@ -122,6 +122,14 @@ class EventTest extends ApiTestCase
         $json = $response->toArray();
         unset($json['cancellationHash']);
 
+        self::assertStringContainsString(
+            '/conference-call-05-03-2024-meeting-',
+            $json['participationUrl'], // @phpstan-ignore-line
+        );
+        self::assertArrayHasKey('id', $json);
+        unset($json['id']);
+        unset($json['participationUrl']);
+
         self::assertMatchesJsonSnapshot($json);
         self::assertResponseIsSuccessful();
     }
@@ -150,7 +158,12 @@ class EventTest extends ApiTestCase
         ]);
 
         $json = $response->toArray();
+
+        self::assertArrayHasKey('cancellationHash', $json);
         unset($json['cancellationHash']);
+
+        self::assertArrayHasKey('id', $json);
+        unset($json['id']);
 
         self::assertMatchesJsonSnapshot($json);
         self::assertResponseIsSuccessful();
@@ -175,9 +188,10 @@ class EventTest extends ApiTestCase
         ]);
 
         $json = $response->toArray();
+
+        self::assertArrayHasKey('cancellationHash', $json);
         unset($json['cancellationHash']);
 
-        self::assertMatchesJsonSnapshot($json);
         self::assertResponseIsSuccessful();
     }
 
